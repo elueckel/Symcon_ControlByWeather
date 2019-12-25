@@ -143,9 +143,8 @@ if (!defined('vtBoolean')) {
 			$StormControlGust = GetValue($this->ReadPropertyInteger("WindGust"));
 			//$StormControlActive = 0;
 			//$this->SetBuffer("StormControlActive", $StormControlActive);
-			$this->SendDebug("Data Preperation","Stormcontrol vor get ",$StormControlActive, 0);
 			$StormControlActive = $this->GetBuffer("StormControlActive");
-			$this->SendDebug("Data Preperation","Stormcontrol vor get ",$StormControlActive, 0);
+			$this->SendDebug("Stormcontrol vor setzen",$StormControlActive, 0);
 			
 			if ($StormControlEnabled == 1){
 				if ($StormControlThreshold < $StormControlGust) {
@@ -232,7 +231,8 @@ if (!defined('vtBoolean')) {
 			else {
 			$this->SendDebug('Solarradiation delayed value 1','ERROR Light average time must at least be 1',1);
 			}
-			
+			//$StormControlActiveTest = $this->GetBuffer("StormControlActive");
+			//$this->SendDebug('Test','Storm Control'.$StormControlActiveTest,1);
 		}
 		
 		public function ControlMarquee()
@@ -258,10 +258,10 @@ if (!defined('vtBoolean')) {
 			$MarqueeManagementMoveOutMode = $this->ReadPropertyString("MarqueeMoveOutMode"); // Direct / Delay
 			$MarqueeManagementMoveInMode = $this->ReadPropertyString("MarqueeMoveOutMode"); // Direct / Delay
 			
-			$this->SendDebug('Marquee Managment','Azimut Begin '$MarqueeManagementAzimutBegin.' / System Azimuth '.$System_Azimuth.' / Azimut End '.$MarqueeManagementAzimutEnd.' // Elevation '.$MarqueeManagementElevation.' / System Elevation '.$System_Elevation,0);			
+			$this->SendDebug('Marquee Control','Location Settings: System Azi '.$System_Azimuth.$MarqueeManagementAzimutBegin.' / Begin '.$MarqueeManagementAzimutBegin.' / End '.$MarqueeManagementAzimutEnd.' Elevation'.$System_Elevation.' Elevation '.$MarqueeManagementElevation,0);			
 			
 			$MarqueeManagementManual = GetValue($this->GetIDForIdent("MarqueeManual"));
-			$this->SendDebug('Marquee Managment','Managment Manual Override ',$MarqueeManagementManual,0);
+			$this->SendDebug('Marquee Control ','Manual Override '.$MarqueeManagementManual,0);
 			
 			
 			
@@ -290,29 +290,29 @@ if (!defined('vtBoolean')) {
 				if ($SolarRadiationLuxCurrent >= $MarqueeManagementSolarRadiationWinterThreshold)	{
 					$Marquee_Move_Out = 1;
 					$Marquee_Move_Out_Reason = "Sun surpased threshold for winter";
-					$this->SendDebug('Move out by Radiation in Winter ',$Marquee_Move_Out.' / Mode: '.$MarqueeManagementMoveOutMode,0);
+					$this->SendDebug('Marquee Control','Sun surpased threshold for winter',0);
 				}
 				elseif ($SolarRadiationLuxCurrent < $MarqueeManagementSolarRadiationWinterThreshold) {
 					$Marquee_Move_Out = 0;
 					$Marquee_Move_Out_Reason = "Sun did not surpas threshold for winter";
-					$this->SendDebug('Move out by Radiation in Winter ',$Marquee_Move_Out.' / Mode: '.$MarqueeManagementMoveOutMode,0);
+					$this->SendDebug('Marquee Control ','Sun did not surpas threshold for winter',0);
 				}
 			}
 			elseif ($SeasonIsSummer == 1)	{
 				if ($SolarRadiationDecisionValueIn >= $MarqueeManagementSolarRadiationSummerThreshold)	{
 					$Marquee_Move_Out = 1;
 					$Marquee_Move_Out_Reason = "Sun surpased threshold for summer";
-					$this->SendDebug('Move out by Radiation in Summer ',$Marquee_Move_Out.' / Mode: '.$MarqueeManagementMoveInMode,0);
+					$this->SendDebug('Marquee Control','Sun surpased threshold for winter',0);
 				}
 				ElseIf ($SolarRadiationDecisionValueIn < $MarqueeManagementSolarRadiationSummerThreshold) {
 					$Marquee_Move_Out = 0;
 					$Marquee_Move_Out_Reason = "Sun did not surpas threshold for summer";
-					$this->SendDebug('Move out by Radiation in Summer ',$Marquee_Move_Out.' / Mode: '.$MarqueeManagementMoveInMode,0);
+					$this->SendDebug('Marquee Control ','Sun did not surpas threshold for summer',0);
 				}
 			}
 			
 			
-			$this->SendDebug('Test','Storm Control'.$StormControlActive,1);
+			
 			
 			//Check if Rainsensor should be used
 			$RainSensor = GetValue($this->ReadPropertyInteger("RainSensor"));
@@ -330,9 +330,10 @@ if (!defined('vtBoolean')) {
 				$MarqueeRainBlock = 0;
 			}
 			
+			$this->SendDebug('Test','Enter descision',1);
+			
 			// $MarqueeManualDisable einbauen inkl. Notification ... 
 			// Direktes ausfahren einbauen
-			$this->SendDebug('Test','Now checks should happen',1);
 			
 			if ($MarqueeManagementManual == 0) {
 				if ($Marquee_Move_Out == 1) {
