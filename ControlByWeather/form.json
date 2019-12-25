@@ -10,12 +10,20 @@
 					{ "type": "Label", "label": "" },
 					{
 					"type": "ExpansionPanel",
-					"caption": "Position of sun",
+					"caption": "Position of sun & Seasons",
 						"items": [
 							{ "type": "RowLayout",
 								"items": [
 									{ "type": "SelectVariable", "name": "Azimut", "caption": "Azimut"},
 									{ "type": "SelectVariable", "name": "Elevation", "caption": "Elevation"}
+								]
+							},
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "CheckBox", "name": "AutoSeason", "caption": "Automatic Summer/Winter"},
+									{ "type": "Label", "label": "If disabled summer thresholds will be used in any configuration" },
+									{ "type": "NumberSpinner", "name": "SummerStart", "caption": "Start Summer", "suffix": "month", "minimum": "1", "maximum": "12" },
+									{ "type": "NumberSpinner", "name": "SummerEnd", "caption": "End Summer", "suffix": "month", "minimum": "1", "maximum": "12" }
 								]
 							}
 						]
@@ -47,7 +55,7 @@
 					"type": "ExpansionPanel",
 					"caption": "Light intensity (Solar Radiation)",
 						"items": [
-							{ "type": "Label", "label": "If station provides data in Watt like DAVIS please select watt for conversion to Lux"},
+							{ "type": "Label", "label": "If station provides data in Watt like DAVIS Vantage please select Watt for conversion to Lux"},
 							{ "type": "RowLayout",
 								"items": [
 									{ "type": "SelectVariable", "name": "SolarRadiation", "caption": "Light Sensor"},
@@ -112,7 +120,7 @@
 					{ "type": "NumberSpinner", "name": "MarqueeManagementAzimutBegin", "caption": "Azimut Begin", "suffix": "degree", "minimum": "0", "maximum": "360", "width": "30%"},
 					{ "type": "NumberSpinner", "name": "MarqueeManagementAzimutEnd", "caption": "Azimut End", "suffix": "degree", "minimum": "0", "maximum": "360", "width": "30%"},
 					{ "type": "NumberSpinner", "name": "MarqueeManagementElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360", "width": "30%"},
-					{ "type": "Label", "label": "Light intensity to move out and in" },
+					{ "type": "Label", "label": "Light intensity to move out and in", "width": "30%" },
 					{ "type": "RowLayout",
 						"items": [
 							{ "type": "NumberSpinner", "name": "MarqueeManagementSolarRadiationSummer", "caption": "Summer Threshold", "suffix": "lux", "minimum": "0"},
@@ -136,19 +144,13 @@
 							}
 						]
 					},
+					{ "type": "Label", "label": "If disabled summer threshold is used" },
 					{ "type": "CheckBox", "name": "MarqueeManagementUseAutomaticWinter", "caption": "Automatic Summer/Winter"},
 					{ "type": "NumberSpinner", "name": "MarqueeManagementWindSpeedMax", "caption": "Maximum Windspeed", "suffix": "max kmh until retract", "minimum": "0", "width": "30%"},
-					{ "type": "CheckBox", "name": "MarqueeManagementConsiderRain", "caption": "Consider Rain"},
-					{ "type": "Label", "label": "" },
-					{ "type": "Label", "label": "Time of the year" },
-					{ "type": "CheckBox", "name": "AutoSeason", "caption": "Automatic Summer/Winter"},
-					{ "type": "Label", "label": "If disabled summer threshold is used" },
-					{ "type": "NumberSpinner", "name": "SummerStart", "caption": "Start Summer", "suffix": "number of month", "minimum": "1", "maximum": "12", "width": "30%"},
-					{ "type": "NumberSpinner", "name": "SummerEnd", "caption": "End Summer", "suffix": "number of month", "minimum": "1", "maximum": "12", "width": "30%"}
+					{ "type": "CheckBox", "name": "MarqueeManagementConsiderRain", "caption": "Consider Rain"}
 			]
 		}
     ],
-
 	"actions":
 	[
 		{ "type": "Button", "label": "Test Data Preparation", "onClick": "WC_DataPrep($id);" },
