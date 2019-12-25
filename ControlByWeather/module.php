@@ -73,7 +73,7 @@ if (!defined('vtBoolean')) {
 				
 				$TimerMarqueeControl = $this->ReadPropertyInteger("TimerControlMarquee") * 1000;
 				$this->SetTimerInterval("CBWDataControlMarquee",$TimerMarqueeControl);
-				$StormControlActive = 0;
+				//$StormControlActive = 0;
 				//Variablen anlegen
 
 				$vpos = 10;
