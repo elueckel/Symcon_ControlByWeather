@@ -67,7 +67,7 @@
 						"items": [
 							{ "type": "RowLayout",
 								"items": [
-									{ "type": "SelectVariable", "name": "RainSensor", "caption": "Rain Sensor", "width": "30%" }
+									{ "type": "SelectVariable", "name": "RainSensor", "caption": "Rain Sensor" }
 								]
 							}
 						]
@@ -112,7 +112,7 @@
 					{ "type": "NumberSpinner", "name": "MarqueeManagementAzimutBegin", "caption": "Azimut Begin", "suffix": "degree", "minimum": "0", "maximum": "360", "width": "30%"},
 					{ "type": "NumberSpinner", "name": "MarqueeManagementAzimutEnd", "caption": "Azimut End", "suffix": "degree", "minimum": "0", "maximum": "360", "width": "30%"},
 					{ "type": "NumberSpinner", "name": "MarqueeManagementElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360", "width": "30%"},
-					{ "type": "Label", "label": "Light intensity to move out and in", "width": "30%" },
+					{ "type": "Label", "label": "Light intensity to move out and in" },
 					{ "type": "RowLayout",
 						"items": [
 							{ "type": "NumberSpinner", "name": "MarqueeManagementSolarRadiationSummer", "caption": "Summer Threshold", "suffix": "lux", "minimum": "0"},
