@@ -143,8 +143,9 @@ if (!defined('vtBoolean')) {
 			$StormControlGust = GetValue($this->ReadPropertyInteger("WindGust"));
 			//$StormControlActive = 0;
 			//$this->SetBuffer("StormControlActive", $StormControlActive);
+			$this->SendDebug("Data Preperation","Stormcontrol vor get ",$StormControlActive, 0);
 			$StormControlActive = $this->GetBuffer("StormControlActive");
-			$this->SendDebug("Stormcontrol vor setzen",$StormControlActive, 0);
+			$this->SendDebug("Data Preperation","Stormcontrol vor get ",$StormControlActive, 0);
 			
 			if ($StormControlEnabled == 1){
 				if ($StormControlThreshold < $StormControlGust) {
