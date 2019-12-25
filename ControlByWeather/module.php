@@ -258,10 +258,10 @@ if (!defined('vtBoolean')) {
 			$MarqueeManagementMoveOutMode = $this->ReadPropertyString("MarqueeMoveOutMode"); // Direct / Delay
 			$MarqueeManagementMoveInMode = $this->ReadPropertyString("MarqueeMoveOutMode"); // Direct / Delay
 			
-			$this->SendDebug('Marquee Control',$MarqueeManagementAzimutBegin.' System Azi'.$System_Azimuth.' End '.$MarqueeManagementAzimutEnd.' Elevation'.$MarqueeManagementElevation.' Elevation '.$System_Elevation,0);			
+			$this->SendDebug('Marquee Managment','Azimut Begin '$MarqueeManagementAzimutBegin.' / System Azimuth '.$System_Azimuth.' / Azimut End '.$MarqueeManagementAzimutEnd.' // Elevation '.$MarqueeManagementElevation.' / System Elevation '.$System_Elevation,0);			
 			
 			$MarqueeManagementManual = GetValue($this->GetIDForIdent("MarqueeManual"));
-			$this->SendDebug('Marquee Managment Manual Override ',$MarqueeManagementManual,0);
+			$this->SendDebug('Marquee Managment','Managment Manual Override ',$MarqueeManagementManual,0);
 			
 			
 			
@@ -332,6 +332,7 @@ if (!defined('vtBoolean')) {
 			
 			// $MarqueeManualDisable einbauen inkl. Notification ... 
 			// Direktes ausfahren einbauen
+			$this->SendDebug('Test','Now checks should happen',1);
 			
 			if ($MarqueeManagementManual == 0) {
 				if ($Marquee_Move_Out == 1) {
