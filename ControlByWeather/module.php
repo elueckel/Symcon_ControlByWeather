@@ -103,17 +103,19 @@ if (!defined('vtBoolean')) {
 					SetValue($this->GetIDForIdent("AutoSeasonIsSummer"), (bool)0);
 					$SeasonIsSummer = 0;
 					$this->SetBuffer("SeasonIsSummer", $SeasonIsSummer);
-					$this->SendDebug('Auto Season is summer',$SeasonIsSummer,0);
+					$this->SendDebug('Data Preperation','Auto Season is summer '.$SeasonIsSummer,0);
 				}
 				elseif ($MonthTodayForSeason < $SummerEnd AND $MonthTodayForSeason >= $SummerStart) {
 					SetValue($this->GetIDForIdent("AutoSeasonIsSummer"), (bool)1);
 					$SeasonIsSummer = 1;
 					$this->SetBuffer("SeasonIsSummer", $SeasonIsSummer);
-					$this->SendDebug('Auto Season is summer',$SeasonIsSummer,0);
+					$this->SendDebug('Data Preperation','Auto Season is summer '.$SeasonIsSummer,0);
 				}
 			}
 			elseif ($AutoSeason == 0)	{
 				SetValue($this->GetIDForIdent("ManualSeason"), (string)"To be changed");
+				$this->SendDebug('Data Preperation','Auto Season is not used - Summer Value for Lux threshold is used',0);
+				$SeasonIsSummer = 1;
 			}	
 			
 
@@ -126,12 +128,12 @@ if (!defined('vtBoolean')) {
 			if ($WindConversion == "ms") {
 				$WindspeedKMH = $WindSpeed * 3.6;
 				$this->SetBuffer("WindspeedKMH", $WindspeedKMH);
-				$this->SendDebug('Wind','converted from '.$WindSpeed.' m/s to '.$WindspeedKMH.' km/h',0);				
+				$this->SendDebug('Data Preperation','Wind converted from '.$WindSpeed.' m/s to '.$WindspeedKMH.' km/h',0);				
 			}
 			elseif ($WindConversion == "kmh"){
 				$WindspeedKMH = $WindSpeed;
 				$this->SetBuffer("WindspeedKMH", $WindspeedKMH);
-				$this->SendDebug('Wind','no conversion'.$WindspeedKMH.' km/h',0);
+				$this->SendDebug('Data Preperation','Wind - no conversion needed'.$WindspeedKMH.' km/h',0);
 			}
 			
 			// Storm lockdown for shades and marquee
@@ -144,11 +146,11 @@ if (!defined('vtBoolean')) {
 			//$StormControlActive = 0;
 			//$this->SetBuffer("StormControlActive", $StormControlActive);
 			$StormControlActive = $this->GetBuffer("StormControlActive");
-			$this->SendDebug("Stormcontrol vor setzen",$StormControlActive, 0);
+			//$this->SendDebug("Stormcontrol vor setzen",$StormControlActive, 0);
 			
 			if ($StormControlEnabled == 1){
 				if ($StormControlThreshold < $StormControlGust) {
-					$this->SendDebug("Stormcontrol","++++++++++++++++++ Storm control was activated by a gust", 0);
+					$this->SendDebug("Data Preperation","+++ Storm control was activated by a gust", 0);
 					$StormControlActive = 1;
 					$this->SetBuffer("StormControlActive", $StormControlActive);
 					$StormControlMS = $StormControlTimer * 1000;
@@ -156,7 +158,7 @@ if (!defined('vtBoolean')) {
 					$this->ControlMarquee();					
 				}
 				elseif ($StormControlThreshold > $StormControlGust AND $StormControlActive <> 1) {
-					$this->SendDebug("Stormcontrol","++++++++++++++++++ No Storm detected and no current lock", 0);
+					$this->SendDebug("Data Preperation","No Storm detected and no current lock", 0);
 					$StormControlActive = 0;
 					$this->SetBuffer("StormControlActive", $StormControlActive);
 					$StormControlMS = $StormControlTimer * 1000 * 60;
@@ -165,7 +167,7 @@ if (!defined('vtBoolean')) {
 				elseif ($StormControlThreshold > $StormControlGust AND $StormControlActive == 1) {
 					$StormControlActive = 1;
 					$this->SetBuffer("StormControlActive", $StormControlActive);
-					$this->SendDebug("Stormcontrol","++++++++++++++++++ current lock", 0);
+					$this->SendDebug("Data Preperation","+++ Storm control has a current lock", 0);
 				}
 			}
 				
@@ -180,12 +182,12 @@ if (!defined('vtBoolean')) {
 			if ($RadiationConversion == "Watt")	{
 				$SolarRadiationLuxCurrent = $SolarRadiation * 0.13 * 1000;
 				$this->SetBuffer("SolarRadiationLuxCurrent", $SolarRadiationLuxCurrent);
-				$this->SendDebug('Solarradiation Current','converted from '.$SolarRadiation.' watt to '.$SolarRadiationLuxCurrent.' lux',0);
+				$this->SendDebug('Data Preperation','Light (Solarradiation) converted from '.$SolarRadiation.' watt to '.$SolarRadiationLuxCurrent.' lux',0);
 			}
 			elseif ($RadiationConversion == "Lux") {
 				$SolarRadiationLuxCurrent = $SolarRadiation;
 				$this->SetBuffer("SolarRadiationLuxCurrent", $SolarRadiationLuxCurrent);
-				$this->SendDebug('Solarradiation Current','no conversion '.$SolarRadiationLuxCurrent.' lux',0);
+				$this->SendDebug('Data Preperation','Light (Solarradiation) no conversion needed'.$SolarRadiationLuxCurrent.' lux',0);
 			}
 
 
@@ -210,36 +212,34 @@ if (!defined('vtBoolean')) {
 				}
 				if ($anzahl > 1) {
 					$SolarRadiationCalculatedDelayRaw = $summe / $anzahl;
-					$this->SendDebug('Solarradiation Archive 1','Data collected from archive '.$anzahl.', total '.$summe. ', calculated average '.$SolarRadiationCalculatedDelayRaw,0);
+					$this->SendDebug('Data Preperation','Solarradiation Archive 1 - Records collected from archive '.$anzahl.', totaling '.$summe.', calculated average '.$SolarRadiationCalculatedDelayRaw,0);
 					$RadiationConversion = $this->ReadPropertyString("RadiationConversion");
 				
 					if ($RadiationConversion == "Watt")	{
 						$SolarRadiationLuxDelayLux1 = $SolarRadiationCalculatedDelayRaw * 0.13 * 1000;
 						$this->SetBuffer("SolarRadiationLuxDelayLux1", $SolarRadiationLuxDelayLux1);
-						$this->SendDebug('Solarradiation delayed value 1','converted from '.$SolarRadiationCalculatedDelayRaw.' watt to '.$SolarRadiationLuxDelayLux1.' lux',0);
+						$this->SendDebug('Data Preperation','Solarradiation Archive 1 - Value converted from '.$SolarRadiationCalculatedDelayRaw.' watt to '.$SolarRadiationLuxDelayLux1.' lux',0);
 					}
 					elseif ($RadiationConversion == "Lux") {
 						$SolarRadiationLuxDelayLux1 = $SolarRadiationCalculatedDelayRaw;
 						$this->SetBuffer("SolarRadiationLuxDelayLux1", $SolarRadiationLuxDelayLux1);
-						$this->SendDebug('Solarradiation delayed value 1','no conversion '.$SolarRadiationLuxDelayLux1.' Lux',0);
+						$this->SendDebug('Data Preperation','Solarradiation Archive 1 - No conversion needed'.$SolarRadiationLuxDelayLux1.' Lux',0);
 					}
 				}
 				else {
-				$this->SendDebug('Solarradiation delayed value 1','It seems no archive data is available for solar radiation - Average not calculated',1);
+				$this->SendDebug('Data Preperation','Light (Solarradiation) - It seems no archive data is available for solar radiation - Average not calculated',1);
 				}
 			}
 			else {
-			$this->SendDebug('Solarradiation delayed value 1','ERROR Light average time must at least be 1',1);
+			$this->SendDebug('Data Preperation','Solarradiation delayed value 1 - ERROR Light average time must at least be 1',1);
 			}
-			//$StormControlActiveTest = $this->GetBuffer("StormControlActive");
-			//$this->SendDebug('Test','Storm Control'.$StormControlActiveTest,1);
+			
 		}
 		
 		public function ControlMarquee()
 		{
 			
-			//Regensensor prüfen an/aus vs. Quell Variable
-			
+			$this->SendDebug('Marquee Control','*****************************************************',0);
 			
 			$SeasonIsSummer = $this->GetBuffer("SeasonIsSummer");
 			$SolarRadiationLuxCurrent = $this->GetBuffer("SolarRadiationLuxCurrent");
@@ -266,6 +266,8 @@ if (!defined('vtBoolean')) {
 			
 			
 			//Define if the marquee should be moved in and out based on direct or delayed values
+			//**********************************************************************************
+			
 			if ($MarqueeManagementMoveOutMode == "Direct") {
 				$SolarRadiationDecisionValueOut = $SolarRadiationLuxCurrent;
 			}
@@ -284,7 +286,7 @@ if (!defined('vtBoolean')) {
 			
 
 			// Decide if radiation is enough to Marquee OUT
-			//*************************************************
+			//*********************************************
 
 			if ($SeasonIsSummer == 0)	{
 				if ($SolarRadiationLuxCurrent >= $MarqueeManagementSolarRadiationWinterThreshold)	{
@@ -296,6 +298,7 @@ if (!defined('vtBoolean')) {
 					$Marquee_Move_Out = 0;
 					$Marquee_Move_Out_Reason = "Sun did not surpas threshold for winter";
 					$this->SendDebug('Marquee Control ','Sun did not surpas threshold for winter',0);
+					SetValue($this->GetIDForIdent("MarqueeDescision"), 'Sun threshold not reached - no shading needed');
 				}
 			}
 			elseif ($SeasonIsSummer == 1)	{
@@ -308,13 +311,14 @@ if (!defined('vtBoolean')) {
 					$Marquee_Move_Out = 0;
 					$Marquee_Move_Out_Reason = "Sun did not surpas threshold for summer";
 					$this->SendDebug('Marquee Control ','Sun did not surpas threshold for summer',0);
+					SetValue($this->GetIDForIdent("MarqueeDescision"), 'Sun threshold not reached - no shading needed');
 				}
 			}
 			
 			
-			
-			
 			//Check if Rainsensor should be used
+			//**********************************
+			
 			$RainSensor = GetValue($this->ReadPropertyInteger("RainSensor"));
 			$MarqueeManagementConsiderRain = $this->ReadPropertyBoolean("MarqueeManagementConsiderRain");
 			
@@ -330,10 +334,8 @@ if (!defined('vtBoolean')) {
 				$MarqueeRainBlock = 0;
 			}
 			
-			$this->SendDebug('Test','Enter descision',1);
-			
-			// $MarqueeManualDisable einbauen inkl. Notification ... 
-			// Direktes ausfahren einbauen
+			//Check on manual override, rain, wind, storm and decide to move out
+			//******************************************************************
 			
 			if ($MarqueeManagementManual == 0) {
 				if ($Marquee_Move_Out == 1) {
@@ -386,7 +388,8 @@ if (!defined('vtBoolean')) {
 					$this->SendDebug('Marquee Control','Manually disabled',0);
 					SetValue($this->GetIDForIdent("MarqueeDescision"), 'Manually disabled');
 			}
-				
+			
+			$this->SendDebug('Marquee Control','*****************************************************',0);	
 		}
 		
 		
