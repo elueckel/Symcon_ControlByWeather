@@ -1,0 +1,14 @@
+{
+    "id": "{9E6DB732-1385-9DEC-D8A4-2BB4E6DDF999}",
+    "name": "Control_by_Weather",
+    "type": 3,
+    "vendor": "(Sonstige)",
+    "aliases": 
+    [
+        "Control by Weather"
+    ],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "WC"
+}

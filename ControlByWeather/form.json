@@ -1,0 +1,158 @@
+{
+    "elements":
+    [
+		{
+			"type": "ExpansionPanel",
+			"caption": "Base Configuration",
+			"items": [
+					{ "type": "Label", "label": "Timer for preperation of data (0 = off)" },
+					{ "type": "NumberSpinner", "name": "Timer", "suffix": "Seconds", "minimum": "0" },
+					{ "type": "Label", "label": "" },
+					{
+					"type": "ExpansionPanel",
+					"caption": "Position of sun",
+						"items": [
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "SelectVariable", "name": "Azimut", "caption": "Azimut"},
+									{ "type": "SelectVariable", "name": "Elevation", "caption": "Elevation"}
+								]
+							}
+						]
+					},
+					{
+					"type": "ExpansionPanel",
+					"caption": "Select components providing weather data",
+						"items": [
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "SelectVariable", "name": "OutsideTemperature", "caption": "Temperature Outside" },
+									{ "type": "SelectVariable", "name": "InsideTemperature", "caption": "Temperature Inside" }
+								]
+							},
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "SelectVariable", "name": "WindSpeed", "caption": "Wind Speed" },
+									{ "name": "WindConversion", "type": "Select", "caption": "Wind Base Unit",
+									"options": [
+										{ "label": "m/s", "value": "ms" },
+										{ "label": "km/h", "value": "kmh" }
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+					"type": "ExpansionPanel",
+					"caption": "Light intensity (Solar Radiation)",
+						"items": [
+							{ "type": "Label", "label": "If station provides data in Watt like DAVIS please select watt for conversion to Lux"},
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "SelectVariable", "name": "SolarRadiation", "caption": "Light Sensor"},
+									{ "name": "RadiationConversion", "type": "Select", "caption": "Radiation Base Unit",
+									"options": [
+										{ "label": "Lux", "value": "Lux" },
+										{ "label": "Watt", "value": "Watt" }
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+					"type": "ExpansionPanel",
+					"caption": "Rain Sensor",
+						"items": [
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "SelectVariable", "name": "RainSensor", "caption": "Rain Sensor", "width": "30%" }
+								]
+							}
+						]
+					},
+					{
+					"type": "ExpansionPanel",
+					"caption": "Creation of delayed values",
+						"items": [
+							{ "type": "Label", "label": "Creation of delayed values - Average Light 1" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "DelayTimeForArchiveLux1", "caption": "Timeframe", "suffix": "minutes", "minimum": "0"}
+								]
+							}
+						]
+					},					
+					{
+					"type": "ExpansionPanel",
+					"caption": "Storm control to detect gusts",
+						"items": [
+							{ "type": "Label", "label": "If your weather station provides a gust variable please provide here e.g. DAVIS" },
+							{ "type": "Label", "label": "If you only have 1 wind variable, you can also provide it here and the module will try to detect gusts." },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "CheckBox", "name": "StormControlEnabled", "caption": "Storm Control"},
+									{ "type": "SelectVariable", "name": "WindGust", "caption": "Wind Gust" },
+									{ "type": "NumberSpinner", "name": "StormControlThreshold", "caption": "Storm threshold", "suffix": "kmh for gusts", "minimum": "0" },
+									{ "type": "NumberSpinner", "name": "StormControlCooldownTimer", "caption": "Cooldown time", "suffix": "minutes", "minimum": "0" }
+								]
+							}
+						]
+					}	
+			]
+		},
+		{
+			"type": "ExpansionPanel",
+			"caption": "Marquee Management",
+			"items": [
+					{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the marquee status is updated"},
+					{ "type": "CheckBox", "name": "MarqueeManagementActive", "caption": "Active"},
+					{ "type": "NumberSpinner", "name": "TimerControlMarquee", "caption": "How often should the status of the marquee be checked", "suffix": "seconds", "minimum": "0" },
+					{ "type": "NumberSpinner", "name": "MarqueeManagementAzimutBegin", "caption": "Azimut Begin", "suffix": "degree", "minimum": "0", "maximum": "360", "width": "30%"},
+					{ "type": "NumberSpinner", "name": "MarqueeManagementAzimutEnd", "caption": "Azimut End", "suffix": "degree", "minimum": "0", "maximum": "360", "width": "30%"},
+					{ "type": "NumberSpinner", "name": "MarqueeManagementElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360", "width": "30%"},
+					{ "type": "Label", "label": "Light intensity to move out and in", "width": "30%" },
+					{ "type": "RowLayout",
+						"items": [
+							{ "type": "NumberSpinner", "name": "MarqueeManagementSolarRadiationSummer", "caption": "Summer Threshold", "suffix": "lux", "minimum": "0"},
+							{ "type": "NumberSpinner", "name": "MarqueeManagementSolarRadiationWinter", "caption": "Winter Threshold", "suffix": "lux", "minimum": "0"}
+						]
+					},
+					{ "type": "Label", "label": "When moving in and out the current or delayed values (requires archiving) can be used"},
+					{ "type": "RowLayout",
+						"items": [
+							{ "name": "MarqueeMoveOutMode", "type": "Select", "caption": "Move out mode",
+							"options": [
+								{ "label": "Direct", "value": "Direct" },
+								{ "label": "Delay", "value": "Delay" }
+								]
+							},
+							{ "name": "MarqueeMoveInMode", "type": "Select", "caption": "Move in mode",
+							"options": [
+								{ "label": "Direct", "value": "Direct" },
+								{ "label": "Delay", "value": "Delay" }
+								]
+							}
+						]
+					},
+					{ "type": "CheckBox", "name": "MarqueeManagementUseAutomaticWinter", "caption": "Automatic Summer/Winter"},
+					{ "type": "NumberSpinner", "name": "MarqueeManagementWindSpeedMax", "caption": "Maximum Windspeed", "suffix": "max kmh until retract", "minimum": "0", "width": "30%"},
+					{ "type": "CheckBox", "name": "MarqueeManagementConsiderRain", "caption": "Consider Rain"},
+					{ "type": "Label", "label": "" },
+					{ "type": "Label", "label": "Time of the year" },
+					{ "type": "CheckBox", "name": "AutoSeason", "caption": "Automatic Summer/Winter"},
+					{ "type": "Label", "label": "If disabled summer threshold is used" },
+					{ "type": "NumberSpinner", "name": "SummerStart", "caption": "Start Summer", "suffix": "number of month", "minimum": "1", "maximum": "12", "width": "30%"},
+					{ "type": "NumberSpinner", "name": "SummerEnd", "caption": "End Summer", "suffix": "number of month", "minimum": "1", "maximum": "12", "width": "30%"}
+			]
+		}
+    ],
+
+	"actions":
+	[
+		{ "type": "Button", "label": "Test Data Preparation", "onClick": "WC_DataPrep($id);" },
+		{ "type": "Button", "label": "Test Marquee Control", "onClick": "WC_ControlMarquee($id);" }
+	]
+
+}
