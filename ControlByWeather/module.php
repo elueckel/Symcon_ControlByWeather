@@ -381,6 +381,7 @@ if (!defined('vtBoolean')) {
 				elseif($Marquee_Move_Out == 0){
 					$this->SendDebug('Marquee Control','Sun threshold not reached',0);
 					SetValue($this->GetIDForIdent("MarqueeDescision"), 'Sun threshold not reached');
+					SetValue($this->GetIDForIdent("MarqueePosition"), 0);
 				}
 				}
 			}
