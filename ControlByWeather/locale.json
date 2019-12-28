@@ -107,6 +107,7 @@
 			"Temperature Wintergarden": "Temperatur Wintergarten",
 			"Reference Temperatur": "Referenztemperatur",
 			"Check temperature against reference": "Gegen Referenz prüfen",
+			"Additional Checks": "Zusätzliche Kontrollen",
 			"Checks if the room connected to the Wintergarden is warm enough to open the windows": "Prüfen ob der an den WiGa angeschlossene Raum warm genug ist",
 			"Close windows when it is night": "Fenster in der Nacht schließen",
 			"Should be disabled if windows should be opened to cool down room in summer nights": "Sollte deaktiviert sein um im Sommer nachts bei Wärme zu kühlen",
