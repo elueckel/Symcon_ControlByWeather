@@ -10,7 +10,7 @@
 					{ "type": "Label", "label": "" },
 					{
 					"type": "ExpansionPanel",
-					"caption": "Position of sun & Seasons",
+					"caption": "Position of sun & Seasons, Is Day and Presence",
 						"items": [
 							{ "type": "RowLayout",
 								"items": [
@@ -21,21 +21,30 @@
 							{ "type": "RowLayout",
 								"items": [
 									{ "type": "CheckBox", "name": "AutoSeason", "caption": "Automatic Summer/Winter"},
-									{ "type": "Label", "label": "If disabled summer thresholds will be used in any configuration" },
 									{ "type": "NumberSpinner", "name": "SummerStart", "caption": "Start Summer", "suffix": "month", "minimum": "1", "maximum": "12" },
 									{ "type": "NumberSpinner", "name": "SummerEnd", "caption": "End Summer", "suffix": "month", "minimum": "1", "maximum": "12" }
+								]
+							},
+							{ "type": "Label", "label": "If disabled summer thresholds will be used in any configuration" },
+							{ "type": "Label", "label": "" },
+							{ "type": "Label", "label": "Settings below used for Windows Control in Wintergarden" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "SelectVariable", "name": "SystemPresence", "caption": "Presence" },
+									{ "type": "SelectVariable", "name": "SystemIsDay", "caption": "Is Day" }
 								]
 							}
 						]
 					},
 					{
 					"type": "ExpansionPanel",
-					"caption": "Select components providing weather data",
+					"caption": "Select components providing temperature & wind",
 						"items": [
 							{ "type": "RowLayout",
 								"items": [
-									{ "type": "SelectVariable", "name": "OutsideTemperature", "caption": "Temperature Outside" },
-									{ "type": "SelectVariable", "name": "InsideTemperature", "caption": "Temperature Inside" }
+									{ "type": "SelectVariable", "name": "OutsideTemperature", "caption": "Temperature Outside Master" },
+									{ "type": "SelectVariable", "name": "InsideTemperature", "caption": "Temperature Inside Master" },
+									{ "type": "SelectVariable", "name": "Humidity", "caption": "Humidity" }
 								]
 							},
 							{ "type": "RowLayout",
@@ -48,7 +57,16 @@
 										]
 									}
 								]
-							}
+							},
+							{ "type": "Label", "label": "If weather forecast should be used please use the Wunderground PWS Sync module" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "SelectVariable", "name": "Forecast12h", "caption": "Forecast 12h" },
+									{ "type": "SelectVariable", "name": "ForecastN12h", "caption": "Forecast Next 12h" },
+									{ "type": "NumberSpinner", "name": "HotNightThreshold", "caption": "Hotnight Threshold", "suffix": "degree" }
+								]
+							},
+							{ "type": "Label", "label": "Forecasting can be used to predict hot days and open the windows during night hours or to proactively lower shutters and blinds" }
 						]
 					},
 					{
@@ -56,6 +74,7 @@
 					"caption": "Light intensity (Solar Radiation)",
 						"items": [
 							{ "type": "Label", "label": "If station provides data in Watt like DAVIS Vantage please select Watt for conversion to Lux"},
+							{ "type": "Label", "label": "Please turn on archived for this variable to make sure not a single cloud will trigger events"},
 							{ "type": "RowLayout",
 								"items": [
 									{ "type": "SelectVariable", "name": "SolarRadiation", "caption": "Light Sensor"},
@@ -94,16 +113,43 @@
 					},					
 					{
 					"type": "ExpansionPanel",
-					"caption": "Storm control to detect gusts",
+					"caption": "Watchdogs for Storm/Gusts detection and Frost",
 						"items": [
 							{ "type": "Label", "label": "If your weather station provides a gust variable please provide here e.g. DAVIS" },
 							{ "type": "Label", "label": "If you only have 1 wind variable, you can also provide it here and the module will try to detect gusts." },
+							{ "type": "Label", "label": "The watchdog will trigger the marquee to move in and shutters to be moved up." },
+							{ "type": "Label", "label": "If you have a proper gust variable in your weather station, you might want to turn on archiving for higher accuracy." },
 							{ "type": "RowLayout",
 								"items": [
-									{ "type": "CheckBox", "name": "StormControlEnabled", "caption": "Storm Control"},
+									{ "type": "CheckBox", "name": "StormProtectionEnabled", "caption": "Storm Protection"},
+									{ "type": "CheckBox", "name": "ProvideStormVariable", "caption": "Provide Variable"}
+								]
+							},
+							{ "type": "RowLayout",
+								"items": [
 									{ "type": "SelectVariable", "name": "WindGust", "caption": "Wind Gust" },
-									{ "type": "NumberSpinner", "name": "StormControlThreshold", "caption": "Storm threshold", "suffix": "kmh for gusts", "minimum": "0" },
-									{ "type": "NumberSpinner", "name": "StormControlCooldownTimer", "caption": "Cooldown time", "suffix": "minutes", "minimum": "0" }
+									{ "type": "NumberSpinner", "name": "StormProtectionThreshold", "caption": "Storm threshold", "suffix": "kmh for gusts", "minimum": "0" },
+									{ "type": "NumberSpinner", "name": "StormProtectionCooldownTimer", "caption": "Cooldown time", "suffix": "seconds", "minimum": "0" },
+									{ "type": "CheckBox", "name": "StormVariableUseArchived", "caption": "Use Archive"}
+								]
+							},
+							{ "type": "Label", "label": "" },
+							{ "type": "Label", "label": "The frost protection will be used to protect shutters from freezing when lowered." },
+							{ "type": "Label", "label": "By setting the a humidity threshold it should be avoided that shutted are lifted at dry and cold winter days." },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "CheckBox", "name": "FrostProtectionEnabled", "caption": "Frost Protection"},
+									{ "type": "CheckBox", "name": "ProvideFrostVariable", "caption": "Provide Variable"},
+									{ "type": "NumberSpinner", "name": "HumidityThreshold", "caption": "Humidity Threshold", "suffix": "%", "minimum": "0", "maximum": "100" }
+								]
+							},
+							{ "type": "Label", "label": "Options to detect heavy rain"},
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "CheckBox", "name": "RainIntensityActive", "caption": "Activate" },
+									{ "type": "SelectVariable", "name": "RainIntensity", "caption": "Rain Intensity Sensor" },
+									{ "type": "NumberSpinner", "name": "RainIntensityThreshold", "caption": "Threshold", "suffix": "l/m", "minimum": "0"},
+									{ "type": "CheckBox", "name": "ProvideHeavyRainVariable", "caption": "Provide Variable" }
 								]
 							}
 						]
@@ -116,10 +162,15 @@
 			"items": [
 					{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the marquee status is updated"},
 					{ "type": "CheckBox", "name": "MarqueeManagementActive", "caption": "Active"},
-					{ "type": "NumberSpinner", "name": "TimerControlMarquee", "caption": "How often should the status of the marquee be checked", "suffix": "seconds", "minimum": "0" },
-					{ "type": "NumberSpinner", "name": "MarqueeManagementAzimutBegin", "caption": "Azimut Begin", "suffix": "degree", "minimum": "0", "maximum": "360", "width": "30%"},
-					{ "type": "NumberSpinner", "name": "MarqueeManagementAzimutEnd", "caption": "Azimut End", "suffix": "degree", "minimum": "0", "maximum": "360", "width": "30%"},
-					{ "type": "NumberSpinner", "name": "MarqueeManagementElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360", "width": "30%"},
+					{ "type": "NumberSpinner", "name": "TimerControlMarquee", "caption": "How often should the status of the marquee be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+					{ "type": "Label", "label": "Area of where the marquee is being controlled in relation to the position of the sun" },
+					{ "type": "RowLayout",
+						"items": [
+							{ "type": "NumberSpinner", "name": "MarqueeManagementAzimutBegin", "caption": "Azimut Begin", "suffix": "degree", "minimum": "0", "maximum": "360" },
+							{ "type": "NumberSpinner", "name": "MarqueeManagementAzimutEnd", "caption": "Azimut End", "suffix": "degree", "minimum": "0", "maximum": "360" },
+							{ "type": "NumberSpinner", "name": "MarqueeManagementElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
+						]
+					},
 					{ "type": "Label", "label": "Light intensity to move out and in", "width": "30%" },
 					{ "type": "RowLayout",
 						"items": [
@@ -146,15 +197,208 @@
 					},
 					{ "type": "Label", "label": "If disabled summer threshold is used" },
 					{ "type": "CheckBox", "name": "MarqueeManagementUseAutomaticWinter", "caption": "Automatic Summer/Winter"},
-					{ "type": "NumberSpinner", "name": "MarqueeManagementWindSpeedMax", "caption": "Maximum Windspeed", "suffix": "max kmh until retract", "minimum": "0", "width": "30%"},
+					{ "type": "NumberSpinner", "name": "MarqueeManagementWindSpeedMax", "caption": "Maximum Windspeed", "suffix": "max km/h until retract", "minimum": "0", "width": "30%"},
 					{ "type": "CheckBox", "name": "MarqueeManagementConsiderRain", "caption": "Consider Rain"}
 			]
+		},
+		{
+			"type": "ExpansionPanel",
+			"caption": "Shutter Control",
+			"items": [
+					{
+					"type": "ExpansionPanel",
+					"caption": "Shutter East",
+					"items": [
+							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the shutter status is updated"},
+							{ "type": "CheckBox", "name": "ShutterEastActive", "caption": "Activate"},
+							{ "type": "NumberSpinner", "name": "ShutterEastTimerControl", "caption": "How often should the status of the shutter be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "Label", "label": "Area of where the shutter is being controlled in relation to the position of the sun" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "ShutterEastAzimutBegin", "caption": "Azimut Begin", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "ShutterEastAzimutEnd", "caption": "Azimut End", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "ShutterEastElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
+								]
+							},
+							{ "type": "Label", "label": "Light intensity to trigger change of position", "width": "30%" },
+							{ "type": "Label", "label": "Summer Values (default)" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "ShutterEastSolarRadiationSummerDownShaded1Threshold", "caption": "Light Shading", "suffix": "lux - Pos 1", "minimum": "0"},
+									{ "type": "NumberSpinner", "name": "ShutterEastSolarRadiationSummerDownShaded2Threshold", "caption": "More Shading", "suffix": "lux - Pos 2", "minimum": "0"},
+									{ "type": "NumberSpinner", "name": "ShutterEastSolarRadiationSummerDownClosedThreshold", "caption": "Fully Closed", "suffix": "lux - Closed", "minimum": "0"}
+								]
+							},
+							{ "type": "Label", "label": "Winter Values" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "ShutterEastSolarRadiationWinterDownShaded1Threshold", "caption": "Light Shading", "suffix": "lux - Pos 1", "minimum": "0"},
+									{ "type": "NumberSpinner", "name": "ShutterEastSolarRadiationWinterDownShaded2Threshold", "caption": "More Shading", "suffix": "lux - Pos 2", "minimum": "0"},
+									{ "type": "NumberSpinner", "name": "ShutterEastSolarRadiationWinterDownClosedThreshold", "caption": "Fully Closed", "suffix": "lux - Closed", "minimum": "0"}
+								]
+							},
+							{ "type": "Label", "label": "When moving current or delayed values (requires archiving) can be used"},
+							{ "type": "RowLayout",
+								"items": [
+									{ "name": "ShutterEastDecisionMode", "type": "Select", "caption": "Trigger mode",
+									"options": [
+										{ "label": "Direct", "value": "Direct" },
+										{ "label": "Delay", "value": "Delay" }
+										]
+									}
+									
+								]
+							},
+							{ "type": "Label", "label": "If disabled summer thresholds are used" },
+							{ "type": "CheckBox", "name": "ShutterEastUseAutomaticWinter", "caption": "Automatic Summer/Winter"}
+						]
+					},
+					{
+					"type": "ExpansionPanel",
+					"caption": "Shutter South",
+					"items": [
+							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the shutter status is updated"},
+							{ "type": "CheckBox", "name": "ShutterSouthActive", "caption": "Activate"},
+							{ "type": "NumberSpinner", "name": "ShutterSouthTimerControl", "caption": "How often should the status of the shutter be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "Label", "label": "Area of where the shutter is being controlled in relation to the position of the sun" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "ShutterSouthAzimutBegin", "caption": "Azimut Begin", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "ShutterSouthAzimutEnd", "caption": "Azimut End", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "ShutterSouthElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
+								]
+							},
+							{ "type": "Label", "label": "Light intensity to trigger change of position", "width": "30%" },
+							{ "type": "Label", "label": "Summer Values (default)" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "ShutterSouthSolarRadiationSummerDownShaded1Threshold", "caption": "Light Shading", "suffix": "lux - Pos 1", "minimum": "0"},
+									{ "type": "NumberSpinner", "name": "ShutterSouthSolarRadiationSummerDownShaded2Threshold", "caption": "More Shading", "suffix": "lux - Pos 2", "minimum": "0"},
+									{ "type": "NumberSpinner", "name": "ShutterSouthSolarRadiationSummerDownClosedThreshold", "caption": "Fully Closed", "suffix": "lux - Closed", "minimum": "0"}
+								]
+							},
+							{ "type": "Label", "label": "Winter Values" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "ShutterSouthSolarRadiationWinterDownShaded1Threshold", "caption": "Light Shading", "suffix": "lux - Pos 1", "minimum": "0"},
+									{ "type": "NumberSpinner", "name": "ShutterSouthSolarRadiationWinterDownShaded2Threshold", "caption": "More Shading", "suffix": "lux - Pos 2", "minimum": "0"},
+									{ "type": "NumberSpinner", "name": "ShutterSouthSolarRadiationWinterDownClosedThreshold", "caption": "Fully Closed", "suffix": "lux - Closed", "minimum": "0"}
+								]
+							},
+							{ "type": "Label", "label": "When moving in and out the current or delayed values (requires archiving) can be used"},
+							{ "type": "RowLayout",
+								"items": [
+									{ "name": "ShutterSouthDecisionMode", "type": "Select", "caption": "Trigger mode",
+									"options": [
+										{ "label": "Direct", "value": "Direct" },
+										{ "label": "Delay", "value": "Delay" }
+										]
+									}
+									
+								]
+							},
+							{ "type": "Label", "label": "If disabled summer thresholds are used" },
+							{ "type": "CheckBox", "name": "ShutterSouthUseAutomaticWinter", "caption": "Automatic Summer/Winter"}
+						]
+					},
+					{
+					"type": "ExpansionPanel",
+					"caption": "Shutter West",
+					"items": [
+							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the shutter status is updated"},
+							{ "type": "CheckBox", "name": "ShutterWestActive", "caption": "Activate"},
+							{ "type": "NumberSpinner", "name": "ShutterWestTimerControl", "caption": "How often should the status of the shutter be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "Label", "label": "Area of where the shutter is being controlled in relation to the position of the sun" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "ShutterWestAzimutBegin", "caption": "Azimut Begin", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "ShutterWestAzimutEnd", "caption": "Azimut End", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "ShutterWestElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
+								]
+							},
+							{ "type": "Label", "label": "Light intensity to trigger change of position", "width": "30%" },
+							{ "type": "Label", "label": "Summer Values (default)" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "ShutterWestSolarRadiationSummerDownShaded1Threshold", "caption": "Light Shading", "suffix": "lux - Pos 1", "minimum": "0"},
+									{ "type": "NumberSpinner", "name": "ShutterWestSolarRadiationSummerDownShaded2Threshold", "caption": "More Shading", "suffix": "lux - Pos 2", "minimum": "0"},
+									{ "type": "NumberSpinner", "name": "ShutterWestSolarRadiationSummerDownClosedThreshold", "caption": "Fully Closed", "suffix": "lux - Closed", "minimum": "0"}
+								]
+							},
+							{ "type": "Label", "label": "Winter Values" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "ShutterWestSolarRadiationWinterDownShaded1Threshold", "caption": "Light Shading", "suffix": "lux - Pos 1", "minimum": "0"},
+									{ "type": "NumberSpinner", "name": "ShutterWestSolarRadiationWinterDownShaded2Threshold", "caption": "More Shading", "suffix": "lux - Pos 2", "minimum": "0"},
+									{ "type": "NumberSpinner", "name": "ShutterWestSolarRadiationWinterDownClosedThreshold", "caption": "Fully Closed", "suffix": "lux - Closed", "minimum": "0"}
+								]
+							},
+							{ "type": "Label", "label": "When moving in and out the current or delayed values (requires archiving) can be used"},
+							{ "type": "RowLayout",
+								"items": [
+									{ "name": "ShutterWestDecisionMode", "type": "Select", "caption": "Trigger mode",
+									"options": [
+										{ "label": "Direct", "value": "Direct" },
+										{ "label": "Delay", "value": "Delay" }
+										]
+									}
+									
+								]
+							},
+							{ "type": "Label", "label": "If disabled summer thresholds are used" },
+							{ "type": "CheckBox", "name": "ShutterWestUseAutomaticWinter", "caption": "Automatic Summer/Winter"}
+						]
+					}	
+			]
+		},
+		{
+			"type": "ExpansionPanel",
+			"caption": "Wintergarden Window Control",
+			"items": [
+					{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the window status is updated"},
+					{ "type": "CheckBox", "name": "WindowActive", "caption": "Activate"},
+					{ "type": "NumberSpinner", "name": "WindowTimerControl", "caption": "How often should the status of the windows be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+					{ "type": "Label", "label": "Which windows should be controlled" },
+					{ "type": "RowLayout",
+						"items": [
+							{ "type": "CheckBox", "name": "WindowWintergardenControlUpperWindows", "caption": "Upper Windows"},
+							{ "type": "CheckBox", "name": "WindowWintergardenControlLowerWindows", "caption": "Lower Windows"}
+						]
+					},
+					{ "type": "Label", "label": "Threshold to decide if window is opened to position 1 (half) or 2 (full)" },
+					{ "type": "Label", "label": "Outside temperature to make sure window is only opened a bit when it is cold outside" },
+					{ "type": "Label", "label": "Minimum Temperature 1 will trigger open position 1 (half) and Min 2 will trigger open position 2 (full)" },
+					{ "type": "RowLayout",
+						"items": [
+							{ "type": "NumberSpinner", "name": "WindowWintergarden50ThresholdUpper", "caption": "Min 1  for Upper", "suffix": "degree", "minimum": "0"},
+							{ "type": "NumberSpinner", "name": "WindowWintergarden100ThresholdUpper", "caption": "Min 2  for Upper", "suffix": "degree", "minimum": "0"},
+							{ "type": "NumberSpinner", "name": "WindowWintergarden50ThresholdLower", "caption": "Min 1 for Lower", "suffix": "degree", "minimum": "0"},
+							{ "type": "NumberSpinner", "name": "WindowWintergarden100ThresholdLower", "caption": "Min 2 for Lower", "suffix": "degree", "minimum": "0"}
+						]
+					},
+					{ "type": "Label", "label": "Temperature Sensors" },
+					{ "type": "SelectVariable", "name": "WindowWintergardenTargetTemperature", "caption": "Target Temperature" },
+					{ "type": "SelectVariable", "name": "WindowWintergardenTemperatureWintergarden", "caption": "Temperature Wintergarden" },
+					{ "type": "SelectVariable", "name": "WindowWintergardenTemperatureReference", "caption": "Reference Temperatur" },
+					{ "type": "Label", "label": "Additional Checks" },
+					{ "type": "CheckBox", "name": "WindowWintergardenConsiderReferenceTemperature", "caption": "Check temperature against reference"},
+					{ "type": "Label", "label": "Checks if the room connected to the Wintergarden is warm enough to open the windows" },
+					{ "type": "CheckBox", "name": "WindowWintergardenDisableAtNight", "caption": "Close windows when it is night"},
+					{ "type": "Label", "label": "Should be disabled if windows should be opened to cool down room in summer nights" },
+					{ "type": "CheckBox", "name": "WindowWintergardenDisableNotPresent", "caption": "Close windows when there is no one home"},
+					{ "type": "Label", "label": "Do not perform check if there is no one home" },
+					{ "type": "CheckBox", "name": "WindowWintergardenDisableHeavyRain", "caption": "Close windows at heavy rain"},
+					{ "type": "Label", "label": "Requires heavy rain check to be enabled at rain configuration section" }
+				]
 		}
     ],
 	"actions":
 	[
 		{ "type": "Button", "label": "Test Data Preparation", "onClick": "WC_DataPrep($id);" },
-		{ "type": "Button", "label": "Test Marquee Control", "onClick": "WC_ControlMarquee($id);" }
+		{ "type": "Button", "label": "Test Marquee Control", "onClick": "WC_ControlMarquee($id);" },
+		{ "type": "Button", "label": "Test Shutter East", "onClick": "WC_ShutterEast($id);" },
+		{ "type": "Button", "label": "Test Shutter South", "onClick": "WC_ShutterSouth($id);" },
+		{ "type": "Button", "label": "Test Shutter West", "onClick": "WC_ShutterWest($id);" },
+		{ "type": "Button", "label": "Test Windows Wintergarden", "onClick": "WC_WindowWintergardenControl($id);" }
 	]
-
 }
