@@ -1,6 +1,7 @@
 {
 	"translations": {
 		"de": { 
+			"Base Configuration": "Grundkonfiguration",
 			"Timer for preperation of data (0 = off)": "Wie oft sollen Daten aufbereitet werden (0 = aus)",
 			"Seconds": "Sekunden",
 			"Position of sun & Seasons, Is Day and Presence": "Position der Sonne, Jahreszeiten, Ist Tag und Anwesenheit ",
@@ -72,6 +73,7 @@
 			"Maximum Windspeed": "Maximale Windgeschwindigkeit",
 			"max km/h until retract": "Max km/h bei Einzug",
 			"Consider Rain": "Einfahren bei Regen",
+			"Sutter Control": "Raffstore Steuerung",
 			"Shutter East": "Raffstores Osten",
 			"Activate sets the component active, while the time will set how often the shutter status is updated": "Aktiveren aktiviert die Komponente - der Timer definiert wie oft der Status geprüft wird",
 			"How often should the status of the shutter be checked - 0 if off": "Wie oft soll der Status des Raffstores geprüft werden",
@@ -90,7 +92,7 @@
 			"Automatic Summer/Winter": "Automatischer Sommer/Winter",
 			"Shutter South": "Raffstore Süden",
 			"Shutter West": "Raffstore West",
-			"Wintergarden Window Control": "Wintergarten Fenstersteuerung",
+			"Wintergarden Window Control": "Wintergarten Fenster Steuerung",
 			"Activate sets the component active, while the time will set how often the window status is updated": "Aktiveren aktiviert die Komponente - der Timer definiert wie oft der Status geprüft wird",
 			"How often should the status of the windows be checked - 0 if off": "Wie oft soll der Status der Fenster geprüft werden - 0 ist aus",
 			"Which windows should be controlled": "Welche Fenster sollen gesteuert werden",
