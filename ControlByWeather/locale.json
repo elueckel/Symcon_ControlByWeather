@@ -20,7 +20,7 @@
 			"Wind Speed": "Windgeschwindigkeit",
 			"Wind Base Unit": "Einheit für Wind",
 			"If weather forecast should be used, please use the Wunderground PWS Sync module": "Sollte Vorhersagewerte verwendet werden, dann können diese vom WundergroundSync Modul kommen",
-			"Forecast 12h","Vorhersage 12h"
+			"Forecast 12h": "Vorhersage 12h"
 			"Forecast Next 12h": "Vorhersage folgende 12h",
 			"Hotnight Threshold": "Heisse Tage Schwellwert",
 			"degree": "Grad",
