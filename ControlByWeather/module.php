@@ -469,7 +469,7 @@ if (!defined('vtBoolean')) {
 			$FrostProtectionEnabled = $this->ReadPropertyBoolean("FrostProtectionEnabled");
 			$OutsideTemperature = GetValue($this->ReadPropertyInteger("OutsideTemperature"));
 			$Humidity = GetValue($this->ReadPropertyInteger("Humidity"));
-			$HumidityThreshold = $this->ReadPropertyInteger("DelayTimeForArchiveLux1");
+			$HumidityThreshold = $this->ReadPropertyInteger("HumidityThreshold");
 			$ProvideFrostVariable = $this->ReadPropertyBoolean("ProvideFrostVariable");
 			
 			
