@@ -393,7 +393,7 @@ if (!defined('vtBoolean')) {
 					$this->SendDebug("StormProtection","++++++++++++++++++ No Storm detected and no current lock", 0);
 					$StormProtectionActive = 0;
 					//if ($ProvideStormVariable == 1){
-						SetValue($this->GetIDForIdent("StormVariable"), StormProtectionActive);
+						SetValue($this->GetIDForIdent("StormVariable"), $StormProtectionActive);
 					//}
 					$this->SetBuffer("StormProtectionActive", $StormProtectionActive);
 					$StormProtectionMS = $StormProtectionTimer * 1000;
