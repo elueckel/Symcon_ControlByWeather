@@ -58,7 +58,7 @@
 									}
 								]
 							},
-							{ "type": "Label", "label": "If weather forecast should be used, please use the Wunderground PWS Sync module" },
+							{ "type": "Label", "label": "If weather forecast should be used please use the Wunderground PWS Sync module" },
 							{ "type": "RowLayout",
 								"items": [
 									{ "type": "SelectVariable", "name": "Forecast12h", "caption": "Forecast 12h" },
