@@ -392,9 +392,9 @@ if (!defined('vtBoolean')) {
 				elseif ($StormProtectionThreshold > $StormProtectionGust AND $StormProtectionActive <> 1) {
 					$this->SendDebug("StormProtection","++++++++++++++++++ No Storm detected and no current lock", 0);
 					$StormProtectionActive = 0;
-					if ($ProvideStormVariable == 1){
+					//if ($ProvideStormVariable == 1){
 						SetValue($this->GetIDForIdent("StormVariable"), StormProtectionActive);
-					}
+					//}
 					$this->SetBuffer("StormProtectionActive", $StormProtectionActive);
 					$StormProtectionMS = $StormProtectionTimer * 1000;
 					$this->SetTimerInterval("CBWStormCooldown",$StormProtectionMS);	
