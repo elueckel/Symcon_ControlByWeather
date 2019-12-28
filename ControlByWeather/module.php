@@ -474,7 +474,7 @@ if (!defined('vtBoolean')) {
 			
 			
 			if ($FrostProtectionEnabled == 1){
-				if (($OutsideTemperature) < 1 AND ($Humidity > $HumidityThreshold)) {
+				if (($OutsideTemperature < 1) AND ($Humidity > $HumidityThreshold)) {
 					$FrostActive = 1;
 					$this->SetBuffer("FrostActive", $FrostActive);
 					$this->SendDebug("Data Preperation","Frost Protection - frost detected and warning set / Outside Temperature ".$OutsideTemperature." / Humidity ".$Humidity." / Threshold ".$HumidityThreshold, 0);
@@ -482,7 +482,7 @@ if (!defined('vtBoolean')) {
 						SetValue($this->GetIDForIdent("FrostVariable"), 1);
 					}
 				}
-				elseif ($OutsideTemperature > 0) {
+				elseif (($OutsideTemperature > 0) OR (($OutsideTemperature < 1) AND ($Humidity < $HumidityThreshold))) {
 					$FrostActive = 0;
 					$this->SetBuffer("FrostActive", $FrostActive);
 					$this->SendDebug("Data Preperation","Frost Protection - no frost / Outside Temperature ".$OutsideTemperature." / Humidity ".$Humidity." / Threshold ".$HumidityThreshold, 0);
