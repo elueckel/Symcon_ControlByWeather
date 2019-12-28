@@ -63,7 +63,7 @@
 								"items": [
 									{ "type": "SelectVariable", "name": "Forecast12h", "caption": "Forecast 12h" },
 									{ "type": "SelectVariable", "name": "ForecastN12h", "caption": "Forecast Next 12h" },
-									{ "type": "NumberSpinner", "name": "HotNightThreshold", "caption": "HotnightThreshold", "suffix": "degree" }
+									{ "type": "NumberSpinner", "name": "HotNightThreshold", "caption": "Hotnight Threshold", "suffix": "degree" }
 								]
 							},
 							{ "type": "Label", "label": "Forecasting can be used to predict hot days and open the windows during night hours or to proactively lower shutters and blinds" }
@@ -237,7 +237,7 @@
 									{ "type": "NumberSpinner", "name": "ShutterEastSolarRadiationWinterDownClosedThreshold", "caption": "Fully Closed", "suffix": "lux - Closed", "minimum": "0"}
 								]
 							},
-							{ "type": "Label", "label": "When moving in and out the current or delayed values (requires archiving) can be used"},
+							{ "type": "Label", "label": "When moving current or delayed values (requires archiving) can be used"},
 							{ "type": "RowLayout",
 								"items": [
 									{ "name": "ShutterEastDecisionMode", "type": "Select", "caption": "Trigger mode",
@@ -386,9 +386,9 @@
 					{ "type": "CheckBox", "name": "WindowWintergardenDisableAtNight", "caption": "Close windows when it is night"},
 					{ "type": "Label", "label": "Should be disabled if windows should be opened to cool down room in summer nights" },
 					{ "type": "CheckBox", "name": "WindowWintergardenDisableNotPresent", "caption": "Close windows when there is no one home"},
-					{ "type": "Label", "label": "Do not perform check if there is no one home." },
+					{ "type": "Label", "label": "Do not perform check if there is no one home" },
 					{ "type": "CheckBox", "name": "WindowWintergardenDisableHeavyRain", "caption": "Close windows at heavy rain"},
-					{ "type": "Label", "label": "Requires heavy rain check to be enabled at rain configuration section." }
+					{ "type": "Label", "label": "Requires heavy rain check to be enabled at rain configuration section" }
 				]
 		}
     ],
