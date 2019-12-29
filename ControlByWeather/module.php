@@ -197,23 +197,21 @@ if (!defined('vtBoolean')) {
 				
 				$vpos = 200;
 				$this->MaintainVariable('ShutterEastPosition', $this->Translate('Shutter East Position'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("ShutterEastActive") == 1);
+				$this->MaintainVariable('ShutterEastSun', $this->Translate('Shutter East Sun'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ShutterEastActive") == 1);
 				$this->MaintainVariable('ShutterEastDescision', $this->Translate('Shutter East Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("ShutterEastActive") == 1);
 				$this->MaintainVariable('ShutterEastManual', $this->Translate('Shutter East Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ShutterEastActive") == 1);
 				
 				$vpos = 210;
 				$this->MaintainVariable('ShutterSouthPosition', $this->Translate('Shutter South Position'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("ShutterSouthActive") == 1);
+				$this->MaintainVariable('ShutterSouthSun', $this->Translate('Shutter South Sun'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ShutterSouthActive") == 1);
 				$this->MaintainVariable('ShutterSouthDescision', $this->Translate('Shutter South Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("ShutterSouthActive") == 1);
 				$this->MaintainVariable('ShutterSouthManual', $this->Translate('Shutter South Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ShutterSouthActive") == 1);
 				
 				$vpos = 220;
 				$this->MaintainVariable('ShutterWestPosition', $this->Translate('Shutter West Position'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("ShutterWestActive") == 1);
+				$this->MaintainVariable('ShutterWestSun', $this->Translate('Shutter West Sun'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ShutterWestActive") == 1);
 				$this->MaintainVariable('ShutterWestDescision', $this->Translate('Shutter West Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("ShutterWestActive") == 1);
 				$this->MaintainVariable('ShutterWestManual', $this->Translate('Shutter West Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ShutterWestActive") == 1);
-				
-				$vpos = 230;
-				$this->MaintainVariable('ShutterEastPosition', $this->Translate('Shutter West Position'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("ShutterEastActive") == 1);
-				$this->MaintainVariable('ShutterEastDescision', $this->Translate('Shutter West Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("ShutterEastActive") == 1);
-				$this->MaintainVariable('ShutterEastManual', $this->Translate('Shutter West Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ShutterEastActive") == 1);
 				
 				$vpos = 300;
 				$this->MaintainVariable('WindowUpperOpenStatus', $this->Translate('Window Open Status Upper'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("WindowActive") == 1);
@@ -811,12 +809,14 @@ if (!defined('vtBoolean')) {
 							if ($ShutterEastAzimutBegin < $System_Azimuth AND $System_Azimuth < $ShutterEastAzimutEnd AND $ShutterEastElevation < $System_Elevation) {
 								SetValue($this->GetIDForIdent("ShutterEastPosition"), $ShutterEastPosition);
 								SetValue($this->GetIDForIdent("ShutterEastDescision"), $ShutterEastPositionReason);
+								SetValue($this->GetIDForIdent("ShutterEastSun"), 1);
 								$this->SendDebug('Shutter Control East',$ShutterEastPositionReason,0);
 							}
 							else{
 								SetValue($this->GetIDForIdent("ShutterEastDescision"), 'Sun not in right area (Azimut / Elevation)');
 								$this->SendDebug('Shutter Control East','Sun not in right area (Azimut / Elevation)',0);
 								SetValue($this->GetIDForIdent("ShutterEastPosition"), 0);
+								SetValue($this->GetIDForIdent("ShutterEastSun"), 0);
 							}
 						}	
 					else if ($FrostActive == 1){
@@ -945,11 +945,13 @@ if (!defined('vtBoolean')) {
 								SetValue($this->GetIDForIdent("ShutterSouthPosition"), $ShutterSouthPosition);
 								SetValue($this->GetIDForIdent("ShutterSouthDescision"), $ShutterSouthPositionReason);
 								$this->SendDebug('Shutter Control South',$ShutterSouthPositionReason,0);
+								SetValue($this->GetIDForIdent("ShutterSouthSun"), 1);
 							}
 							else{
 								SetValue($this->GetIDForIdent("ShutterSouthDescision"), 'Sun not in right area (Azimut / Elevation)');
 								$this->SendDebug('Shutter Control South','Sun not in right area (Azimut / Elevation)',0);
 								SetValue($this->GetIDForIdent("ShutterSouthPosition"), 0);
+								SetValue($this->GetIDForIdent("ShutterSouthSun"), 0);
 							}
 						}	
 					else if ($FrostActive == 1){
@@ -1079,11 +1081,13 @@ if (!defined('vtBoolean')) {
 								SetValue($this->GetIDForIdent("ShutterWestPosition"), $ShutterWestPosition);
 								SetValue($this->GetIDForIdent("ShutterWestDescision"), $ShutterWestPositionReason);
 								$this->SendDebug('Shutter Control West',$ShutterWestPositionReason,0);
+								SetValue($this->GetIDForIdent("ShutterWestSun"), 1);
 							}
 							else{
 								SetValue($this->GetIDForIdent("ShutterWestDescision"), 'Sun not in right area (Azimut / Elevation)');
 								$this->SendDebug('Shutter Control West','Sun not in right area (Azimut / Elevation)',0);
 								SetValue($this->GetIDForIdent("ShutterWestPosition"), 0);
+								SetValue($this->GetIDForIdent("ShutterWestSun"), 0);
 							}
 						}	
 					else if ($FrostActive == 1){
