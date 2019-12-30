@@ -1200,7 +1200,7 @@ if (!defined('vtBoolean')) {
 				if ($WindowWintergardenTemperatureReference < $WindowWintergardenTemperatureWintergarden) {
 					$WindowBlockedByReferenceSensor = 1 ;
 				}
-				elseif ($WindowWintergardenTemperatureReference > $WindowWintergardenTemperatureWintergarden) {
+				else if ($WindowWintergardenTemperatureReference > $WindowWintergardenTemperatureWintergarden) {
 					$WindowBlockedByReferenceSensor = 0;
 				}
 			}
