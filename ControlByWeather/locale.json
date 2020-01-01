@@ -155,7 +155,8 @@
 			"In": "Einfahren",
 			"Shutter East Sun": "Raffstore Ost in Auslösebereich",
 			"Shutter South Sun": "Raffstore Süd in Auslösebereich",
-			"Shutter West Sun": "Raffstore West in Auslösebereich"
+			"Shutter West Sun": "Raffstore West in Auslösebereich",
+			"factor": "Faktor"
 		}
 	}
 }

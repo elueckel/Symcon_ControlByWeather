@@ -69,8 +69,8 @@ if (!defined('vtBoolean')) {
 			$this->RegisterPropertyBoolean("AutoSeason", 1);
 			$this->RegisterPropertyInteger("SummerStart", 4);
 			$this->RegisterPropertyInteger("SummerEnd", 11);
-			$this->RegisterPropertyInteger("MarqueeManagementMoveOutHystereseFactor", 1.0);
-			$this->RegisterPropertyInteger("MarqueeManagementMoveInHystereseFactor", 0.9);
+			$this->RegisterPropertyFloat("MarqueeManagementMoveOutHystereseFactor", 1.0);
+			$this->RegisterPropertyFloat("MarqueeManagementMoveInHystereseFactor", 0.9);
 			
 			
 
