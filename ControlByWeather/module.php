@@ -69,8 +69,8 @@ if (!defined('vtBoolean')) {
 			$this->RegisterPropertyBoolean("AutoSeason", 1);
 			$this->RegisterPropertyInteger("SummerStart", 4);
 			$this->RegisterPropertyInteger("SummerEnd", 11);
-			$this->RegisterPropertyFloat("MarqueeManagementMoveOutHystereseFactor", 1.0);
-			$this->RegisterPropertyFloat("MarqueeManagementMoveInHystereseFactor", 0.9);
+			$this->RegisterPropertyFloat("MarqueeManagementMoveOutFactorHysterese", 1.0);
+			$this->RegisterPropertyFloat("MarqueeManagementMoveInFactorHysterese", 0.9);
 			
 			
 
@@ -572,8 +572,8 @@ if (!defined('vtBoolean')) {
 			$MarqueeManagementWindSpeedMax = $this->ReadPropertyInteger("MarqueeManagementWindSpeedMax"); //20 kmh
 			$MarqueeManagementMoveOutMode = $this->ReadPropertyString("MarqueeMoveOutMode"); // Direct / Delay
 			$MarqueeManagementMoveInMode = $this->ReadPropertyString("MarqueeMoveOutMode"); // Direct / Delay
-			$MarqueeManagementMoveInHystereseFactor = $this->ReadPropertyFloat("MarqueeManagementMoveInHystereseFactor");
-			$MarqueeManagementMoveOutHystereseFactor = $this->ReadPropertyFloat("MarqueeManagementMoveOutHystereseFactor");
+			$MarqueeManagementMoveInHystereseFactor = $this->ReadPropertyFloat("MarqueeManagementMoveInFactorHysterese");
+			$MarqueeManagementMoveOutHystereseFactor = $this->ReadPropertyFloat("MarqueeManagementMoveOutFactorHysterese");
 			
 			$this->SendDebug('Marquee Control','Location Settings: System Azi '.$System_Azimuth.' / Begin '.$MarqueeManagementAzimutBegin.' / End '.$MarqueeManagementAzimutEnd.' Elevation'.$System_Elevation.' Elevation '.$MarqueeManagementElevation,0);			
 			

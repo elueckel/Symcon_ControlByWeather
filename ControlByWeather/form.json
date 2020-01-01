@@ -181,8 +181,8 @@
 					{ "type": "Label", "label": "Hysterese factor to avoid quick movements - 1.0 to use current values / 0.9 to use a 10% reduction" },
 					{ "type": "RowLayout",
 						"items": [
-							{ "type": "NumberSpinner", "name": "MarqueeManagementMoveOutHystereseFactor", "caption": "Out", "suffix": "factor", "minimum": "0"},
-							{ "type": "NumberSpinner", "name": "MarqueeManagementMoveInHystereseFactor", "caption": "In", "suffix": "factor", "minimum": "0"}
+							{ "type": "ValidationTextBox", "name": "MarqueeManagementMoveOutFactorHysterese", "caption": "Out" },
+							{ "type": "ValidationTextBox", "name": "MarqueeManagementMoveInFactorHysterese", "caption": "In" }
 						]
 					},
 					{ "type": "Label", "label": "When moving in and out the current or delayed values (requires archiving) can be used"},
