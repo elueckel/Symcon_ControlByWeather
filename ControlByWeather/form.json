@@ -171,11 +171,18 @@
 							{ "type": "NumberSpinner", "name": "MarqueeManagementElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
 						]
 					},
-					{ "type": "Label", "label": "Light intensity to move out and in", "width": "30%" },
+					{ "type": "Label", "label": "Light intensity to move out and in" },
 					{ "type": "RowLayout",
 						"items": [
 							{ "type": "NumberSpinner", "name": "MarqueeManagementSolarRadiationSummer", "caption": "Summer Threshold", "suffix": "lux", "minimum": "0"},
 							{ "type": "NumberSpinner", "name": "MarqueeManagementSolarRadiationWinter", "caption": "Winter Threshold", "suffix": "lux", "minimum": "0"}
+						]
+					},
+					{ "type": "Label", "label": "Hysterese factor to avoid quick movements - 1.0 to use current values / 0.9 to use a 10% reduction" },
+					{ "type": "RowLayout",
+						"items": [
+							{ "type": "NumberSpinner", "name": "MarqueeManagementMoveOutHystereseFactor", "caption": "Out", "suffix": "factor", "minimum": "0"},
+							{ "type": "NumberSpinner", "name": "MarqueeManagementMoveInHystereseFactor", "caption": "In", "suffix": "factor", "minimum": "0"}
 						]
 					},
 					{ "type": "Label", "label": "When moving in and out the current or delayed values (requires archiving) can be used"},

@@ -69,6 +69,10 @@ if (!defined('vtBoolean')) {
 			$this->RegisterPropertyBoolean("AutoSeason", 1);
 			$this->RegisterPropertyInteger("SummerStart", 4);
 			$this->RegisterPropertyInteger("SummerEnd", 11);
+			$this->RegisterPropertyInteger("MarqueeManagementMoveOutHystereseFactor", 1.0);
+			$this->RegisterPropertyInteger("MarqueeManagementMoveInHystereseFactor", 0.9);
+			
+			
 
 			// Shutter East Variables
 			$this->RegisterPropertyInteger("ShutterEastTimerControl", 0);
@@ -568,6 +572,7 @@ if (!defined('vtBoolean')) {
 			$MarqueeManagementWindSpeedMax = $this->ReadPropertyInteger("MarqueeManagementWindSpeedMax"); //20 kmh
 			$MarqueeManagementMoveOutMode = $this->ReadPropertyString("MarqueeMoveOutMode"); // Direct / Delay
 			$MarqueeManagementMoveInMode = $this->ReadPropertyString("MarqueeMoveOutMode"); // Direct / Delay
+			$MarqueeManagementMoveInHystereseValue = $this->ReadPropertyString("MarqueeManagementMoveInHystereseValue");
 			
 			$this->SendDebug('Marquee Control','Location Settings: System Azi '.$System_Azimuth.' / Begin '.$MarqueeManagementAzimutBegin.' / End '.$MarqueeManagementAzimutEnd.' Elevation'.$System_Elevation.' Elevation '.$MarqueeManagementElevation,0);			
 			
@@ -580,17 +585,17 @@ if (!defined('vtBoolean')) {
 			//**********************************************************************************
 			
 			if ($MarqueeManagementMoveOutMode == "Direct") {
-				$SolarRadiationDecisionValueOut = $SolarRadiationLuxCurrent;
+				$SolarRadiationDecisionValueOut = ($SolarRadiationLuxCurrent * $MarqueeManagementMoveOutHystereseFactor);
 			}
 			elseif ($MarqueeManagementMoveOutMode == "Delay") {
-				$SolarRadiationDecisionValueOut = $SolarRadiationLuxDelayLux1;
+				$SolarRadiationDecisionValueOut = ($SolarRadiationLuxDelayLux1 * $MarqueeManagementMoveOutHystereseFactor);
 			}
 			
 			if ($MarqueeManagementMoveInMode == "Direct") {
-				$SolarRadiationDecisionValueIn = $SolarRadiationLuxCurrent;
+				$SolarRadiationDecisionValueIn = ($SolarRadiationLuxCurrent * $MarqueeManagementMoveInHystereseFactor);
 			}
 			elseif ($MarqueeManagementMoveInMode == "Delay") {
-				$SolarRadiationDecisionValueIn= $SolarRadiationLuxDelayLux1;
+				$SolarRadiationLuxDelayLux1 = ($SolarRadiationLuxDelayLux1 * $MarqueeManagementMoveInHystereseFactor);
 			}
 			
 			
