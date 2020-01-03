@@ -299,6 +299,7 @@ if (!defined('vtBoolean')) {
 			// Will check for storm and call function for cooldown period
 			//***********************************************************
 			$StormProtectionEnabled = $this->ReadPropertyBoolean("StormProtectionEnabled");
+			$ProvideStormVariable = $this->ReadPropertyBoolean("ProvideStormVariable");
 			$StormProtectionTimer = $this->ReadPropertyInteger("StormProtectionCooldownTimer");
 			$StormProtectionThreshold = $this->ReadPropertyInteger("StormProtectionThreshold");
 			$StormProtectionGust = $StormProtectionGustKMH;
