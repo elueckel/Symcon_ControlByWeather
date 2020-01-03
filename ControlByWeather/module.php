@@ -1106,12 +1106,12 @@ if (!defined('vtBoolean')) {
 				elseif($StormProtectionActive == 1){
 					$this->SendDebug('Shutter Control West','Shutter move to: Up - Storm',0);
 					SetValue($this->GetIDForIdent("ShutterWestDescision"), 'Blocked by storm');
-					SetValue($this->GetIDForIdent("ShutterSouthPosition"), 9);
+					SetValue($this->GetIDForIdent("ShutterWestPosition"), 9);
 				}
 			}
 			elseif($ShutterSouthManual == 1){
 					$this->SendDebug('Shutter Control West','Manually disabled',0);
-					SetValue($this->GetIDForIdent("ShutterSouthDescision"), 'Manually disabled');
+					SetValue($this->GetIDForIdent("ShutterWestDescision"), 'Manually disabled');
 			}
 
 			
@@ -1205,7 +1205,7 @@ if (!defined('vtBoolean')) {
 			//Check if Reference Sensor should be used
 			if ($WindowWintergardenConsiderReferenceTemperature == 1) {
 				if ($WindowWintergardenTemperatureReference < $WindowWintergardenTemperatureWintergarden) {
-					$WindowBlockedByReferenceSensor = 1 ;
+					$WindowBlockedByReferenceSensor = 1;
 				}
 				else if ($WindowWintergardenTemperatureReference > $WindowWintergardenTemperatureWintergarden) {
 					$WindowBlockedByReferenceSensor = 0;
