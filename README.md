@@ -92,8 +92,8 @@ Version 1.0 (28.12.2019)
 
 Version 1.1 (03.01.2020)
 * Neue Variable für die Raffstores um "In (Azimut) Bereich" auszuweisen (für Verwendung in Events)
-* Hysterese für Markise zur weiteren Reduktion der "Nervösität"
-* Diverse kleinere Buxfixes
+* Ein Art Hysterese für Markise zur weiteren Reduktion der "Nervösität" - Man kann den "Auslösewert für Einfahren" künstlich erhöhen mit 1.1 für 10% mehr oder 0.9 für 10% weniger. Hilft bei Wetter im Winter, bei dem Temperaturen sehr nach bei einander liegen. 
+* Diverse Buxfixes
 
 Generell
 * Benachrichtigungen
