@@ -146,10 +146,17 @@
 			"Shutter West Descision": "Raffstore West aktueller Status",
 			"Shutter West Manual": "Raffstore West Manuell",
 			"Window Open Status Upper": "Fenster Position Oben",
-			"Window Open Status Lower": "Fenster Position Oben",
+			"Window Open Status Lower": "Fenster Position Unten",
 			"Window Descision Upper": "Fenster Oben aktueller Status",
 			"Window Descision Lower": "Fenster Unten aktueller Status",
-			"Window Wintergarden Manual": "Fenster Manuell"
+			"Window Wintergarden Manual": "Fenster Manuell",
+			"Hysterese factor to avoid quick movements - 1.0 to use current values / 0.9 to use a 10% reduction": "Hysterese Factor um zu häufige Veränderungen zu verhindern - 1.0 verwendet aktuelle Werte / 0.9 um eine 10% Abweichung zuzulassen",
+			"Out": "Ausfahren",
+			"In": "Einfahren",
+			"Shutter East Sun": "Raffstore Ost in Auslösebereich",
+			"Shutter South Sun": "Raffstore Süd in Auslösebereich",
+			"Shutter West Sun": "Raffstore West in Auslösebereich",
+			"factor": "Faktor"
 		}
 	}
 }
