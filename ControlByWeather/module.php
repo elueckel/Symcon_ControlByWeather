@@ -521,7 +521,7 @@ if (!defined('vtBoolean')) {
 					if ($ProvideFrostVariable == 1){
 						SetValue($this->GetIDForIdent("FrostVariable"), 0);
 					}
-					if ($NotificationWarning == 1 AND $FrostNotification ==	0){
+					if ($NotificationWarning == 1 AND $FrostNotification ==	1){
 						$this->SetBuffer("NotifierTitle", "Wetter Warnung");
 						$this->SetBuffer("NotifierMessage", "Frost Schutz wurde aufgehoben");
 						$this->CBWNotifyApp();
@@ -529,7 +529,7 @@ if (!defined('vtBoolean')) {
 						$this->SetBuffer("FrostNotification", 0);
 												
 					}
-					if ($WriteToLog == 1 AND $FrostLogging == 0){
+					if ($WriteToLog == 1 AND $FrostLogging == 1){
 						IPS_LogMessage("Control by Weather", "Frost Schutz wurde aufgehoben");
 						$FrostLogging = 0;
 						$this->SetBuffer("FrostLogging", 0);
