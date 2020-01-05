@@ -516,6 +516,10 @@ if (!defined('vtBoolean')) {
 			if (empty ($HeavyRainNotification)) {
 				$HeavyRainNotification = 0;
 			}
+			$HeavyRainLogging = $this->GetBuffer("HeavyRainLogging");
+			if (empty ($HeavyRainLogging)) {
+				$HeavyRainLogging = 0;
+			}
 			
 			
 			if ($RainIntensityActive == 1){
@@ -534,6 +538,12 @@ if (!defined('vtBoolean')) {
 						$this->SetBuffer("HeavyRainNotification", 1);
 												
 					}
+					if ($WriteToLog == 1 AND $HeavyRainLogging ==	0){
+						IPS_LogMessage($_IPS['SELF'], "Control by Weather - Starkregen erkannt mit ".$RainIntensity." l/m");
+						$HeavyRainLogging = 1;
+						$this->SetBuffer("HeavyRainLogging", 1);
+												
+					}
 				}
 				elseif ($RainIntensity < $RainIntensityThreshold) {
 					$HeavyRainDetected = 0;
@@ -548,6 +558,12 @@ if (!defined('vtBoolean')) {
 						$this->CBWNotifyApp();
 						$HeavyRainNotification = 0;
 						$this->SetBuffer("HeavyRainNotification", 0);
+												
+					}
+					if ($WriteToLog == 1 AND $HeavyRainLogging ==	1){
+						IPS_LogMessage($_IPS['SELF'], "Control by Weather - Warnung für Starkregen ist aufgehoben");
+						$HeavyRainLogging = 0;
+						$this->SetBuffer("HeavyRainLogging", 0);
 												
 					}
 				}

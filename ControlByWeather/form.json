@@ -158,12 +158,11 @@
 					"type": "ExpansionPanel",
 					"caption": "Notifications and Logging",
 						"items": [
-							{ "type": "Label", "label": "Notification via App" },
+							{ "type": "Label", "label": "Notification via App requires symcon app and configured webfront" },
 							{ "type": "RowLayout",
 								"items": [
-									
-									{ "type": "CheckBox", "name": "NotificationWarning",  "name": "Send Warning", "caption": "Activate" },
-									{ "type": "CheckBox", "name": "WriteToLog",  "name": "Write to Log", "caption": "Activate" }
+									{ "type": "CheckBox", "name": "NotificationWarning",  "caption": "Notifications" },
+									{ "type": "CheckBox", "name": "WriteToLog",  "caption": "Logging" }
 								]
 							}
 						]
