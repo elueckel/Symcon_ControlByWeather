@@ -161,8 +161,9 @@
 							{ "type": "Label", "label": "Notification via App" },
 							{ "type": "RowLayout",
 								"items": [
-									{ "type": "CheckBox", "name": "NotificationWarning", "caption": "Activate" },
-									{ "type": "SelectVariable", "name": "WebFrontMobile", "caption": "Webfront" }
+									
+									{ "type": "CheckBox", "name": "NotificationWarning",  "name": "Send Warning", "caption": "Activate" },
+									{ "type": "CheckBox", "name": "WriteToLog",  "name": "Write to Log", "caption": "Activate" }
 								]
 							}
 						]
