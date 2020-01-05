@@ -481,6 +481,14 @@ if (!defined('vtBoolean')) {
 			$Humidity = GetValue($this->ReadPropertyInteger("Humidity"));
 			$HumidityThreshold = $this->ReadPropertyInteger("HumidityThreshold");
 			$ProvideFrostVariable = $this->ReadPropertyBoolean("ProvideFrostVariable");
+			$FrostNotification = $this->GetBuffer("FrostNotification");
+			if (empty ($FrostNotification)) {
+				$FrostNotification = 0;
+			}
+			$FrostLogging = $this->GetBuffer("FrostLogging");
+			if (empty ($FrostLogging)) {
+				$FrostLogging = 0;
+			}
 			
 			
 			if ($FrostProtectionEnabled == 1){
@@ -491,13 +499,41 @@ if (!defined('vtBoolean')) {
 					if ($ProvideFrostVariable == 1){
 						SetValue($this->GetIDForIdent("FrostVariable"), 1);
 					}
-				}
+					if ($NotificationWarning == 1 AND $FrostNotification ==	0){
+						$this->SetBuffer("NotifierTitle", "Wetter Warnung");
+						$this->SetBuffer("NotifierMessage", "Frost Schutz wurde ausgelöst / Aussentemperatur ".$OutsideTemperature." / Luftfeuchte ".$Humidity." / Warnwert ".$HumidityThreshold);
+						$this->CBWNotifyApp();
+						$FrostNotification = 1;
+						$this->SetBuffer("FrostNotification", 1);
+												
+					}
+					if ($WriteToLog == 1 AND $FrostLogging == 0){
+						IPS_LogMessage("Control by Weather", "Frost Schutz wurde ausgelöst / Aussentemperatur ".$OutsideTemperature." / Luftfeuchte ".$Humidity." / Warnwert ".$HumidityThreshold);
+						$FrostLogging = 1;
+						$this->SetBuffer("FrostLogging", 1);
+												
+					}
+				}				
 				elseif (($OutsideTemperature > 0) OR (($OutsideTemperature < 1) AND ($Humidity < $HumidityThreshold))) {
 					$FrostActive = 0;
 					$this->SetBuffer("FrostActive", $FrostActive);
 					$this->SendDebug("Data Preperation","Frost Protection - no frost / Outside Temperature ".$OutsideTemperature." / Humidity ".$Humidity." / Threshold ".$HumidityThreshold, 0);
 					if ($ProvideFrostVariable == 1){
 						SetValue($this->GetIDForIdent("FrostVariable"), 0);
+					}
+					if ($NotificationWarning == 1 AND $FrostNotification ==	0){
+						$this->SetBuffer("NotifierTitle", "Wetter Warnung");
+						$this->SetBuffer("NotifierMessage", "Frost Schutz wurde aufgehoben");
+						$this->CBWNotifyApp();
+						$FrostNotification = 0;
+						$this->SetBuffer("FrostNotification", 0);
+												
+					}
+					if ($WriteToLog == 1 AND $FrostLogging == 0){
+						IPS_LogMessage("Control by Weather", "Frost Schutz wurde aufgehoben");
+						$FrostLogging = 0;
+						$this->SetBuffer("FrostLogging", 0);
+												
 					}
 				}
 				
@@ -539,7 +575,7 @@ if (!defined('vtBoolean')) {
 						$this->SetBuffer("HeavyRainNotification", 1);
 												
 					}
-					if ($WriteToLog == 1 AND $HeavyRainLogging ==	0){
+					if ($WriteToLog == 1 AND $HeavyRainLogging == 0){
 						IPS_LogMessage("Control by Weather", "Starkregen erkannt mit ".$RainIntensity." l/m");
 						$HeavyRainLogging = 1;
 						$this->SetBuffer("HeavyRainLogging", 1);
@@ -561,7 +597,7 @@ if (!defined('vtBoolean')) {
 						$this->SetBuffer("HeavyRainNotification", 0);
 												
 					}
-					if ($WriteToLog == 1 AND $HeavyRainLogging ==	1){
+					if ($WriteToLog == 1 AND $HeavyRainLogging == 1){
 						IPS_LogMessage("Control by Weather", "Warnung für Starkregen ist aufgehoben");
 						$HeavyRainLogging = 0;
 						$this->SetBuffer("HeavyRainLogging", 0);
