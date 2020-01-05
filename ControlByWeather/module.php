@@ -236,6 +236,7 @@ if (!defined('vtBoolean')) {
 		$this->SendDebug('Data Preperation',"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++", 0);
 		
 		$NotificationWarning = $this->ReadPropertyBoolean("NotificationWarning");
+		$WriteToLog = $this->ReadPropertyBoolean("WriteToLog");
 		
 		// Set season in case Auto Season is used
 			$AutoSeason = $this->ReadPropertyBoolean("AutoSeason");
