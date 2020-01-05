@@ -531,7 +531,7 @@ if (!defined('vtBoolean')) {
 						$this->SetBuffer("NotifierMessage", "Starkregen wurde erkannt mit ".$RainIntensity." l/m");
 						$this->CBWNotifyApp();
 						$HeavyRainNotification = 1;
-						$this->SetBuffer(HeavyRainNotification, 1);
+						$this->SetBuffer("HeavyRainNotification", 1);
 												
 					}
 				}
@@ -547,6 +547,7 @@ if (!defined('vtBoolean')) {
 						$this->SetBuffer("NotifierMessage", "Warnung für Starkregen ist aufgehoben");
 						$this->CBWNotifyApp();
 						$HeavyRainNotification = 0;
+						$this->SetBuffer("HeavyRainNotification", 0);
 												
 					}
 				}
