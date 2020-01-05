@@ -582,8 +582,8 @@ if (!defined('vtBoolean')) {
 			
 			// to send notifications
 			$this->SendDebug("Notifier","********** App Notifier **********", 0);
-			$this->SendDebug("Notifier","Message: ".NotifierMessage." was sent", 0);			
-			WFC_PushNotification($WebFrontMobile, 'Wetter Warnung', $NotifierMessage , "buzzer", 0);
+			$this->SendDebug("Notifier","Message: ".$NotifierMessage." was sent", 0);			
+			WFC_PushNotification($WebFrontMobile, $NotifierTitle, $NotifierMessage , "buzzer", 0);
 		}
 		
 		
