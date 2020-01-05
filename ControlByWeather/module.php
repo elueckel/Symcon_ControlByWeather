@@ -314,7 +314,7 @@ if (!defined('vtBoolean')) {
 			//$StormProtectionActive = 0;
 			//$this->SetBuffer("StormProtectionActive", $StormProtectionActive);
 			$StormProtectionActive = $this->GetBuffer("StormProtectionActive");
-			$this->SendDebug("StormProtection vor setzen",$StormProtectionActive, 0);
+			//$this->SendDebug("Data Preperation","StormProtection vor setzen ".$StormProtectionActive, 0);
 			// Warnungen
 			$StormNotification = $this->GetBuffer("StormNotification");
 			if (empty ($StormNotification)) {

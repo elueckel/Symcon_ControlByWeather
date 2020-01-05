@@ -156,7 +156,9 @@
 			"Shutter East Sun": "Raffstore Ost in Auslösebereich",
 			"Shutter South Sun": "Raffstore Süd in Auslösebereich",
 			"Shutter West Sun": "Raffstore West in Auslösebereich",
-			"factor": "Faktor"
+			"factor": "Faktor",
+			"Notification via App requires symcon app and configured webfront": "Benachrichtigungen auf dem Smartphone erfordern die Einrichtung des Webfronts",
+			"Notifications": "Benachrichtigung"
 		}
 	}
 }
