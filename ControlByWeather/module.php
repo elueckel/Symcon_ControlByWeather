@@ -512,6 +512,9 @@ if (!defined('vtBoolean')) {
 			$RainIntensity = GetValue($this->ReadPropertyInteger("RainIntensity"));
 			$RainIntensityThreshold = $this->ReadPropertyInteger("RainIntensityThreshold");
 			$ProvideHeavyRainVariable = $this->ReadPropertyBoolean("ProvideHeavyRainVariable");
+			if (empty ($HeavyRainNotification)) {
+				$HeavyRainNotification = 0;
+			}
 			
 			
 			if ($RainIntensityActive == 1){
@@ -522,7 +525,7 @@ if (!defined('vtBoolean')) {
 					if ($ProvideHeavyRainVariable == 1){
 						SetValue($this->GetIDForIdent("HeavyRainVariable"), 1);
 					}
-					if ($NotificationWarning == 1 AND $HeavyRainNotification == 0){
+					if ($NotificationWarning == 1 AND $HeavyRainNotification ==	0){
 						$this->SetBuffer("NotifierTitle", "Wetter Warnung");
 						$this->SetBuffer("NotifierMessage", "Starkregen wurde erkannt mit ".$RainIntensity." l/m");
 						$this->CBWNotifyApp();
