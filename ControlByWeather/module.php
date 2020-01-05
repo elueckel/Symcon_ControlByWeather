@@ -153,6 +153,7 @@ if (!defined('vtBoolean')) {
 			// Building Blinds/Shutter East Variables
 			$this->RegisterPropertyInteger("BlindsEastTimerControl", 0);
 			$this->RegisterPropertyBoolean("BlindsEastActive", 0);
+			$this->RegisterPropertyBoolean("BlindsEastShutterMode", 0);
 			$this->RegisterPropertyInteger("BlindsEastAzimutBegin", 0);
 			$this->RegisterPropertyInteger("BlindsEastAzimutEnd", 360);
 			$this->RegisterPropertyInteger("BlindsEastElevation", 0);
