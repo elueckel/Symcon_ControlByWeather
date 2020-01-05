@@ -540,7 +540,7 @@ if (!defined('vtBoolean')) {
 												
 					}
 					if ($WriteToLog == 1 AND $HeavyRainLogging ==	0){
-						IPS_LogMessage($_IPS['SELF'], "Control by Weather - Starkregen erkannt mit ".$RainIntensity." l/m");
+						IPS_LogMessage("Control by Weather", "Starkregen erkannt mit ".$RainIntensity." l/m");
 						$HeavyRainLogging = 1;
 						$this->SetBuffer("HeavyRainLogging", 1);
 												
@@ -562,7 +562,7 @@ if (!defined('vtBoolean')) {
 												
 					}
 					if ($WriteToLog == 1 AND $HeavyRainLogging ==	1){
-						IPS_LogMessage($_IPS['SELF'], "Control by Weather - Warnung für Starkregen ist aufgehoben");
+						IPS_LogMessage("Control by Weather", "Warnung für Starkregen ist aufgehoben");
 						$HeavyRainLogging = 0;
 						$this->SetBuffer("HeavyRainLogging", 0);
 												
