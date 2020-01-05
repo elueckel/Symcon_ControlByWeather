@@ -315,6 +315,17 @@ if (!defined('vtBoolean')) {
 			//$this->SetBuffer("StormProtectionActive", $StormProtectionActive);
 			$StormProtectionActive = $this->GetBuffer("StormProtectionActive");
 			$this->SendDebug("StormProtection vor setzen",$StormProtectionActive, 0);
+			// Warnungen
+			$StormNotification = $this->GetBuffer("StormNotification");
+			if (empty ($StormNotification)) {
+				$StormNotification = 0;
+			}
+			$StormLogging = $this->GetBuffer("StormLogging");
+			if (empty ($StormLogging)) {
+				$StormLogging = 0;
+			}
+			
+			
 			
 			if ($StormProtectionEnabled == 1){
 				if (($StormProtectionThreshold < $StormProtectionGust) AND $StormProtectionActive == 0 ) {
@@ -327,6 +338,21 @@ if (!defined('vtBoolean')) {
 					if ($ProvideStormVariable == 1){
 						SetValue($this->GetIDForIdent("StormVariable"), 1);
 					}
+					// Warnungen
+					if ($NotificationWarning == 1 AND $StormNotification ==	0){
+						$this->SetBuffer("NotifierTitle", "Wetter Warnung");
+						$this->SetBuffer("NotifierMessage", "Starke Sturmböen wurden erkannt ".$StormProtectionGust." km/h");
+						$this->CBWNotifyApp();
+						$StormNotification = 1;
+						$this->SetBuffer("StormNotification", 1);
+												
+					}
+					if ($WriteToLog == 1 AND $StormLogging == 0){
+						IPS_LogMessage("Control by Weather", "Starke Sturmböen wurden erkannt ".$StormProtectionGust." km/h");
+						$StormLogging = 1;
+						$this->SetBuffer("StormLogging", 1);
+												
+					}				
 				}
 				// check if storm is still there 
 				else if (($StormProtectionThreshold < $StormProtectionGust) AND $StormProtectionActive == 1) {
@@ -628,6 +654,21 @@ if (!defined('vtBoolean')) {
 			//if ($ProvideStormVariable == 1){
 						SetValue($this->GetIDForIdent("StormVariable"), 0);
 			//		}
+			// Warnungen
+			
+			$StormNotification = $this->GetBuffer("StormNotification");
+			$StormLogging = $this->GetBuffer("StormLogging");
+			
+			$this->SetBuffer("NotifierTitle", "Wetter Warnung");
+			$this->SetBuffer("NotifierMessage", "Es wurden keine Sturmböen mehr erkannt");
+			$this->CBWNotifyApp();
+			$StormNotification = 0;
+			$this->SetBuffer("StormNotification", 0);
+										
+			IPS_LogMessage("Control by Weather", "Es wurden keine Sturmböen mehr erkannt");
+			$StormLogging = 0;
+			$this->SetBuffer("StormLogging", 0);
+						
 		}
 		
 		public function CBWNotifyApp()
