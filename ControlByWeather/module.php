@@ -150,7 +150,7 @@ if (!defined('vtBoolean')) {
 			$this->RegisterPropertyBoolean("WindowWintergardenDisableHeavyRain", 0);
 						
 			//Notifier Options
-			$this->RegisterPropertyInteger("WebFrontMobile",0);
+			$this->RegisterPropertyBoolean("WriteToLog",0);
 			$this->RegisterPropertyBoolean("NotificationWarning",0); //To be fill with warning messages
 			
 
