@@ -148,6 +148,10 @@ if (!defined('vtBoolean')) {
 			$this->RegisterPropertyBoolean("WindowWintergardenDisableAtNight", 0);
 			$this->RegisterPropertyBoolean("WindowWintergardenDisableNotPresent", 0);
 			$this->RegisterPropertyBoolean("WindowWintergardenDisableHeavyRain", 0);
+						
+			//Notifier Options
+			$this->RegisterPropertyInteger("WebFrontMobile",0);
+			$this->RegisterPropertyBoolean("NotificationWarning",0); //To be fill with warning messages
 			
 
 			
@@ -230,7 +234,9 @@ if (!defined('vtBoolean')) {
 		{
 
 		$this->SendDebug('Data Preperation',"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++", 0);
-
+		
+		$NotificationWarning = $this->ReadPropertyBoolean("NotificationWarning");
+		
 		// Set season in case Auto Season is used
 			$AutoSeason = $this->ReadPropertyBoolean("AutoSeason");
 			$SummerStart = $this->ReadPropertyInteger("SummerStart");
@@ -516,6 +522,13 @@ if (!defined('vtBoolean')) {
 					if ($ProvideHeavyRainVariable == 1){
 						SetValue($this->GetIDForIdent("HeavyRainVariable"), 1);
 					}
+					if ($NotificationWarning == 1 AND $HeavyRainNotification == 0){
+						$this->SetBuffer("NotifierTitle", "Wetter Warnung");
+						$this->SetBuffer("NotifierMessage", "Starkregen wurde erkannt mit ".$RainIntensity." l/m");
+						$this->CBWNotifyApp();
+						$HeavyRainNotification = 1;
+												
+					}
 				}
 				elseif ($RainIntensity < $RainIntensityThreshold) {
 					$HeavyRainDetected = 0;
@@ -523,6 +536,13 @@ if (!defined('vtBoolean')) {
 					$this->SendDebug("Data Preperation","Heavy Rain Protection - Nothing detected", 0);
 					if ($ProvideHeavyRainVariable == 1){
 						SetValue($this->GetIDForIdent("HeavyRainVariable"), 0);
+					}
+					if ($NotificationWarning == 1 AND $HeavyRainNotification == 1){
+						$this->SetBuffer("NotifierTitle", "Wetter Warnung");
+						$this->SetBuffer("NotifierMessage", "Warnung für Starkregen ist aufgehoben");
+						$this->CBWNotifyApp();
+						$HeavyRainNotification = 0;
+												
 					}
 				}
 				
@@ -550,6 +570,22 @@ if (!defined('vtBoolean')) {
 						SetValue($this->GetIDForIdent("StormVariable"), 0);
 			//		}
 		}
+		
+		public function CBWNotifyApp()
+		{
+			$this->SetBuffer("NotifierTitle", $NotifierTitle);
+			$this->SetBuffer("NotifierMessage", $NotifierMessage);
+			//NotifierTitle - NotifierMessage
+			$WebFrontMobile = $this->ReadPropertyInteger("WebFrontMobile");
+			
+			
+			// to send notifications
+			$this->SendDebug("Notifier","********** App Notifier **********", 0);
+			$this->SendDebug("Notifier","Message: ".NotifierMessage." was sent", 0);			
+			WFC_PushNotification($WebFrontMobile, 'Wetter Warnung', $NotifierMessage , "buzzer", 0);
+		}
+		
+		
 		
 		
 		public function ControlMarquee()

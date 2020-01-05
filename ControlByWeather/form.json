@@ -153,7 +153,20 @@
 								]
 							}
 						]
-					}	
+					},
+					{
+					"type": "ExpansionPanel",
+					"caption": "Notifications & Logging",
+						"items": [
+							{ "type": "Label", "label": "Notification via App" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "CheckBox", "name": "NotificationWarning", "caption": "Activate" },
+									{ "type": "SelectVariable", "name": "WebFrontMobile", "caption": "Webfront" }
+								]
+							}
+						]
+					}
 			]
 		},
 		{
