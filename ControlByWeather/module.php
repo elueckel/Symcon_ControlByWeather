@@ -158,12 +158,8 @@ if (!defined('vtBoolean')) {
 			$this->RegisterPropertyInteger("BlindsEastAzimutBegin", 0);
 			$this->RegisterPropertyInteger("BlindsEastAzimutEnd", 360);
 			$this->RegisterPropertyInteger("BlindsEastElevation", 0);
-			$this->RegisterPropertyInteger("BlindsEastSolarRadiationSummerDownShaded1Threshold", 0);
-			$this->RegisterPropertyInteger("BlindsEastSolarRadiationSummerDownShaded2Threshold", 0);
-			$this->RegisterPropertyInteger("BlindsEastSolarRadiationSummerDownClosedThreshold", 0);
-			$this->RegisterPropertyInteger("BlindsEastSolarRadiationWinterDownShaded1Threshold", 0);
-			$this->RegisterPropertyInteger("BlindsEastSolarRadiationWinterDownShaded2Threshold", 0);
-			$this->RegisterPropertyInteger("BlindsEastSolarRadiationWinterDownClosedThreshold", 0);
+			$this->RegisterPropertyInteger("BlindsEastSolarRadiationSummerDownShadedThreshold", 0);
+			$this->RegisterPropertyInteger("BlindsEastSolarRadiationWinterDownShadedThreshold", 0);
 			$this->RegisterPropertyInteger("BlindsEastTemperatureOutsideThreshold", 0);
 			$this->RegisterPropertyInteger("BlindsEastTemperatureOutsideReaction", 0);
 			$this->RegisterPropertyString("BlindsEastDecisionMode", "Direct");
