@@ -421,7 +421,7 @@
 					"items": [
 							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the blinds status is updated"},
 							{ "type": "CheckBox", "name": "BlindsEastActive", "caption": "Activate"},
-							{ "type": "NumberSpinner", "name": "BlindsEastTimerControl", "caption": "How often should the status of the blinds be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "NumberSpinner", "name": "BlindsEastTimerControl", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
 							{ "type": "Label", "label": "Area of where the blinds is being controlled in relation to the position of the sun" },
 							{ "type": "RowLayout",
 								"items": [
@@ -454,9 +454,7 @@
 									}
 									
 								]
-							},
-							{ "type": "Label", "label": "If disabled summer thresholds are used" },
-							{ "type": "CheckBox", "name": "BlindsEastUseAutomaticWinter", "caption": "Automatic Summer/Winter"}
+							}
 						]
 					}	
 			]
