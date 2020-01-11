@@ -154,6 +154,7 @@ if (!defined('vtBoolean')) {
 			$this->RegisterPropertyInteger("BlindsEastTimerControl", 0);
 			$this->RegisterPropertyBoolean("BlindsEastActive", 0);
 			$this->RegisterPropertyBoolean("BlindsEastShutterMode", 0);
+			$this->RegisterPropertyBoolean("BlindsEastReactOnHotDays", 0);
 			$this->RegisterPropertyInteger("BlindsEastAzimutBegin", 0);
 			$this->RegisterPropertyInteger("BlindsEastAzimutEnd", 360);
 			$this->RegisterPropertyInteger("BlindsEastElevation", 0);
@@ -1380,7 +1381,7 @@ if (!defined('vtBoolean')) {
 				if ($WindowWintergardenTemperatureReference < $WindowWintergardenTemperatureWintergarden) {
 					$WindowBlockedByReferenceSensor = 1;
 				}
-				else if ($WindowWintergardenTemperatureReference > $WindowWintergardenTemperatureWintergarden) {
+				else if ($WindowWintergardenTemperatureReference >= $WindowWintergardenTemperatureWintergarden) {
 					$WindowBlockedByReferenceSensor = 0;
 				}
 			}
@@ -1512,6 +1513,8 @@ if (!defined('vtBoolean')) {
 			$StormProtectionActive = $this->GetBuffer("StormProtectionActive"); // Bei Sturm hoch oder nicht runter
 			$FrostActive = $this->GetBuffer("FrostActive"); // Bei Sturm hoch oder nicht runter
 			
+			$BlindsEastShutterMode = GetValue($this->ReadPropertyBoolean("BlindsEastShutterMode"));
+			$BlindsEastReactOnHotDays = GetValue($this->ReadPropertyBoolean("BlindsEastReactOnHotDays"));
 			
 			$System_Azimuth = GetValue($this->ReadPropertyInteger("Azimut")); // 155 grad
 			$System_Elevation = GetValue($this->ReadPropertyInteger("Elevation")); // 50 grad
@@ -1600,9 +1603,9 @@ if (!defined('vtBoolean')) {
 			//******************************************************************
 			
 			if ($BlindsEastManual == 0) {
-				if ($StormProtectionActive == 0) {
+				if ($BlindsEastShutterMode == 0 OR ($BlindsEastShutterMode == 1 AND $StormProtectionActive == 0)) {
 					$this->SendDebug('Blinds Control East','OK - No Storm',0);
-					if ($FrostActive == 0) { //Must noch erstellt werden !!!!
+					if (($BlindsEastShutterMode == 0 OR ($BlindsEastShutterMode == 1 AND $FrostActive == 0)) { //Prüfen ob das so an heissen Tagen geht !!!!
 						$this->SendDebug('Blinds Control East','OK - No Frost',0);
 							if ($BlindsEastAzimutBegin < $System_Azimuth AND $System_Azimuth < $BlindsEastAzimutEnd AND $BlindsEastElevation < $System_Elevation) {
 								SetValue($this->GetIDForIdent("BlindsEastPosition"), $BlindsEastPosition);
@@ -1617,13 +1620,13 @@ if (!defined('vtBoolean')) {
 								SetValue($this->GetIDForIdent("BlindsEastSun"), 0);
 							}
 						}	
-					else if ($FrostActive == 1){
+					else if ($BlindsEastShutterMode == 1 AND $FrostActive == 1){
 						$this->SendDebug('Blinds Control East','Blinds move to: Up - Frost detected',0);
 						SetValue($this->GetIDForIdent("BlindsEastDescision"), 'Blocked by frost');
 						SetValue($this->GetIDForIdent("BlindsEastPosition"), 9);
 					}
 				}
-				elseif($StormProtectionActive == 1){
+				elseif($BlindsEastShutterMode == 1 AND $StormProtectionActive == 1){
 					$this->SendDebug('Blinds Control East','Blinds move to: Up - Storm',0);
 					SetValue($this->GetIDForIdent("BlindsEastDescision"), 'Blocked by storm');
 					SetValue($this->GetIDForIdent("BlindsEastPosition"), 9);
