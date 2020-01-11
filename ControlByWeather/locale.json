@@ -167,7 +167,7 @@
 			"Building South": "Gebäude Süd",
 			"Building West": "Gebäude West",
 			"Frequency of update - 0 is off": "Frequenz der Aktualisierung - 0 = Aus",
-			"Activate sets the component active, while the time will set how often the blinds status is updated", "Aktivieren erstellt die Variablen für die Steuerung, während die Frequenz die Häufigkeit der Aktualisierung festlegt",
+			"Activate sets the component active, while the time will set how often the blinds status is updated": "Aktivieren erstellt die Variablen für die Steuerung, während die Frequenz die Häufigkeit der Aktualisierung festlegt",
 			"Area of where the blinds is being controlled in relation to the position of the sun": "Zone in der die Steuern aktiv ist"
 		}
 	}
