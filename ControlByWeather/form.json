@@ -430,7 +430,7 @@
 									{ "type": "NumberSpinner", "name": "BlindsEastElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
 								]
 							},
-							{ "type": "Label", "label": "Light intensity to provide shading", "width": "30%" },
+							{ "type": "Label", "label": "Light intensity to provide shading" },
 							{ "type": "Label", "label": "Summer Values (default)" },
 							{ "type": "RowLayout",
 								"items": [
@@ -472,7 +472,7 @@
 									{ "type": "NumberSpinner", "name": "BlindsSouthElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
 								]
 							},
-							{ "type": "Label", "label": "Light intensity to provide shading", "width": "30%" },
+							{ "type": "Label", "label": "Light intensity to provide shading" },
 							{ "type": "Label", "label": "Summer Values (default)" },
 							{ "type": "RowLayout",
 								"items": [
@@ -514,7 +514,7 @@
 									{ "type": "NumberSpinner", "name": "BlindsWestElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
 								]
 							},
-							{ "type": "Label", "label": "Light intensity to provide shading", "width": "30%" },
+							{ "type": "Label", "label": "Light intensity to provide shading" },
 							{ "type": "Label", "label": "Summer Values (default)" },
 							{ "type": "RowLayout",
 								"items": [
