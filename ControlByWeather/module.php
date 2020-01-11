@@ -1562,13 +1562,13 @@ if (!defined('vtBoolean')) {
 
 			if ($SolarRadiationDecisionValueLux < $BlindsEastSolarRadiationDownShadedThreshold){
 				$BlindsEastPosition = 0;
-				$BlindsEastPositionReason = "Open";
-				$this->SendDebug('Blinds Control East','Position: Open - Current light '.$SolarRadiationDecisionValueLux.' < threshold for open '.$BlindsEastSolarRadiationDownShadedThreshold,0);
+				$BlindsEastPositionReason = "Up";
+				$this->SendDebug('Blinds Control East','Position: Up - Current light '.$SolarRadiationDecisionValueLux.' < threshold for open '.$BlindsEastSolarRadiationDownShadedThreshold,0);
 			}			
 			else if ($SolarRadiationDecisionValueLux >= $BlindsEastSolarRadiationDownShadedThreshold) {
 				$BlindsEastPosition = 1;
 				$BlindsEastPositionReason = "Shading";
-				$this->SendDebug('Blinds Control East','Position: Shading - Current light '.$SolarRadiationDecisionValueLux.' > threshold for level 1: '.$BlindsEastSolarRadiationDownShadedThreshold,0);
+				$this->SendDebug('Blinds Control East','Position: Shading - Current light '.$SolarRadiationDecisionValueLux.' > threshold: '.$BlindsEastSolarRadiationDownShadedThreshold,0);
 			}
 			
 				
