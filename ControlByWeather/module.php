@@ -1509,8 +1509,8 @@ if (!defined('vtBoolean')) {
 			$StormProtectionActive = $this->GetBuffer("StormProtectionActive"); // Bei Sturm hoch oder nicht runter
 			$FrostActive = $this->GetBuffer("FrostActive"); // Bei Sturm hoch oder nicht runter
 			
-			$BlindsEastShutterMode = GetValue($this->ReadPropertyBoolean("BlindsEastShutterMode"));
-			$BlindsEastReactOnHotDays = GetValue($this->ReadPropertyBoolean("BlindsEastReactOnHotDays"));
+			$BlindsEastShutterMode = $this->ReadPropertyBoolean("BlindsEastShutterMode");
+			//$BlindsEastReactOnHotDays = GetValue($this->ReadPropertyBoolean("BlindsEastReactOnHotDays"));
 			
 			$System_Azimuth = GetValue($this->ReadPropertyInteger("Azimut")); // 155 grad
 			$System_Elevation = GetValue($this->ReadPropertyInteger("Elevation")); // 50 grad
@@ -1525,7 +1525,7 @@ if (!defined('vtBoolean')) {
 		
 			$BlindsEastDecisionMode = $this->ReadPropertyString("BlindsEastDecisionMode"); // Direct / Delay
 			
-			$BlindsEastHotDayForecast = $this->ReadPropertyString("BlindsEastHotDayForecast"); // 0 or 1
+			//$BlindsEastHotDayForecast = $this->ReadPropertyString("BlindsEastHotDayForecast"); // 0 or 1
 			
 			$this->SendDebug('Blinds Control East','Location Settings: System Azi '.$System_Azimuth.' / Begin '.$BlindsEastAzimutBegin.' / End '.$BlindsEastAzimutEnd.' Elevation'.$System_Elevation.' Elevation '.$BlindsEastElevation,0);			
 			
@@ -1560,7 +1560,7 @@ if (!defined('vtBoolean')) {
 			//**************************************************
 			
 
-			if ($SolarRadiationDecisionValueLux < $BlindsEastSolarRadiationDownShaded1Threshold){
+			if ($SolarRadiationDecisionValueLux < $BlindsEastSolarRadiationDownShadedThreshold){
 				$BlindsEastPosition = 0;
 				$BlindsEastPositionReason = "Open";
 				$this->SendDebug('Blinds Control East','Position: Open - Current light '.$SolarRadiationDecisionValueLux.' < threshold for open '.$BlindsEastSolarRadiationDownShadedThreshold,0);
