@@ -413,7 +413,7 @@
 		},
 		{
 			"type": "ExpansionPanel",
-			"caption": "Building Blinds and Shutters",
+			"caption": "Building Shading",
 			"items": [
 					{
 					"type": "ExpansionPanel",
@@ -456,7 +456,91 @@
 								]
 							}
 						]
-					}	
+					},
+					{
+					"type": "ExpansionPanel",
+					"caption": "Building South",
+					"items": [
+							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the blinds status is updated"},
+							{ "type": "CheckBox", "name": "BlindsSouthActive", "caption": "Activate"},
+							{ "type": "NumberSpinner", "name": "BlindsSouthTimerControl", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "Label", "label": "Area of where the blinds is being controlled in relation to the position of the sun" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsSouthAzimutBegin", "caption": "Azimut Begin", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "BlindsSouthAzimutEnd", "caption": "Azimut End", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "BlindsSouthElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
+								]
+							},
+							{ "type": "Label", "label": "Light intensity to provide shading", "width": "30%" },
+							{ "type": "Label", "label": "Summer Values (default)" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsSouthSolarRadiationSummerDownShadedThreshold", "caption": "Light Shading", "suffix": "lux", "minimum": "0"}									
+								]
+							},
+							{ "type": "Label", "label": "Winter Values" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsSouthSolarRadiationWinterDownShadedThreshold", "caption": "Shading", "suffix": "lux", "minimum": "0"}
+								]
+							},
+							{ "type": "Label", "label": "When moving current or delayed values (requires archiving) can be used"},
+							{ "type": "RowLayout",
+								"items": [
+									{ "name": "BlindsSouthDecisionMode", "type": "Select", "caption": "Trigger mode",
+									"options": [
+										{ "label": "Direct", "value": "Direct" },
+										{ "label": "Delay", "value": "Delay" }
+										]
+									}
+									
+								]
+							}
+						]
+					},
+					{
+					"type": "ExpansionPanel",
+					"caption": "Building West",
+					"items": [
+							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the blinds status is updated"},
+							{ "type": "CheckBox", "name": "BlindsWestActive", "caption": "Activate"},
+							{ "type": "NumberSpinner", "name": "BlindsWestTimerControl", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "Label", "label": "Area of where the blinds is being controlled in relation to the position of the sun" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsWestAzimutBegin", "caption": "Azimut Begin", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "BlindsWestAzimutEnd", "caption": "Azimut End", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "BlindsWestElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
+								]
+							},
+							{ "type": "Label", "label": "Light intensity to provide shading", "width": "30%" },
+							{ "type": "Label", "label": "Summer Values (default)" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsWestSolarRadiationSummerDownShadedThreshold", "caption": "Light Shading", "suffix": "lux", "minimum": "0"}									
+								]
+							},
+							{ "type": "Label", "label": "Winter Values" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsWestSolarRadiationWinterDownShadedThreshold", "caption": "Shading", "suffix": "lux", "minimum": "0"}
+								]
+							},
+							{ "type": "Label", "label": "When moving current or delayed values (requires archiving) can be used"},
+							{ "type": "RowLayout",
+								"items": [
+									{ "name": "BlindsWestDecisionMode", "type": "Select", "caption": "Trigger mode",
+									"options": [
+										{ "label": "Direct", "value": "Direct" },
+										{ "label": "Delay", "value": "Delay" }
+										]
+									}
+									
+								]
+							}
+						]
+					}					
 			]
 		}
     ],

@@ -160,12 +160,40 @@ if (!defined('vtBoolean')) {
 			$this->RegisterPropertyInteger("BlindsEastElevation", 0);
 			$this->RegisterPropertyInteger("BlindsEastSolarRadiationSummerDownShadedThreshold", 0);
 			$this->RegisterPropertyInteger("BlindsEastSolarRadiationWinterDownShadedThreshold", 0);
-			$this->RegisterPropertyInteger("BlindsEastTemperatureOutsideThreshold", 0);
-			$this->RegisterPropertyInteger("BlindsEastTemperatureOutsideReaction", 0);
 			$this->RegisterPropertyString("BlindsEastDecisionMode", "Direct");
 			$this->RegisterPropertyBoolean("BlindsEastUseAutomaticWinter", 0);
 			$this->RegisterPropertyBoolean("BlindsEastStormDetection", 0);
 			$this->RegisterPropertyBoolean("BlindsEastFrostDetection", 0);
+			
+			// Building Blinds/Shutter South Variables
+			$this->RegisterPropertyInteger("BlindsSouthTimerControl", 0);
+			$this->RegisterPropertyBoolean("BlindsSouthActive", 0);
+			$this->RegisterPropertyBoolean("BlindsSouthShutterMode", 0);
+			$this->RegisterPropertyBoolean("BlindsSouthReactOnHotDays", 0);
+			$this->RegisterPropertyInteger("BlindsSouthAzimutBegin", 0);
+			$this->RegisterPropertyInteger("BlindsSouthAzimutEnd", 360);
+			$this->RegisterPropertyInteger("BlindsSouthElevation", 0);
+			$this->RegisterPropertyInteger("BlindsSouthSolarRadiationSummerDownShadedThreshold", 0);
+			$this->RegisterPropertyInteger("BlindsSouthSolarRadiationWinterDownShadedThreshold", 0);
+			$this->RegisterPropertyString("BlindsSouthDecisionMode", "Direct");
+			$this->RegisterPropertyBoolean("BlindsSouthUseAutomaticWinter", 0);
+			$this->RegisterPropertyBoolean("BlindsSouthStormDetection", 0);
+			$this->RegisterPropertyBoolean("BlindsSouthFrostDetection", 0);
+			
+			// Building Blinds/Shutter West Variables
+			$this->RegisterPropertyInteger("BlindsWestTimerControl", 0);
+			$this->RegisterPropertyBoolean("BlindsWestActive", 0);
+			$this->RegisterPropertyBoolean("BlindsWestShutterMode", 0);
+			$this->RegisterPropertyBoolean("BlindsWestReactOnHotDays", 0);
+			$this->RegisterPropertyInteger("BlindsWestAzimutBegin", 0);
+			$this->RegisterPropertyInteger("BlindsWestAzimutEnd", 360);
+			$this->RegisterPropertyInteger("BlindsWestElevation", 0);
+			$this->RegisterPropertyInteger("BlindsWestSolarRadiationSummerDownShadedThreshold", 0);
+			$this->RegisterPropertyInteger("BlindsWestSolarRadiationWinterDownShadedThreshold", 0);
+			$this->RegisterPropertyString("BlindsWestDecisionMode", "Direct");
+			$this->RegisterPropertyBoolean("BlindsWestUseAutomaticWinter", 0);
+			$this->RegisterPropertyBoolean("BlindsWestStormDetection", 0);
+			$this->RegisterPropertyBoolean("BlindsWestFrostDetection", 0);
 
 
 			
@@ -184,6 +212,8 @@ if (!defined('vtBoolean')) {
 			$this->RegisterTimer("CBWControlShutterWest",0,"WC_ShutterWest(\$_IPS['TARGET']);");
 			$this->RegisterTimer("CBWControlWindowsWintergarden",0,"WC_WindowWintergardenControl(\$_IPS['TARGET']);");
 			$this->RegisterTimer("CBWControlBlindsEast",0,"WC_BlindsEast(\$_IPS['TARGET']);");
+			$this->RegisterTimer("CBWControlBlindsSouth",0,"WC_BlindsSouth(\$_IPS['TARGET']);");
+			$this->RegisterTimer("CBWControlBlindsWest",0,"WC_BlindsWest(\$_IPS['TARGET']);");
 			
 
 		}
@@ -214,6 +244,12 @@ if (!defined('vtBoolean')) {
 				
 				$TimerBlindsEastControl = $this->ReadPropertyInteger("BlindsEastTimerControl") * 1000;
 				$this->SetTimerInterval("CBWControlBlindsEast",$TimerBlindsEastControl);
+				
+				$TimerBlindsSouthControl = $this->ReadPropertyInteger("BlindsSouthTimerControl") * 1000;
+				$this->SetTimerInterval("CBWControlBlindsSouth",$TimerBlindsSouthControl);
+				
+				$TimerBlindsWestControl = $this->ReadPropertyInteger("BlindsWestTimerControl") * 1000;
+				$this->SetTimerInterval("CBWControlBlindsWest",$TimerBlindsWestControl);
 
 
 				$vpos = 10;
@@ -258,6 +294,18 @@ if (!defined('vtBoolean')) {
 				$this->MaintainVariable('BlindsEastSun', $this->Translate('Blinds East Sun'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
 				$this->MaintainVariable('BlindsEastDescision', $this->Translate('Blinds East Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
 				$this->MaintainVariable('BlindsEastManual', $this->Translate('Blinds East Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
+				
+				$vpos = 410;
+				$this->MaintainVariable('BlindsSouthPosition', $this->Translate('Blinds South Position'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("BlindsSouthActive") == 1);
+				$this->MaintainVariable('BlindsSouthSun', $this->Translate('Blinds South Sun'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsSouthActive") == 1);
+				$this->MaintainVariable('BlindsSouthDescision', $this->Translate('Blinds South Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("BlindsSouthActive") == 1);
+				$this->MaintainVariable('BlindsSouthManual', $this->Translate('Blinds South Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsSouthActive") == 1);
+				
+				$vpos = 420;
+				$this->MaintainVariable('BlindsWestPosition', $this->Translate('Blinds West Position'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("BlindsWestActive") == 1);
+				$this->MaintainVariable('BlindsWestSun', $this->Translate('Blinds West Sun'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsWestActive") == 1);
+				$this->MaintainVariable('BlindsWestDescision', $this->Translate('Blinds West Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("BlindsWestActive") == 1);
+				$this->MaintainVariable('BlindsWestManual', $this->Translate('Blinds West Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsWestActive") == 1);
 				
 				
 
@@ -1530,7 +1578,7 @@ if (!defined('vtBoolean')) {
 			$this->SendDebug('Blinds Control East','Location Settings: System Azi '.$System_Azimuth.' / Begin '.$BlindsEastAzimutBegin.' / End '.$BlindsEastAzimutEnd.' Elevation'.$System_Elevation.' Elevation '.$BlindsEastElevation,0);			
 			
 			$BlindsEastManual = GetValue($this->GetIDForIdent("BlindsEastManual"));
-			$this->SendDebug('Blinds Control East','Manual Override '.$BlindsEastManual,0);
+			//$this->SendDebug('Blinds Control East','Manual Override '.$BlindsEastManual,0);
 			
 			
 			
@@ -1594,6 +1642,206 @@ if (!defined('vtBoolean')) {
 			elseif($BlindsEastManual == 1){
 					$this->SendDebug('Blinds Control East','Manually disabled',0);
 					SetValue($this->GetIDForIdent("BlindsEastDescision"), 'Manually disabled');
+			}
+			
+		}
+		
+		public function BlindsSouth()
+		{
+			
+			$this->SendDebug('Shutter Control South','ooooooooooooooooooo Building Blinds/Shutters South Control Begin ooooooooooooooooooo',0);
+			
+			$SeasonIsSummer = $this->GetBuffer("SeasonIsSummer");
+			$SolarRadiationLuxCurrent = $this->GetBuffer("SolarRadiationLuxCurrent");
+			$SolarRadiationLuxDelayLux1 = $this->GetBuffer("SolarRadiationLuxDelayLux1");
+			$StormProtectionActive = $this->GetBuffer("StormProtectionActive"); // Bei Sturm hoch oder nicht runter
+			$FrostActive = $this->GetBuffer("FrostActive"); // Bei Sturm hoch oder nicht runter
+			
+			$BlindsSouthShutterMode = $this->ReadPropertyBoolean("BlindsSouthShutterMode");
+			//$BlindsSouthReactOnHotDays = GetValue($this->ReadPropertyBoolean("BlindsSouthReactOnHotDays"));
+			
+			$System_Azimuth = GetValue($this->ReadPropertyInteger("Azimut")); // 155 grad
+			$System_Elevation = GetValue($this->ReadPropertyInteger("Elevation")); // 50 grad
+			$BlindsSouthAzimutBegin = $this->ReadPropertyInteger("BlindsSouthAzimutBegin"); // 110 grad
+			$BlindsSouthAzimutEnd = $this->ReadPropertyInteger("BlindsSouthAzimutEnd"); // 220 grad
+			$BlindsSouthElevation = $this->ReadPropertyInteger("BlindsSouthElevation"); // 10 grad
+			
+			$BlindsSouthSolarRadiationSummerDownShadedThreshold = $this->ReadPropertyInteger("BlindsSouthSolarRadiationSummerDownShadedThreshold"); 
+						
+			$BlindsSouthSolarRadiationWinterDownShadedThreshold = $this->ReadPropertyInteger("BlindsSouthSolarRadiationWinterDownShadedThreshold");
+			
+		
+			$BlindsSouthDecisionMode = $this->ReadPropertyString("BlindsSouthDecisionMode"); // Direct / Delay
+			
+			//$BlindsSouthHotDayForecast = $this->ReadPropertyString("BlindsSouthHotDayForecast"); // 0 or 1
+			
+			$this->SendDebug('Blinds Control South','Location Settings: System Azi '.$System_Azimuth.' / Begin '.$BlindsSouthAzimutBegin.' / End '.$BlindsSouthAzimutEnd.' Elevation'.$System_Elevation.' Elevation '.$BlindsSouthElevation,0);			
+			
+			$BlindsSouthManual = GetValue($this->GetIDForIdent("BlindsSouthManual"));
+			//$this->SendDebug('Blinds Control South','Manual Override '.$BlindsSouthManual,0);
+			
+			
+			
+			//Define if the blinds should be moved in and out based on direct or delayed values
+			//**********************************************************************************
+			
+			if ($BlindsSouthDecisionMode == "Direct") {
+				$SolarRadiationDecisionValueLux = $SolarRadiationLuxCurrent;
+			}
+			elseif ($BlindsSouthDecisionMode == "Delay") {
+				$SolarRadiationDecisionValueLux = $SolarRadiationLuxDelayLux1;
+			}
+			
+			
+			//Decide which thresholds should be used - winter or summer
+			//*********************************************************
+			
+			if ($SeasonIsSummer == 0) {
+				$BlindsSouthSolarRadiationDownShadedThreshold = $BlindsSouthSolarRadiationWinterDownShadedThreshold;
+			}
+			else if ($SeasonIsSummer == 1) {
+				$BlindsSouthSolarRadiationDownShadedThreshold = $BlindsSouthSolarRadiationSummerDownShadedThreshold;
+			}
+			
+
+			// Decide what to do with the blinds based on light
+			//**************************************************
+			
+
+			if ($SolarRadiationDecisionValueLux < $BlindsSouthSolarRadiationDownShadedThreshold){
+				$BlindsSouthPosition = 0;
+				$BlindsSouthPositionReason = "Up";
+				$this->SendDebug('Blinds Control South','Position: Up - Current light '.$SolarRadiationDecisionValueLux.' < threshold for open '.$BlindsSouthSolarRadiationDownShadedThreshold,0);
+			}			
+			else if ($SolarRadiationDecisionValueLux >= $BlindsSouthSolarRadiationDownShadedThreshold) {
+				$BlindsSouthPosition = 1;
+				$BlindsSouthPositionReason = "Shading";
+				$this->SendDebug('Blinds Control South','Position: Shading - Current light '.$SolarRadiationDecisionValueLux.' > threshold: '.$BlindsSouthSolarRadiationDownShadedThreshold,0);
+			}
+			
+				
+						
+			//Check on manual override and decide the position
+			//******************************************************************
+			
+			if ($BlindsSouthManual == 0) {
+				if ($BlindsSouthAzimutBegin < $System_Azimuth AND $System_Azimuth < $BlindsSouthAzimutEnd AND $BlindsSouthElevation < $System_Elevation) {
+					SetValue($this->GetIDForIdent("BlindsSouthPosition"), $BlindsSouthPosition);
+					SetValue($this->GetIDForIdent("BlindsSouthDescision"), $BlindsSouthPositionReason);
+					SetValue($this->GetIDForIdent("BlindsSouthSun"), 1);
+					$this->SendDebug('Blinds Control South',$BlindsSouthPositionReason,0);
+				}
+				else{
+					SetValue($this->GetIDForIdent("BlindsSouthDescision"), 'Sun not in right area (Azimut / Elevation)');
+					$this->SendDebug('Blinds Control South','Sun not in right area (Azimut / Elevation)',0);
+					SetValue($this->GetIDForIdent("BlindsSouthPosition"), 0);
+					SetValue($this->GetIDForIdent("BlindsSouthSun"), 0);
+				}
+					
+			}
+			elseif($BlindsSouthManual == 1){
+					$this->SendDebug('Blinds Control South','Manually disabled',0);
+					SetValue($this->GetIDForIdent("BlindsSouthDescision"), 'Manually disabled');
+			}
+			
+		}
+		
+		public function BlindsWest()
+		{
+			
+			$this->SendDebug('Shutter Control West','ooooooooooooooooooo Building Blinds/Shutters West Control Begin ooooooooooooooooooo',0);
+			
+			$SeasonIsSummer = $this->GetBuffer("SeasonIsSummer");
+			$SolarRadiationLuxCurrent = $this->GetBuffer("SolarRadiationLuxCurrent");
+			$SolarRadiationLuxDelayLux1 = $this->GetBuffer("SolarRadiationLuxDelayLux1");
+			$StormProtectionActive = $this->GetBuffer("StormProtectionActive"); // Bei Sturm hoch oder nicht runter
+			$FrostActive = $this->GetBuffer("FrostActive"); // Bei Sturm hoch oder nicht runter
+			
+			$BlindsWestShutterMode = $this->ReadPropertyBoolean("BlindsWestShutterMode");
+			//$BlindsWestReactOnHotDays = GetValue($this->ReadPropertyBoolean("BlindsWestReactOnHotDays"));
+			
+			$System_Azimuth = GetValue($this->ReadPropertyInteger("Azimut")); // 155 grad
+			$System_Elevation = GetValue($this->ReadPropertyInteger("Elevation")); // 50 grad
+			$BlindsWestAzimutBegin = $this->ReadPropertyInteger("BlindsWestAzimutBegin"); // 110 grad
+			$BlindsWestAzimutEnd = $this->ReadPropertyInteger("BlindsWestAzimutEnd"); // 220 grad
+			$BlindsWestElevation = $this->ReadPropertyInteger("BlindsWestElevation"); // 10 grad
+			
+			$BlindsWestSolarRadiationSummerDownShadedThreshold = $this->ReadPropertyInteger("BlindsWestSolarRadiationSummerDownShadedThreshold"); 
+						
+			$BlindsWestSolarRadiationWinterDownShadedThreshold = $this->ReadPropertyInteger("BlindsWestSolarRadiationWinterDownShadedThreshold");
+			
+		
+			$BlindsWestDecisionMode = $this->ReadPropertyString("BlindsWestDecisionMode"); // Direct / Delay
+			
+			//$BlindsWestHotDayForecast = $this->ReadPropertyString("BlindsWestHotDayForecast"); // 0 or 1
+			
+			$this->SendDebug('Blinds Control West','Location Settings: System Azi '.$System_Azimuth.' / Begin '.$BlindsWestAzimutBegin.' / End '.$BlindsWestAzimutEnd.' Elevation'.$System_Elevation.' Elevation '.$BlindsWestElevation,0);			
+			
+			$BlindsWestManual = GetValue($this->GetIDForIdent("BlindsWestManual"));
+			//$this->SendDebug('Blinds Control West','Manual Override '.$BlindsWestManual,0);
+			
+			
+			
+			//Define if the blinds should be moved in and out based on direct or delayed values
+			//**********************************************************************************
+			
+			if ($BlindsWestDecisionMode == "Direct") {
+				$SolarRadiationDecisionValueLux = $SolarRadiationLuxCurrent;
+			}
+			elseif ($BlindsWestDecisionMode == "Delay") {
+				$SolarRadiationDecisionValueLux = $SolarRadiationLuxDelayLux1;
+			}
+			
+			
+			//Decide which thresholds should be used - winter or summer
+			//*********************************************************
+			
+			if ($SeasonIsSummer == 0) {
+				$BlindsWestSolarRadiationDownShadedThreshold = $BlindsWestSolarRadiationWinterDownShadedThreshold;
+			}
+			else if ($SeasonIsSummer == 1) {
+				$BlindsWestSolarRadiationDownShadedThreshold = $BlindsWestSolarRadiationSummerDownShadedThreshold;
+			}
+			
+
+			// Decide what to do with the blinds based on light
+			//**************************************************
+			
+
+			if ($SolarRadiationDecisionValueLux < $BlindsWestSolarRadiationDownShadedThreshold){
+				$BlindsWestPosition = 0;
+				$BlindsWestPositionReason = "Up";
+				$this->SendDebug('Blinds Control West','Position: Up - Current light '.$SolarRadiationDecisionValueLux.' < threshold for open '.$BlindsWestSolarRadiationDownShadedThreshold,0);
+			}			
+			else if ($SolarRadiationDecisionValueLux >= $BlindsWestSolarRadiationDownShadedThreshold) {
+				$BlindsWestPosition = 1;
+				$BlindsWestPositionReason = "Shading";
+				$this->SendDebug('Blinds Control West','Position: Shading - Current light '.$SolarRadiationDecisionValueLux.' > threshold: '.$BlindsWestSolarRadiationDownShadedThreshold,0);
+			}
+			
+				
+						
+			//Check on manual override and decide the position
+			//******************************************************************
+			
+			if ($BlindsWestManual == 0) {
+				if ($BlindsWestAzimutBegin < $System_Azimuth AND $System_Azimuth < $BlindsWestAzimutEnd AND $BlindsWestElevation < $System_Elevation) {
+					SetValue($this->GetIDForIdent("BlindsWestPosition"), $BlindsWestPosition);
+					SetValue($this->GetIDForIdent("BlindsWestDescision"), $BlindsWestPositionReason);
+					SetValue($this->GetIDForIdent("BlindsWestSun"), 1);
+					$this->SendDebug('Blinds Control West',$BlindsWestPositionReason,0);
+				}
+				else{
+					SetValue($this->GetIDForIdent("BlindsWestDescision"), 'Sun not in right area (Azimut / Elevation)');
+					$this->SendDebug('Blinds Control West','Sun not in right area (Azimut / Elevation)',0);
+					SetValue($this->GetIDForIdent("BlindsWestPosition"), 0);
+					SetValue($this->GetIDForIdent("BlindsWestSun"), 0);
+				}
+					
+			}
+			elseif($BlindsWestManual == 1){
+					$this->SendDebug('Blinds Control West','Manually disabled',0);
+					SetValue($this->GetIDForIdent("BlindsWestDescision"), 'Manually disabled');
 			}
 			
 		}
