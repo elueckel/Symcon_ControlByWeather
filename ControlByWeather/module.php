@@ -1605,21 +1605,21 @@ if (!defined('vtBoolean')) {
 			if ($BlindsEastManual == 0) {
 				if ($BlindsEastShutterMode == 0 OR ($BlindsEastShutterMode == 1 AND $StormProtectionActive == 0)) {
 					$this->SendDebug('Blinds Control East','OK - No Storm',0);
-					if (($BlindsEastShutterMode == 0 OR ($BlindsEastShutterMode == 1 AND $FrostActive == 0)) { //Prüfen ob das so an heissen Tagen geht !!!!
+					if ($BlindsEastShutterMode == 0 OR ($BlindsEastShutterMode == 1 AND $FrostActive == 0)) { //Prüfen ob das so an heissen Tagen geht !!!!
 						$this->SendDebug('Blinds Control East','OK - No Frost',0);
-							if ($BlindsEastAzimutBegin < $System_Azimuth AND $System_Azimuth < $BlindsEastAzimutEnd AND $BlindsEastElevation < $System_Elevation) {
-								SetValue($this->GetIDForIdent("BlindsEastPosition"), $BlindsEastPosition);
-								SetValue($this->GetIDForIdent("BlindsEastDescision"), $BlindsEastPositionReason);
-								SetValue($this->GetIDForIdent("BlindsEastSun"), 1);
-								$this->SendDebug('Blinds Control East',$BlindsEastPositionReason,0);
-							}
-							else{
-								SetValue($this->GetIDForIdent("BlindsEastDescision"), 'Sun not in right area (Azimut / Elevation)');
-								$this->SendDebug('Blinds Control East','Sun not in right area (Azimut / Elevation)',0);
-								SetValue($this->GetIDForIdent("BlindsEastPosition"), 0);
-								SetValue($this->GetIDForIdent("BlindsEastSun"), 0);
-							}
-						}	
+						if ($BlindsEastAzimutBegin < $System_Azimuth AND $System_Azimuth < $BlindsEastAzimutEnd AND $BlindsEastElevation < $System_Elevation) {
+							SetValue($this->GetIDForIdent("BlindsEastPosition"), $BlindsEastPosition);
+							SetValue($this->GetIDForIdent("BlindsEastDescision"), $BlindsEastPositionReason);
+							SetValue($this->GetIDForIdent("BlindsEastSun"), 1);
+							$this->SendDebug('Blinds Control East',$BlindsEastPositionReason,0);
+						}
+						else{
+							SetValue($this->GetIDForIdent("BlindsEastDescision"), 'Sun not in right area (Azimut / Elevation)');
+							$this->SendDebug('Blinds Control East','Sun not in right area (Azimut / Elevation)',0);
+							SetValue($this->GetIDForIdent("BlindsEastPosition"), 0);
+							SetValue($this->GetIDForIdent("BlindsEastSun"), 0);
+						}
+					}	
 					else if ($BlindsEastShutterMode == 1 AND $FrostActive == 1){
 						$this->SendDebug('Blinds Control East','Blinds move to: Up - Frost detected',0);
 						SetValue($this->GetIDForIdent("BlindsEastDescision"), 'Blocked by frost');
