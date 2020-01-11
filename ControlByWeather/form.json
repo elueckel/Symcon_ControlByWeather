@@ -421,8 +421,6 @@
 					"items": [
 							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the blinds status is updated"},
 							{ "type": "CheckBox", "name": "BlindsEastActive", "caption": "Activate"},
-							{ "type": "Label", "label": "Set blind or shutter mode - Shutters will react to wind and frost alerts"},
-							{ "type": "CheckBox", "name": "BlindsEastShutterMode", "caption": "Shutter Mode"},
 							{ "type": "NumberSpinner", "name": "BlindsEastTimerControl", "caption": "How often should the status of the blinds be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
 							{ "type": "Label", "label": "Area of where the blinds is being controlled in relation to the position of the sun" },
 							{ "type": "RowLayout",
@@ -432,21 +430,17 @@
 									{ "type": "NumberSpinner", "name": "BlindsEastElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
 								]
 							},
-							{ "type": "Label", "label": "Light intensity to trigger change of position", "width": "30%" },
+							{ "type": "Label", "label": "Light intensity to provide shading", "width": "30%" },
 							{ "type": "Label", "label": "Summer Values (default)" },
 							{ "type": "RowLayout",
 								"items": [
-									{ "type": "NumberSpinner", "name": "BlindsEastSolarRadiationSummerDownShaded1Threshold", "caption": "Light Shading", "suffix": "lux - Pos 1", "minimum": "0"},
-									{ "type": "NumberSpinner", "name": "BlindsEastSolarRadiationSummerDownShaded2Threshold", "caption": "More Shading", "suffix": "lux - Pos 2", "minimum": "0"},
-									{ "type": "NumberSpinner", "name": "BlindsEastSolarRadiationSummerDownClosedThreshold", "caption": "Fully Closed", "suffix": "lux - Closed", "minimum": "0"}
+									{ "type": "NumberSpinner", "name": "BlindsEastSolarRadiationSummerDownShadedThreshold", "caption": "Light Shading", "suffix": "lux", "minimum": "0"}									
 								]
 							},
 							{ "type": "Label", "label": "Winter Values" },
 							{ "type": "RowLayout",
 								"items": [
-									{ "type": "NumberSpinner", "name": "BlindsEastSolarRadiationWinterDownShaded1Threshold", "caption": "Light Shading", "suffix": "lux - Pos 1", "minimum": "0"},
-									{ "type": "NumberSpinner", "name": "BlindsEastSolarRadiationWinterDownShaded2Threshold", "caption": "More Shading", "suffix": "lux - Pos 2", "minimum": "0"},
-									{ "type": "NumberSpinner", "name": "BlindsEastSolarRadiationWinterDownClosedThreshold", "caption": "Fully Closed", "suffix": "lux - Closed", "minimum": "0"}
+									{ "type": "NumberSpinner", "name": "BlindsEastSolarRadiationWinterDownShadedThreshold", "caption": "Shading", "suffix": "lux", "minimum": "0"}
 								]
 							},
 							{ "type": "Label", "label": "When moving current or delayed values (requires archiving) can be used"},
@@ -471,8 +465,6 @@
 					"items": [
 							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the blinds status is updated"},
 							{ "type": "CheckBox", "name": "BlindsSouthActive", "caption": "Activate"},
-							{ "type": "Label", "label": "Set blind or shutter mode - Shutters will react to wind and frost alerts"},
-							{ "type": "CheckBox", "name": "BlindsSouthShutterMode", "caption": "Shutter Mode"},
 							{ "type": "NumberSpinner", "name": "BlindsSouthTimerControl", "caption": "How often should the status of the blinds be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
 							{ "type": "Label", "label": "Area of where the blinds is being controlled in relation to the position of the sun" },
 							{ "type": "RowLayout",
@@ -482,21 +474,17 @@
 									{ "type": "NumberSpinner", "name": "BlindsSouthElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
 								]
 							},
-							{ "type": "Label", "label": "Light intensity to trigger change of position", "width": "30%" },
+							{ "type": "Label", "label": "Light intensity to provide shading", "width": "30%" },
 							{ "type": "Label", "label": "Summer Values (default)" },
 							{ "type": "RowLayout",
 								"items": [
-									{ "type": "NumberSpinner", "name": "BlindsSouthSolarRadiationSummerDownShaded1Threshold", "caption": "Light Shading", "suffix": "lux - Pos 1", "minimum": "0"},
-									{ "type": "NumberSpinner", "name": "BlindsSouthSolarRadiationSummerDownShaded2Threshold", "caption": "More Shading", "suffix": "lux - Pos 2", "minimum": "0"},
-									{ "type": "NumberSpinner", "name": "BlindsSouthSolarRadiationSummerDownClosedThreshold", "caption": "Fully Closed", "suffix": "lux - Closed", "minimum": "0"}
+									{ "type": "NumberSpinner", "name": "BlindsSouthSolarRadiationSummerDownShadedThreshold", "caption": "Shading", "suffix": "lux", "minimum": "0"}
 								]
 							},
 							{ "type": "Label", "label": "Winter Values" },
 							{ "type": "RowLayout",
 								"items": [
-									{ "type": "NumberSpinner", "name": "BlindsSouthSolarRadiationWinterDownShaded1Threshold", "caption": "Light Shading", "suffix": "lux - Pos 1", "minimum": "0"},
-									{ "type": "NumberSpinner", "name": "BlindsSouthSolarRadiationWinterDownShaded2Threshold", "caption": "More Shading", "suffix": "lux - Pos 2", "minimum": "0"},
-									{ "type": "NumberSpinner", "name": "BlindsSouthSolarRadiationWinterDownClosedThreshold", "caption": "Fully Closed", "suffix": "lux - Closed", "minimum": "0"}
+									{ "type": "NumberSpinner", "name": "BlindsSouthSolarRadiationWinterDownShadedThreshold", "caption": "Shading", "suffix": "lux", "minimum": "0"}
 								]
 							},
 							{ "type": "Label", "label": "When moving in and out the current or delayed values (requires archiving) can be used"},
@@ -521,8 +509,6 @@
 					"items": [
 							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the blinds status is updated"},
 							{ "type": "CheckBox", "name": "BlindsWestActive", "caption": "Activate"},
-							{ "type": "Label", "label": "Set blind or shutter mode - Shutters will react to wind and frost alerts"},
-							{ "type": "CheckBox", "name": "BlindsWestShutterMode", "caption": "Shutter Mode"},
 							{ "type": "NumberSpinner", "name": "BlindsWestTimerControl", "caption": "How often should the status of the blinds be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
 							{ "type": "Label", "label": "Area of where the blinds is being controlled in relation to the position of the sun" },
 							{ "type": "RowLayout",
@@ -532,21 +518,17 @@
 									{ "type": "NumberSpinner", "name": "BlindsWestElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
 								]
 							},
-							{ "type": "Label", "label": "Light intensity to trigger change of position", "width": "30%" },
+							{ "type": "Label", "label": "Light intensity to provide shading", "width": "30%" },
 							{ "type": "Label", "label": "Summer Values (default)" },
 							{ "type": "RowLayout",
 								"items": [
-									{ "type": "NumberSpinner", "name": "BlindsWestSolarRadiationSummerDownShaded1Threshold", "caption": "Light Shading", "suffix": "lux - Pos 1", "minimum": "0"},
-									{ "type": "NumberSpinner", "name": "BlindsWestSolarRadiationSummerDownShaded2Threshold", "caption": "More Shading", "suffix": "lux - Pos 2", "minimum": "0"},
-									{ "type": "NumberSpinner", "name": "BlindsWestSolarRadiationSummerDownClosedThreshold", "caption": "Fully Closed", "suffix": "lux - Closed", "minimum": "0"}
+									{ "type": "NumberSpinner", "name": "BlindsWestSolarRadiationSummerDownShadedThreshold", "caption": "Light Shading", "suffix": "lux", "minimum": "0"}
 								]
 							},
 							{ "type": "Label", "label": "Winter Values" },
 							{ "type": "RowLayout",
 								"items": [
-									{ "type": "NumberSpinner", "name": "BlindsWestSolarRadiationWinterDownShaded1Threshold", "caption": "Light Shading", "suffix": "lux - Pos 1", "minimum": "0"},
-									{ "type": "NumberSpinner", "name": "BlindsWestSolarRadiationWinterDownShaded2Threshold", "caption": "More Shading", "suffix": "lux - Pos 2", "minimum": "0"},
-									{ "type": "NumberSpinner", "name": "BlindsWestSolarRadiationWinterDownClosedThreshold", "caption": "Fully Closed", "suffix": "lux - Closed", "minimum": "0"}
+									{ "type": "NumberSpinner", "name": "BlindsWestSolarRadiationWinterDownShadedThreshold", "caption": "Light Shading", "suffix": "lux", "minimum": "0"}
 								]
 							},
 							{ "type": "Label", "label": "When moving in and out the current or delayed values (requires archiving) can be used"},
