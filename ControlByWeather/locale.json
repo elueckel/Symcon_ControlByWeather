@@ -128,6 +128,9 @@
 			"Test Shutter South": "Test Steuerung Raffstore Süd",
 			"Test Shutter West": "Test Steuerung Raffstore West",
 			"Test Windows Wintergarden": "Test Steuerung Fenster im Wintergarten",
+			"Blinds East": "Rollläden Osten",
+			"Blinds South": "Rollläden Süden",
+			"Blinds West": "Rollläden Westen",
 			"Automatic season is Summer": "Automatische Jahreszeit ist Sommer",
 			"Manual Season": "Manuelle Jahreszeit",
 			"Storm Warning": "Sturm",
@@ -153,12 +156,19 @@
 			"Hysterese factor to avoid quick movements - 1.0 to use current values / 0.9 to use a 10% reduction": "Hysterese Factor um zu häufige Veränderungen zu verhindern - 1.0 verwendet aktuelle Werte / 0.9 um eine 10% Abweichung zuzulassen",
 			"Out": "Ausfahren",
 			"In": "Einfahren",
+			"Building Shading": "Gebäude Beschattung",
 			"Shutter East Sun": "Raffstore Ost in Auslösebereich",
 			"Shutter South Sun": "Raffstore Süd in Auslösebereich",
 			"Shutter West Sun": "Raffstore West in Auslösebereich",
 			"factor": "Faktor",
 			"Notification via App requires symcon app and configured webfront": "Benachrichtigungen auf dem Smartphone erfordern die Einrichtung des Webfronts",
-			"Notifications": "Benachrichtigung"
+			"Notifications": "Benachrichtigung",
+			"Building Eest": "Gebäude Ost",
+			"Building South": "Gebäude Süd",
+			"Building West": "Gebäude West",
+			"Frequency of update - 0 is off": "Frequenz der Aktualisierung - 0 = Aus",
+			"Activate sets the component active, while the time will set how often the blinds status is updated", "Aktivieren erstellt die Variablen für die Steuerung, während die Frequenz die Häufigkeit der Aktualisierung festlegt",
+			"Area of where the blinds is being controlled in relation to the position of the sun": "Zone in der die Steuern aktiv ist"
 		}
 	}
 }
