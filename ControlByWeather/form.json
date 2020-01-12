@@ -543,9 +543,10 @@
 		{ "type": "Button", "label": "Test Shutter East", "onClick": "WC_ShutterEast($id);" },
 		{ "type": "Button", "label": "Test Shutter South", "onClick": "WC_ShutterSouth($id);" },
 		{ "type": "Button", "label": "Test Shutter West", "onClick": "WC_ShutterWest($id);" },
-		{ "type": "Button", "label": "Test Blinds East", "onClick": "WC_BlindsEast($id);" },
-		{ "type": "Button", "label": "Test Blinds South", "onClick": "WC_BlindsSouth($id);" },
-		{ "type": "Button", "label": "Test Blinds West", "onClick": "WC_BlindsWest($id);" },
-		{ "type": "Button", "label": "Test Windows Wintergarden", "onClick": "WC_WindowWintergardenControl($id);" }
+		{ "type": "Button", "label": "Test Windows Wintergarden", "onClick": "WC_WindowWintergardenControl($id);" },
+		{ "type": "Button", "label": "Test shading of building East", "onClick": "WC_BlindsEast($id);" },
+		{ "type": "Button", "label": "Test shading of building South", "onClick": "WC_BlindsSouth($id);" },
+		{ "type": "Button", "label": "Test shading of building West", "onClick": "WC_BlindsWest($id);" }
+		
 	]
 }
