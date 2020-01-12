@@ -1355,7 +1355,7 @@ if (!defined('vtBoolean')) {
 			
 			$SystemIsDay = GetValue($this->ReadPropertyInteger("SystemIsDay")); // check if is day
 			
-			$SystemPresence = GetValue($this->ReadPropertyInteger("SystemPresence"))
+			$SystemPresence = GetValue($this->ReadPropertyInteger("SystemPresence"));
 			
 			if (empty ($SystemPresence)) {
 				$SystemPresence = 1;
