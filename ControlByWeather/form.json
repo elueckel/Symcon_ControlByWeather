@@ -175,7 +175,7 @@
 			"items": [
 					{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the marquee status is updated"},
 					{ "type": "CheckBox", "name": "MarqueeManagementActive", "caption": "Active"},
-					{ "type": "NumberSpinner", "name": "TimerControlMarquee", "caption": "How often should the status of the marquee be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+					{ "type": "NumberSpinner", "name": "TimerControlMarquee", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
 					{ "type": "Label", "label": "Area of where the marquee is being controlled in relation to the position of the sun" },
 					{ "type": "RowLayout",
 						"items": [
@@ -215,8 +215,6 @@
 							}
 						]
 					},
-					{ "type": "Label", "label": "If disabled summer threshold is used" },
-					{ "type": "CheckBox", "name": "MarqueeManagementUseAutomaticWinter", "caption": "Automatic Summer/Winter"},
 					{ "type": "NumberSpinner", "name": "MarqueeManagementWindSpeedMax", "caption": "Maximum Windspeed", "suffix": "max km/h until retract", "minimum": "0", "width": "30%"},
 					{ "type": "CheckBox", "name": "MarqueeManagementConsiderRain", "caption": "Consider Rain"}
 			]
@@ -231,7 +229,7 @@
 					"items": [
 							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the shutter status is updated"},
 							{ "type": "CheckBox", "name": "ShutterEastActive", "caption": "Activate"},
-							{ "type": "NumberSpinner", "name": "ShutterEastTimerControl", "caption": "How often should the status of the shutter be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "NumberSpinner", "name": "ShutterEastTimerControl", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
 							{ "type": "Label", "label": "Area of where the shutter is being controlled in relation to the position of the sun" },
 							{ "type": "RowLayout",
 								"items": [
@@ -268,9 +266,7 @@
 									}
 									
 								]
-							},
-							{ "type": "Label", "label": "If disabled summer thresholds are used" },
-							{ "type": "CheckBox", "name": "ShutterEastUseAutomaticWinter", "caption": "Automatic Summer/Winter"}
+							}
 						]
 					},
 					{
@@ -279,7 +275,7 @@
 					"items": [
 							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the shutter status is updated"},
 							{ "type": "CheckBox", "name": "ShutterSouthActive", "caption": "Activate"},
-							{ "type": "NumberSpinner", "name": "ShutterSouthTimerControl", "caption": "How often should the status of the shutter be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "NumberSpinner", "name": "ShutterSouthTimerControl", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
 							{ "type": "Label", "label": "Area of where the shutter is being controlled in relation to the position of the sun" },
 							{ "type": "RowLayout",
 								"items": [
@@ -316,9 +312,7 @@
 									}
 									
 								]
-							},
-							{ "type": "Label", "label": "If disabled summer thresholds are used" },
-							{ "type": "CheckBox", "name": "ShutterSouthUseAutomaticWinter", "caption": "Automatic Summer/Winter"}
+							}
 						]
 					},
 					{
@@ -327,7 +321,7 @@
 					"items": [
 							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the shutter status is updated"},
 							{ "type": "CheckBox", "name": "ShutterWestActive", "caption": "Activate"},
-							{ "type": "NumberSpinner", "name": "ShutterWestTimerControl", "caption": "How often should the status of the shutter be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "NumberSpinner", "name": "ShutterWestTimerControl", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
 							{ "type": "Label", "label": "Area of where the shutter is being controlled in relation to the position of the sun" },
 							{ "type": "RowLayout",
 								"items": [
@@ -364,9 +358,7 @@
 									}
 									
 								]
-							},
-							{ "type": "Label", "label": "If disabled summer thresholds are used" },
-							{ "type": "CheckBox", "name": "ShutterWestUseAutomaticWinter", "caption": "Automatic Summer/Winter"}
+							}
 						]
 					}	
 			]
@@ -377,7 +369,7 @@
 			"items": [
 					{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the window status is updated"},
 					{ "type": "CheckBox", "name": "WindowActive", "caption": "Activate"},
-					{ "type": "NumberSpinner", "name": "WindowTimerControl", "caption": "How often should the status of the windows be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+					{ "type": "NumberSpinner", "name": "WindowTimerControl", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
 					{ "type": "Label", "label": "Which windows should be controlled" },
 					{ "type": "RowLayout",
 						"items": [
