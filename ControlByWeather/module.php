@@ -893,7 +893,12 @@ if (!defined('vtBoolean')) {
 			//Check if Rainsensor should be used
 			//**********************************
 			
-			$RainSensor = GetValue($this->ReadPropertyInteger("RainSensor"));
+			if (empty($this->ReadPropertyInteger("RainSensor")) {
+				$RainSensor = 0;
+			}
+			else {
+				$RainSensor = GetValue($this->ReadPropertyInteger("RainSensor"));
+			}
 			$MarqueeManagementConsiderRain = $this->ReadPropertyBoolean("MarqueeManagementConsiderRain");
 			
 			if ($MarqueeManagementConsiderRain == 1){
