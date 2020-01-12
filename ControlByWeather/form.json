@@ -546,7 +546,6 @@
 		{ "type": "Button", "label": "Test Windows Wintergarden", "onClick": "WC_WindowWintergardenControl($id);" },
 		{ "type": "Button", "label": "Test shading of building East", "onClick": "WC_BlindsEast($id);" },
 		{ "type": "Button", "label": "Test shading of building South", "onClick": "WC_BlindsSouth($id);" },
-		{ "type": "Button", "label": "Test shading of building West", "onClick": "WC_BlindsWest($id);" }
-		
+		{ "type": "Button", "label": "Test shading of building West", "onClick": "WC_BlindsWest($id);" }	
 	]
 }
