@@ -230,32 +230,32 @@ if (!defined('vtBoolean')) {
 					IPS_SetVariableProfileAssociation("CBW.Blindposition", 0, $this->Translate("Open"), "", 0xffffff);
 					IPS_SetVariableProfileAssociation("CBW.Blindposition", 1, $this->Translate("Shaded"), "", 0xffffff);
 				}
-				/*
+				
 				if (IPS_VariableProfileExists("CBW.ShutterPosition") == false) {
 					IPS_CreateVariableProfile("CBW.ShutterPosition", 1);
 					IPS_SetVariableProfileIcon("CBW.ShutterPosition", "Shutter");
-					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 0, $this->Translate("Open"), "", "");
-					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 1, $this->Translate("Position 1"), "", "");
-					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 2, $this->Translate("Position 2"), "", "");
-					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 3, $this->Translate("Closed"), "", "");
-					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 9, $this->Translate("Frost/Sturm Position"), "", "");
+					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 0, $this->Translate("Open"), "", 0xffffff);
+					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 1, $this->Translate("Position 1"), "", 0xffffff);
+					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 2, $this->Translate("Position 2"), "", 0xffffff);
+					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 3, $this->Translate("Closed"), "", 0xffffff);
+					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 9, $this->Translate("Frost/Sturm Position"), "", 0xffffff);
 				}
 				
 				if (IPS_VariableProfileExists("CBW.Windows") == false) {
 					IPS_CreateVariableProfile("CBW.Windows", 1);
 					IPS_SetVariableProfileIcon("CBW.Windows", "Shutter");
-					IPS_SetVariableProfileAssociation("CBW.Windows", 0, $this->Translate("Closed"), "", "");
-					IPS_SetVariableProfileAssociation("CBW.Windows", 1, $this->Translate("Half Open"), "", "");
-					IPS_SetVariableProfileAssociation("CBW.Windows", 2, $this->Translate("Open"), "", "");
+					IPS_SetVariableProfileAssociation("CBW.Windows", 0, $this->Translate("Closed"), "", 0xffffff);
+					IPS_SetVariableProfileAssociation("CBW.Windows", 1, $this->Translate("Half Open"), "", 0xffffff);
+					IPS_SetVariableProfileAssociation("CBW.Windows", 2, $this->Translate("Open"), "", 0xffffff);
 				}
 				
 				if (IPS_VariableProfileExists("CBW.SunInArea") == false) {
 					IPS_CreateVariableProfile("CBW.SunInArea", 0);
 					IPS_SetVariableProfileIcon("CBW.SunInArea", "Sun");
-					IPS_SetVariableProfileAssociation("CBW.SunInArea", 0, $this->Translate("No"), "", "");
-					IPS_SetVariableProfileAssociation("CBW.SunInArea", 1, $this->Translate("Yes"), "", "");
+					IPS_SetVariableProfileAssociation("CBW.SunInArea", 0, $this->Translate("No"), "", 0xffffff);
+					IPS_SetVariableProfileAssociation("CBW.SunInArea", 1, $this->Translate("Yes"), "", 0xffffff);
 				}
-				*/
+				
 				
 				
 				
