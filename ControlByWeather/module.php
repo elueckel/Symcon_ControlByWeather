@@ -1355,11 +1355,11 @@ if (!defined('vtBoolean')) {
 			
 			$SystemIsDay = GetValue($this->ReadPropertyInteger("SystemIsDay")); // check if is day
 			
-			if (empty(GetValue($this->ReadPropertyInteger("SystemPresence")) {
+			if (empty(GetValue($this->ReadPropertyInteger("SystemPresence"))) {
 				$SystemPresence = 1;
 			}
 			else {
-				$SystemPresence = GetValue($this->ReadPropertyInteger("SystemPresence")); // check if somone is home
+				$SystemPresence = GetValue($this->ReadPropertyInteger("SystemPresence")); 
 			}
 						
 			//Was soll gesteuert werden - Fenster oben unten
