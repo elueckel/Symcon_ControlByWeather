@@ -1886,7 +1886,7 @@ if (!defined('vtBoolean')) {
 			}
 			elseif($BlindsWestManual == 1){
 					$this->SendDebug('Blinds Control West','Manually disabled',0);
-					SetValue($this->GetIDForIdent("BlindsWestDescision"), 'Manually disabled');
+					SetValue($this->GetIDForIdent("BlindsWestDescision"), $this->Translate('Manually disabled'));
 			}
 			
 		}
