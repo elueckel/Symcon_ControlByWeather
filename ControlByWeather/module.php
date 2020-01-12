@@ -255,8 +255,8 @@ if (!defined('vtBoolean')) {
 				$vpos = 10;
 				$this->RegisterVariableBoolean('AutoSeasonIsSummer', $this->Translate('Automatic season is Summer'));
 				$this->MaintainVariable('ManualSeason', $this->Translate('Manual Season'), vtString, "", $vpos++, $this->ReadPropertyBoolean("AutoSeason") == 0);
-				$this->MaintainVariable('StormVariable', $this->Translate('Storm Warning'), vtString, "", $vpos++, $this->ReadPropertyBoolean("ProvideStormVariable") == 1);
-				$this->MaintainVariable('FrostVariable', $this->Translate('Frost Warning'), vtString, "", $vpos++, $this->ReadPropertyBoolean("ProvideFrostVariable") == 1);
+				$this->MaintainVariable('StormVariable', $this->Translate('Storm Warning'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ProvideStormVariable") == 1);
+				$this->MaintainVariable('FrostVariable', $this->Translate('Frost Warning'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ProvideFrostVariable") == 1);
 				$this->MaintainVariable('HeavyRainVariable', $this->Translate('Heavy Rain Warning'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ProvideHeavyRainVariable") == 1);
 
 				$vpos = 100;
