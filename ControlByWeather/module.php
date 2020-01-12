@@ -227,10 +227,10 @@ if (!defined('vtBoolean')) {
 				if (IPS_VariableProfileExists("CBW.Blindposition") == false) {
 					IPS_CreateVariableProfile("CBW.Blindposition", 1);
 					IPS_SetVariableProfileIcon("CBW.Blindposition", "Shutter");
-					IPS_SetVariableProfileAssociation("CBW.Blindposition", 0, $this->Translate("Open"), "", -1);
-					IPS_SetVariableProfileAssociation("CBW.Blindposition", 1, $this->Translate("Shaded"), "", -1);
+					IPS_SetVariableProfileAssociation("CBW.Blindposition", 0, $this->Translate("Open"), "", ffffff);
+					IPS_SetVariableProfileAssociation("CBW.Blindposition", 1, $this->Translate("Shaded"), "", ffffff);
 				}
-				
+				/*
 				if (IPS_VariableProfileExists("CBW.ShutterPosition") == false) {
 					IPS_CreateVariableProfile("CBW.ShutterPosition", 1);
 					IPS_SetVariableProfileIcon("CBW.ShutterPosition", "Shutter");
@@ -255,7 +255,7 @@ if (!defined('vtBoolean')) {
 					IPS_SetVariableProfileAssociation("CBW.SunInArea", 0, $this->Translate("No"), "", "");
 					IPS_SetVariableProfileAssociation("CBW.SunInArea", 1, $this->Translate("Yes"), "", "");
 				}
-				
+				*/
 				
 				
 				
