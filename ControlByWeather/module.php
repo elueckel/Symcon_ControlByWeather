@@ -227,16 +227,35 @@ if (!defined('vtBoolean')) {
 				if (!IPS_VariableProfileExists("CBW.Blindposition")) {
 					IPS_CreateVariableProfile("CBW.Blindposition", 1);
 					IPS_SetVariableProfileIcon("CBW.Blindposition", "Shutter");
-					IPS_SetVariableProfileAssociation("CBW.Blindposition", 0, $this->Translate("Open"), "", 0x00FF00);
-					IPS_SetVariableProfileAssociation("CBW.Blindposition", 1, $this->Translate("Shaded"), "", 0xFF0000);
+					IPS_SetVariableProfileAssociation("CBW.Blindposition", 0, $this->Translate("Open"), "");
+					IPS_SetVariableProfileAssociation("CBW.Blindposition", 1, $this->Translate("Shaded"), "");
 				}
 				
-				if (!IPS_VariableProfileExists("CBW.Warning")) {
-					IPS_CreateVariableProfile("CBW.Warning", 0);
-					IPS_SetVariableProfileIcon("CBW.Warning", "Shutter");
-					IPS_SetVariableProfileAssociation("CBW.Warning", 0, $this->Translate("Open"), "", 0x00FF00);
-					IPS_SetVariableProfileAssociation("CBW.Warning", 1, $this->Translate("Shaded"), "", 0xFF0000);
+				if (!IPS_VariableProfileExists("CBW.ShutterPosition")) {
+					IPS_CreateVariableProfile("CBW.ShutterPosition", 1);
+					IPS_SetVariableProfileIcon("CBW.ShutterPosition", "Shutter");
+					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 0, $this->Translate("Open"), "");
+					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 1, $this->Translate("Position 1"), "");
+					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 2, $this->Translate("Position 2"), "");
+					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 3, $this->Translate("Closed"), "");
+					IPS_SetVariableProfileAssociation("CBW.ShutterPosition", 9, $this->Translate("Frost/Sturm Position"), "");
 				}
+				
+				if (!IPS_VariableProfileExists("CBW.Windows")) {
+					IPS_CreateVariableProfile("CBW.Windows", 1);
+					IPS_SetVariableProfileIcon("CBW.Windows", "Shutter");
+					IPS_SetVariableProfileAssociation("CBW.Windows", 0, $this->Translate("Closed"), "");
+					IPS_SetVariableProfileAssociation("CBW.Windows", 1, $this->Translate("Half Open"), "");
+					IPS_SetVariableProfileAssociation("CBW.Windows", 2, $this->Translate("Open"), "");
+				}
+				
+				if (!IPS_VariableProfileExists("CBW.SunInArea")) {
+					IPS_CreateVariableProfile("CBW.SunInArea", 0);
+					IPS_SetVariableProfileIcon("CBW.SunInArea", "Sun");
+					IPS_SetVariableProfileAssociation("CBW.SunInArea", 0, $this->Translate("Sun not in area"), "");
+					IPS_SetVariableProfileAssociation("CBW.SunInArea", 1, $this->Translate("Sun in area"), "");
+				}
+				
 				
 				
 				//Timer Update - if greater than 0 = On
@@ -277,52 +296,52 @@ if (!defined('vtBoolean')) {
 				$this->MaintainVariable('HeavyRainVariable', $this->Translate('Heavy Rain Warning'), vtBoolean, "~Alert", $vpos++, $this->ReadPropertyBoolean("ProvideHeavyRainVariable") == 1);
 
 				$vpos = 100;
-				$this->MaintainVariable('MarqueePosition', $this->Translate('Marquee Out'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("MarqueeManagementActive") == 1);
+				$this->MaintainVariable('MarqueePosition', $this->Translate('Marquee Out'), vtBoolean, "~ShutterMove", $vpos++, $this->ReadPropertyBoolean("MarqueeManagementActive") == 1);
 				$this->MaintainVariable('MarqueeDescision', $this->Translate('Marquee Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("MarqueeManagementActive") == 1);
-				$this->MaintainVariable('MarqueeManual', $this->Translate('Marquee Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("MarqueeManagementActive") == 1);
+				$this->MaintainVariable('MarqueeManual', $this->Translate('Marquee Manual'), vtBoolean, "~Switch", $vpos++, $this->ReadPropertyBoolean("MarqueeManagementActive") == 1);
 				
 				$vpos = 200;
-				$this->MaintainVariable('ShutterEastPosition', $this->Translate('Shutter East Position'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("ShutterEastActive") == 1);
-				$this->MaintainVariable('ShutterEastSun', $this->Translate('Shutter East Sun'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ShutterEastActive") == 1);
+				$this->MaintainVariable('ShutterEastPosition', $this->Translate('Shutter East Position'), vtInteger, "CBW.ShutterPosition", $vpos++, $this->ReadPropertyBoolean("ShutterEastActive") == 1);
+				$this->MaintainVariable('ShutterEastSun', $this->Translate('Shutter East Sun'), vtBoolean, "CBW.SunInArea", $vpos++, $this->ReadPropertyBoolean("ShutterEastActive") == 1);
 				$this->MaintainVariable('ShutterEastDescision', $this->Translate('Shutter East Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("ShutterEastActive") == 1);
-				$this->MaintainVariable('ShutterEastManual', $this->Translate('Shutter East Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ShutterEastActive") == 1);
+				$this->MaintainVariable('ShutterEastManual', $this->Translate('Shutter East Manual'), vtBoolean, "~Switch", $vpos++, $this->ReadPropertyBoolean("ShutterEastActive") == 1);
 				
 				$vpos = 210;
-				$this->MaintainVariable('ShutterSouthPosition', $this->Translate('Shutter South Position'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("ShutterSouthActive") == 1);
-				$this->MaintainVariable('ShutterSouthSun', $this->Translate('Shutter South Sun'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ShutterSouthActive") == 1);
+				$this->MaintainVariable('ShutterSouthPosition', $this->Translate('Shutter South Position'), vtInteger, "CBW.ShutterPosition", $vpos++, $this->ReadPropertyBoolean("ShutterSouthActive") == 1);
+				$this->MaintainVariable('ShutterSouthSun', $this->Translate('Shutter South Sun'), vtBoolean, "CBW.SunInArea", $vpos++, $this->ReadPropertyBoolean("ShutterSouthActive") == 1);
 				$this->MaintainVariable('ShutterSouthDescision', $this->Translate('Shutter South Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("ShutterSouthActive") == 1);
-				$this->MaintainVariable('ShutterSouthManual', $this->Translate('Shutter South Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ShutterSouthActive") == 1);
+				$this->MaintainVariable('ShutterSouthManual', $this->Translate('Shutter South Manual'), vtBoolean, "~Switch", $vpos++, $this->ReadPropertyBoolean("ShutterSouthActive") == 1);
 				
 				$vpos = 220;
-				$this->MaintainVariable('ShutterWestPosition', $this->Translate('Shutter West Position'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("ShutterWestActive") == 1);
-				$this->MaintainVariable('ShutterWestSun', $this->Translate('Shutter West Sun'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ShutterWestActive") == 1);
+				$this->MaintainVariable('ShutterWestPosition', $this->Translate('Shutter West Position'), vtInteger, "CBW.ShutterPosition", $vpos++, $this->ReadPropertyBoolean("ShutterWestActive") == 1);
+				$this->MaintainVariable('ShutterWestSun', $this->Translate('Shutter West Sun'), vtBoolean, "CBW.SunInArea", $vpos++, $this->ReadPropertyBoolean("ShutterWestActive") == 1);
 				$this->MaintainVariable('ShutterWestDescision', $this->Translate('Shutter West Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("ShutterWestActive") == 1);
-				$this->MaintainVariable('ShutterWestManual', $this->Translate('Shutter West Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ShutterWestActive") == 1);
+				$this->MaintainVariable('ShutterWestManual', $this->Translate('Shutter West Manual'), vtBoolean, "~Switch", $vpos++, $this->ReadPropertyBoolean("ShutterWestActive") == 1);
 				
 				$vpos = 300;
 				$this->MaintainVariable('WindowUpperOpenStatus', $this->Translate('Window Open Status Upper'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("WindowActive") == 1);
 				$this->MaintainVariable('WindowLowerOpenStatus', $this->Translate('Window Open Status Lower'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("WindowActive") == 1);
 				$this->MaintainVariable('WindowDescisionUpper', $this->Translate('Window Descision Upper'), vtString, "", $vpos++, $this->ReadPropertyBoolean("WindowActive") == 1);
 				$this->MaintainVariable('WindowDescisionLower', $this->Translate('Window Descision Lower'), vtString, "", $vpos++, $this->ReadPropertyBoolean("WindowActive") == 1);
-				$this->MaintainVariable('WindowWintergardenManual', $this->Translate('Window Wintergarden Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("WindowActive") == 1);
+				$this->MaintainVariable('WindowWintergardenManual', $this->Translate('Window Wintergarden Manual'), vtBoolean, "~Switch", $vpos++, $this->ReadPropertyBoolean("WindowActive") == 1);
 				
 				$vpos = 400;
-				$this->MaintainVariable('BlindsEastPosition', $this->Translate('Blinds East Position'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
-				$this->MaintainVariable('BlindsEastSun', $this->Translate('Blinds East Sun In Execution Area'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
+				$this->MaintainVariable('BlindsEastPosition', $this->Translate('Blinds East Position'), vtInteger, "CBW.Blindposition", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
+				$this->MaintainVariable('BlindsEastSun', $this->Translate('Blinds East Sun In Execution Area'), vtBoolean, "CBW.SunInArea", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
 				$this->MaintainVariable('BlindsEastDescision', $this->Translate('Blinds East Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
-				$this->MaintainVariable('BlindsEastManual', $this->Translate('Blinds East Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
+				$this->MaintainVariable('BlindsEastManual', $this->Translate('Blinds East Manual'), vtBoolean, "~Switch", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
 				
 				$vpos = 410;
-				$this->MaintainVariable('BlindsSouthPosition', $this->Translate('Blinds South Position'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("BlindsSouthActive") == 1);
-				$this->MaintainVariable('BlindsSouthSun', $this->Translate('Blinds South Sun'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsSouthActive") == 1);
+				$this->MaintainVariable('BlindsSouthPosition', $this->Translate('Blinds South Position'), vtInteger, "CBW.Blindposition", $vpos++, $this->ReadPropertyBoolean("BlindsSouthActive") == 1);
+				$this->MaintainVariable('BlindsSouthSun', $this->Translate('Blinds South Sun In Execution Area'), vtBoolean, "CBW.SunInArea", $vpos++, $this->ReadPropertyBoolean("BlindsSouthActive") == 1);
 				$this->MaintainVariable('BlindsSouthDescision', $this->Translate('Blinds South Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("BlindsSouthActive") == 1);
-				$this->MaintainVariable('BlindsSouthManual', $this->Translate('Blinds South Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsSouthActive") == 1);
+				$this->MaintainVariable('BlindsSouthManual', $this->Translate('Blinds South Manual'), vtBoolean, "~Switch", $vpos++, $this->ReadPropertyBoolean("BlindsSouthActive") == 1);
 				
 				$vpos = 420;
-				$this->MaintainVariable('BlindsWestPosition', $this->Translate('Blinds West Position'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("BlindsWestActive") == 1);
-				$this->MaintainVariable('BlindsWestSun', $this->Translate('Blinds West Sun'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsWestActive") == 1);
+				$this->MaintainVariable('BlindsWestPosition', $this->Translate('Blinds West Position'), vtInteger, "CBW.Blindposition", $vpos++, $this->ReadPropertyBoolean("BlindsWestActive") == 1);
+				$this->MaintainVariable('BlindsWestSun', $this->Translate('Blinds West Sun In Execution Area'), vtBoolean, "CBW.SunInArea", $vpos++, $this->ReadPropertyBoolean("BlindsWestActive") == 1);
 				$this->MaintainVariable('BlindsWestDescision', $this->Translate('Blinds West Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("BlindsWestActive") == 1);
-				$this->MaintainVariable('BlindsWestManual', $this->Translate('Blinds West Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsWestActive") == 1);
+				$this->MaintainVariable('BlindsWestManual', $this->Translate('Blinds West Manual'), vtBoolean, "~Switch", $vpos++, $this->ReadPropertyBoolean("BlindsWestActive") == 1);
 				
 				
 
