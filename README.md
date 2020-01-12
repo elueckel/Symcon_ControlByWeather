@@ -98,6 +98,7 @@ Version 1.1 (03.01.2020)
 Version 1.2 (12.01.2020)
 * Benachrichtigung bei Sturmböen, Frost und Starkregen
 * Eintrag ins bei Sturmböen, Frost und Starkregen
+* Frost und Sturm Warn Variablen sind jetzt Boolean
 * Steuerung von Rollläden an den Gebäudeseiten basierend auf der Helligkeit
 * Diverse Bugfixes vor allem bei dem Vergleichen von Werten
 
