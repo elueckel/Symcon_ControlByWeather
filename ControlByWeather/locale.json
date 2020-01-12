@@ -186,9 +186,9 @@
 			"Shaded": "Beschattet",
 			"Closed": "Geschlossen",
 			"Half Open": "Halb Offen",
-			"Sun not in area": "Sonne nicht in Auslösebereich",
-			"Sun in area": "Sonne in Auslösebereich",
-			"Notifications & Logging": "Benachrichtigungen und Logging"
+			"No": "Nein",
+			"Yes": "Ja",
+			"Notifications and Logging": "Benachrichtigungen und Logging"
 		}
 	}
 }

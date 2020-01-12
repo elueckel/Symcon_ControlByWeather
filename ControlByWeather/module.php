@@ -252,8 +252,8 @@ if (!defined('vtBoolean')) {
 				if (!IPS_VariableProfileExists("CBW.SunInArea")) {
 					IPS_CreateVariableProfile("CBW.SunInArea", 0);
 					IPS_SetVariableProfileIcon("CBW.SunInArea", "Sun");
-					IPS_SetVariableProfileAssociation("CBW.SunInArea", 0, $this->Translate("Sun not in area"), "");
-					IPS_SetVariableProfileAssociation("CBW.SunInArea", 1, $this->Translate("Sun in area"), "");
+					IPS_SetVariableProfileAssociation("CBW.SunInArea", 0, $this->Translate("No"), "");
+					IPS_SetVariableProfileAssociation("CBW.SunInArea", 1, $this->Translate("Yes"), "");
 				}
 				
 				
@@ -289,7 +289,7 @@ if (!defined('vtBoolean')) {
 
 
 				$vpos = 10;
-				$this->RegisterVariableBoolean('AutoSeasonIsSummer', $this->Translate('Automatic season is Summer'));
+				$this->RegisterVariableBoolean('AutoSeasonIsSummer', $this->Translate('Automatic season is Summer'), "CBW.SunInArea");
 				$this->MaintainVariable('ManualSeason', $this->Translate('Manual Season'), vtString, "", $vpos++, $this->ReadPropertyBoolean("AutoSeason") == 0);
 				$this->MaintainVariable('StormVariable', $this->Translate('Storm Warning'), vtBoolean, "~Alert", $vpos++, $this->ReadPropertyBoolean("ProvideStormVariable") == 1);
 				$this->MaintainVariable('FrostVariable', $this->Translate('Frost Warning'), vtBoolean, "~Alert", $vpos++, $this->ReadPropertyBoolean("ProvideFrostVariable") == 1);
