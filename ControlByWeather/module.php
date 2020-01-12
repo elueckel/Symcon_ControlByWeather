@@ -959,8 +959,8 @@ if (!defined('vtBoolean')) {
 				}
 			}
 			elseif($MarqueeManagementManual == 1){
-					$this->SendDebug('Marquee Control','Manually disabled',0);
-					SetValue($this->GetIDForIdent("MarqueeDescision"), 'Manually disabled');
+					$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('Manually disabled'),0);
+					SetValue($this->GetIDForIdent("MarqueeDescision"), $this->Translate('Manually disabled'));
 			}
 		
 		}
