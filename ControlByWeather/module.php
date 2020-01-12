@@ -289,7 +289,7 @@ if (!defined('vtBoolean')) {
 
 
 				$vpos = 10;
-				$this->RegisterVariableBoolean('AutoSeasonIsSummer', $this->Translate('Automatic season is Summer'), "CBW.SunInArea");
+				$this->RegisterVariableBoolean('AutoSeasonIsSummer', $this->Translate('Automatic season is Summer'),"", "CBW.SunInArea");
 				$this->MaintainVariable('ManualSeason', $this->Translate('Manual Season'), vtString, "", $vpos++, $this->ReadPropertyBoolean("AutoSeason") == 0);
 				$this->MaintainVariable('StormVariable', $this->Translate('Storm Warning'), vtBoolean, "~Alert", $vpos++, $this->ReadPropertyBoolean("ProvideStormVariable") == 1);
 				$this->MaintainVariable('FrostVariable', $this->Translate('Frost Warning'), vtBoolean, "~Alert", $vpos++, $this->ReadPropertyBoolean("ProvideFrostVariable") == 1);
@@ -319,8 +319,8 @@ if (!defined('vtBoolean')) {
 				$this->MaintainVariable('ShutterWestManual', $this->Translate('Shutter West Manual'), vtBoolean, "~Switch", $vpos++, $this->ReadPropertyBoolean("ShutterWestActive") == 1);
 				
 				$vpos = 300;
-				$this->MaintainVariable('WindowUpperOpenStatus', $this->Translate('Window Open Status Upper'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("WindowActive") == 1);
-				$this->MaintainVariable('WindowLowerOpenStatus', $this->Translate('Window Open Status Lower'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("WindowActive") == 1);
+				$this->MaintainVariable('WindowUpperOpenStatus', $this->Translate('Window Open Status Upper'), vtInteger, "CBW.Windows", $vpos++, $this->ReadPropertyBoolean("WindowActive") == 1);
+				$this->MaintainVariable('WindowLowerOpenStatus', $this->Translate('Window Open Status Lower'), vtInteger, "CBW.Windows", $vpos++, $this->ReadPropertyBoolean("WindowActive") == 1);
 				$this->MaintainVariable('WindowDescisionUpper', $this->Translate('Window Descision Upper'), vtString, "", $vpos++, $this->ReadPropertyBoolean("WindowActive") == 1);
 				$this->MaintainVariable('WindowDescisionLower', $this->Translate('Window Descision Lower'), vtString, "", $vpos++, $this->ReadPropertyBoolean("WindowActive") == 1);
 				$this->MaintainVariable('WindowWintergardenManual', $this->Translate('Window Wintergarden Manual'), vtBoolean, "~Switch", $vpos++, $this->ReadPropertyBoolean("WindowActive") == 1);
