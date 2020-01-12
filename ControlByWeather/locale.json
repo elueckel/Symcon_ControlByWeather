@@ -169,7 +169,26 @@
 			"Frequency of update - 0 is off": "Frequenz der Aktualisierung - 0 = Aus",
 			"Light intensity to provide shading": "Helligkeit ab der beschattet werden soll",
 			"Activate sets the component active, while the time will set how often the blinds status is updated": "Aktivieren erstellt die Variablen für die Steuerung, während die Frequenz die Häufigkeit der Aktualisierung festlegt",
-			"Area of where the blinds is being controlled in relation to the position of the sun": "Zone in der die Steuern aktiv ist"
+			"Area of where the blinds is being controlled in relation to the position of the sun": "Zone in der die Steuern aktiv ist",
+			"Blinds East Position": "Rollläden Osten Position",
+			"Blinds East Sun In Execution Area": "Rollläden Osten in Auslösebereich",
+			"Blinds East Descision": "Rollläden Osten Entscheidung",
+			"Blinds East Manual": "Rollläden Osten Manuell",
+			"Blinds South Position": "Rollläden Süden Position",
+			"Blinds South Sun In Execution Area": "Rollläden Süden in Auslösebereich",
+			"Blinds South Descision": "Rollläden Süden Entscheidung",
+			"Blinds South Manual": "Rollläden Westen Manuell",
+			"Blinds West Position": "Rollläden Westen Position",
+			"Blinds West Sun In Execution Area": "Rollläden Westen in Auslösebereich",
+			"Blinds West Descision": "Rollläden Westen Entscheidung",
+			"Blinds West Manual": "Rollläden Westen Manuell",
+			"Open": "Offen",
+			"Shaded": "Beschattet",
+			"Closed": "Geschlossen",
+			"Half Open": "Halb Offen",
+			"Sun not in area": "Sonne nicht in Auslösebereich",
+			"Sun in area": "Sonne in Auslösebereich",
+			"Notifications & Logging": "Benachrichtigungen und Logging"
 		}
 	}
 }

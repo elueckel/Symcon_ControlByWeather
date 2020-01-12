@@ -222,7 +222,24 @@ if (!defined('vtBoolean')) {
 			//Never delete this line!
 
 			parent::ApplyChanges();
-		        //Timer Update - if greater than 0 = On
+		        
+				//Var Profile Creation
+				if (!IPS_VariableProfileExists("CBW.Blindposition")) {
+					IPS_CreateVariableProfile("CBW.Blindposition", 1);
+					IPS_SetVariableProfileIcon("CBW.Blindposition", "Shutter");
+					IPS_SetVariableProfileAssociation("CBW.Blindposition", 0, $this->Translate("Open"), "", 0x00FF00);
+					IPS_SetVariableProfileAssociation("CBW.Blindposition", 1, $this->Translate("Shaded"), "", 0xFF0000);
+				}
+				
+				if (!IPS_VariableProfileExists("CBW.Warning")) {
+					IPS_CreateVariableProfile("CBW.Warning", 0);
+					IPS_SetVariableProfileIcon("CBW.Warning", "Shutter");
+					IPS_SetVariableProfileAssociation("CBW.Warning", 0, $this->Translate("Open"), "", 0x00FF00);
+					IPS_SetVariableProfileAssociation("CBW.Warning", 1, $this->Translate("Shaded"), "", 0xFF0000);
+				}
+				
+				
+				//Timer Update - if greater than 0 = On
 
 				$TimerMS = $this->ReadPropertyInteger("Timer") * 1000;
 				$this->SetTimerInterval("CBWDataPreparation",$TimerMS);
@@ -255,9 +272,9 @@ if (!defined('vtBoolean')) {
 				$vpos = 10;
 				$this->RegisterVariableBoolean('AutoSeasonIsSummer', $this->Translate('Automatic season is Summer'));
 				$this->MaintainVariable('ManualSeason', $this->Translate('Manual Season'), vtString, "", $vpos++, $this->ReadPropertyBoolean("AutoSeason") == 0);
-				$this->MaintainVariable('StormVariable', $this->Translate('Storm Warning'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ProvideStormVariable") == 1);
-				$this->MaintainVariable('FrostVariable', $this->Translate('Frost Warning'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ProvideFrostVariable") == 1);
-				$this->MaintainVariable('HeavyRainVariable', $this->Translate('Heavy Rain Warning'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("ProvideHeavyRainVariable") == 1);
+				$this->MaintainVariable('StormVariable', $this->Translate('Storm Warning'), vtBoolean, "~Alert", $vpos++, $this->ReadPropertyBoolean("ProvideStormVariable") == 1);
+				$this->MaintainVariable('FrostVariable', $this->Translate('Frost Warning'), vtBoolean, "~Alert", $vpos++, $this->ReadPropertyBoolean("ProvideFrostVariable") == 1);
+				$this->MaintainVariable('HeavyRainVariable', $this->Translate('Heavy Rain Warning'), vtBoolean, "~Alert", $vpos++, $this->ReadPropertyBoolean("ProvideHeavyRainVariable") == 1);
 
 				$vpos = 100;
 				$this->MaintainVariable('MarqueePosition', $this->Translate('Marquee Out'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("MarqueeManagementActive") == 1);
@@ -291,7 +308,7 @@ if (!defined('vtBoolean')) {
 				
 				$vpos = 400;
 				$this->MaintainVariable('BlindsEastPosition', $this->Translate('Blinds East Position'), vtInteger, "", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
-				$this->MaintainVariable('BlindsEastSun', $this->Translate('Blinds East Sun'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
+				$this->MaintainVariable('BlindsEastSun', $this->Translate('Blinds East Sun In Execution Area'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
 				$this->MaintainVariable('BlindsEastDescision', $this->Translate('Blinds East Descision'), vtString, "", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
 				$this->MaintainVariable('BlindsEastManual', $this->Translate('Blinds East Manual'), vtBoolean, "", $vpos++, $this->ReadPropertyBoolean("BlindsEastActive") == 1);
 				
