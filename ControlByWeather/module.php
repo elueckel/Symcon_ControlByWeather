@@ -1354,8 +1354,13 @@ if (!defined('vtBoolean')) {
 			$WindowWintergardenOutsideTemperature = GetValue($this->ReadPropertyInteger("OutsideTemperature")); // check against outside
 			
 			$SystemIsDay = GetValue($this->ReadPropertyInteger("SystemIsDay")); // check if is day
-			$SystemPresence = GetValue($this->ReadPropertyInteger("SystemPresence")); // check if somone is home
 			
+			if (empty(GetValue($this->ReadPropertyInteger("SystemPresence")) {
+				$SystemPresence = 1;
+			}
+			else {
+				$SystemPresence = GetValue($this->ReadPropertyInteger("SystemPresence")); // check if somone is home
+			}
 						
 			//Was soll gesteuert werden - Fenster oben unten
 			$WindowWintergardenControlUpperWindows = $this->ReadPropertyBoolean("WindowWintergardenControlUpperWindows");
