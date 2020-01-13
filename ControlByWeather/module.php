@@ -922,7 +922,7 @@ if (!defined('vtBoolean')) {
 								if ($MarqueeManagementAzimutBegin <= $System_Azimuth AND $System_Azimuth <= $MarqueeManagementAzimutEnd AND $MarqueeManagementElevation <= $System_Elevation) {
 									$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('Move out - all parameters in range'),0);
 									SetValue($this->GetIDForIdent("MarqueePosition"), 1);
-									SetValue($this->GetIDForIdent("MarqueeDescision"), $this->Translate('Marquee out');
+									SetValue($this->GetIDForIdent("MarqueeDescision"), $this->Translate('Marquee out'));
 								}
 								else{
 									$SunPositionBlock = "Sun not in right area";
