@@ -872,7 +872,7 @@ if (!defined('vtBoolean')) {
 					$Marquee_Move_Out = 0;
 					$Marquee_Move_Out_Reason = $this->Translate('Sun did not surpas threshold for winter');
 					$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('Sun did not surpas threshold for winter'),0);
-					SetValue($this->GetIDForIdent("MarqueeDescision"), $this->Translate('Sun did not surpas threshold for winter');
+					SetValue($this->GetIDForIdent("MarqueeDescision"), $this->Translate('Sun did not surpas threshold for winter'));
 				}
 			}
 			elseif ($SeasonIsSummer == 1)	{
@@ -885,7 +885,7 @@ if (!defined('vtBoolean')) {
 					$Marquee_Move_Out = 0;
 					$Marquee_Move_Out_Reason = $this->Translate('Sun did not surpas threshold for summer');
 					$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('Sun did not surpas threshold for summer'),0);
-					SetValue($this->GetIDForIdent("MarqueeDescision"), $this->Translate('Sun did not surpas threshold for summer');
+					SetValue($this->GetIDForIdent("MarqueeDescision"), $this->Translate('Sun did not surpas threshold for summer'));
 				}
 			}
 			
