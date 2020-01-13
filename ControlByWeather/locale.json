@@ -190,7 +190,14 @@
 			"Yes": "Ja",
 			"Notifications and Logging": "Benachrichtigungen und Logging",
 			"Manually disabled": "Manuell Deaktiviert",
-			"Marquee Control": "Markiesen Steuerung"
+			"Marquee Control": "Markiesen Steuerung",
+			"Blinds Control East": "Rollladen Steuerung Ost",
+			"Blinds Control South": "Rollladen Steuerung Süd",
+			"Blinds Control West": "Rollladen Steuerung West",
+			"Data Preperation": "Daten Aufbereitung",
+			"Auto Season is summer ": "Auto Saison Sommer gesetzt ",
+			"Auto Season is not used - Summer Value for Lux threshold is used": "Automatische Saison wird nicht genutzt - Werte für Sommer werden verwendet",
+			
 		}
 	}
 }
