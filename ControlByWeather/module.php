@@ -379,7 +379,7 @@ if (!defined('vtBoolean')) {
 				}
 			}
 			elseif ($AutoSeason == 0)	{
-				SetValue($this->GetIDForIdent("ManualSeason"), (string)"To be changed");
+				//SetValue($this->GetIDForIdent("ManualSeason"), (string)"To be changed");
 				$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Auto Season is not used - Summer Value for Lux threshold is used'),0);
 				$SeasonIsSummer = 1;
 			}	
@@ -394,12 +394,12 @@ if (!defined('vtBoolean')) {
 			if ($WindConversion == "ms") {
 				$WindspeedKMH = $WindSpeed * 3.6;
 				$this->SetBuffer("WindspeedKMH", $WindspeedKMH);
-				$this->SendDebug($this->Translate('Data Preperation'),'Wind converted from '.$WindSpeed.' m/s to '.$WindspeedKMH.' km/h',0);				
+				$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Wind converted from ').$WindSpeed.$this->Translate(' m/s to ').$WindspeedKMH.' km/h',0);				
 			}
 			elseif ($WindConversion == "kmh"){
 				$WindspeedKMH = $WindSpeed;
 				$this->SetBuffer("WindspeedKMH", $WindspeedKMH);
-				$this->SendDebug($this->Translate('Data Preperation'),'Wind - no conversion needed'.$WindspeedKMH.' km/h',0);
+				$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Wind - no conversion needed ').$WindspeedKMH.' km/h',0);
 			}
 			
 			//in case storm protection is activated values get configured here
@@ -411,12 +411,12 @@ if (!defined('vtBoolean')) {
 				if ($WindConversion == "ms") {
 					$StormProtectionGustKMH = $WindGust * 3.6;
 					$this->SetBuffer("StormProtectionGustKMH", $StormProtectionGustKMH);
-					$this->SendDebug($this->Translate('Data Preperation'),'Wind converted from '.$WindGust.' m/s to '.$StormProtectionGustKMH.' km/h',0);				
+					$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Wind converted from ').$WindGust.$this->Translate(' m/s to ').$StormProtectionGustKMH.' km/h',0);				
 				}
 				elseif ($WindConversion == "kmh"){
 					$StormProtectionGustKMH = $WindGust;
 					$this->SetBuffer("StormProtectionGustKMH", $StormProtectionGustKMH);
-					$this->SendDebug($this->Translate('Data Preperation'),'Wind - no conversion needed'.$StormProtectionGustKMH.' km/h',0);
+					$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Wind - no conversion needed ').$StormProtectionGustKMH.' km/h',0);
 				}
 			}
 			
@@ -467,7 +467,7 @@ if (!defined('vtBoolean')) {
 												
 					}
 					if ($WriteToLog == 1 AND $StormLogging == 0){
-						IPS_LogMessage("Control by Weather", "Starke Sturmböen wurden erkannt ".$StormProtectionGust." km/h");
+						IPS_LogMessage("Control by Weather", $this->Translate('Strong gusts were detected ').$StormProtectionGust." km/h");
 						$StormLogging = 1;
 						$this->SetBuffer("StormLogging", 1);
 												
@@ -497,17 +497,17 @@ if (!defined('vtBoolean')) {
 							}
 							if ($anzahl > 1) {
 								$GustDelayRaw = $summe / $anzahl;
-								$this->SendDebug($this->Translate('Data Preperation'),'Gust delayed value for 5 minutes - Records collected from archive '.$anzahl.', totaling '.$summe.', calculated average '.$GustDelayRaw,0);
+								$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Gust delayed value for 5 minutes - Records collected from archive ').$anzahl.$this->Translate(', totaling ').$summe.$this->Translate(', calculated average ').$GustDelayRaw,0);
 								
 								$WindConversion = $this->ReadPropertyString("WindConversion");
 								//check on kmh or m/s and convert
 								if ($WindConversion == "ms") {
 									$StormProtectionGustKMH = $GustDelayRaw * 3.6;
 									$this->SetBuffer("StormProtectionGustKMH", $StormProtectionGustKMH);
-									$this->SendDebug($this->Translate('Data Preperation'),'Gusts converted from '.$GustDelayRaw.' m/s to '.$StormProtectionGustKMH.' km/h',0);
+									$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Gusts converted from ').$GustDelayRaw.$this->Translate(' m/s to ').$StormProtectionGustKMH.' km/h',0);
 									// check if storm is still there
 									if ($StormProtectionThreshold < $StormProtectionGustKMH) {
-										$this->SendDebug("StormProtection","++++++++ Storm protection uses archived value found storm", 0);
+										$this->SendDebug($this->Translate('Storm Protection'),$this->Translate('++++++++ Storm protection uses archived value found storm'), 0);
 										$StormProtectionActive = 1;
 										SetValue($this->GetIDForIdent("StormVariable"), 1);
 										$this->SetBuffer("StormProtectionActive", $StormProtectionActive);
@@ -521,7 +521,7 @@ if (!defined('vtBoolean')) {
 									$this->SendDebug($this->Translate('Data Preperation'),'Gusts - no conversion needed'.$StormProtectionGustKMH.' km/h',0);
 									// check if storm is still there
 									if ($StormProtectionThreshold < $StormProtectionGustKMH) {
-										$this->SendDebug("StormProtection","++++++++ Storm protection uses archived value found storm", 0);
+										$this->SendDebug($this->Translate('Storm Protection'),$this->Translate('++++++++ Storm protection uses archived value found storm'), 0);
 										$StormProtectionActive = 1;
 										SetValue($this->GetIDForIdent("StormVariable"), 1);
 										$this->SetBuffer("StormProtectionActive", $StormProtectionActive);
@@ -535,7 +535,7 @@ if (!defined('vtBoolean')) {
 							}
 						}
 						elseif ($StormVariableUseArchived == 0){
-							$this->SendDebug("StormProtection","+++++++++++ Storm control using not archived value and found storm", 0);
+							$this->SendDebug($this->Translate('Storm Protection'),$this->Translate('+++++++++++ Storm control using current value and found storm'), 0);
 							$StormProtectionActive = 1;
 							SetValue($this->GetIDForIdent("StormVariable"), 1);
 							$this->SetBuffer("StormProtectionActive", $StormProtectionActive);
@@ -545,7 +545,7 @@ if (!defined('vtBoolean')) {
 					}
 				}
 				elseif ($StormProtectionThreshold > $StormProtectionGust AND $StormProtectionActive <> 1) {
-					$this->SendDebug("StormProtection","++++++++++++++++++ No Storm detected and no current lock", 0);
+					$this->SendDebug($this->Translate('Storm Protection'),$this->Translate('++++++++++++++++++ No Storm detected and no current lock'), 0);
 					$StormProtectionActive = 0;
 					if ($ProvideStormVariable == 1){
 						SetValue($this->GetIDForIdent("StormVariable"), $StormProtectionActive);
@@ -555,7 +555,7 @@ if (!defined('vtBoolean')) {
 					$this->SetTimerInterval("CBWStormCooldown",$StormProtectionMS);	
 				}
 				elseif ($StormProtectionThreshold > $StormProtectionGust AND $StormProtectionActive == 1) {
-					$this->SendDebug("StormProtection","++++++++++++++++++ current lock", 0);
+					$this->SendDebug($this->Translate('Storm Protection'),$this->Translate('++++++++++++++++++ current lock'), 0);
 				}
 			}
 
@@ -568,12 +568,12 @@ if (!defined('vtBoolean')) {
 			if ($RadiationConversion == "Watt")	{
 				$SolarRadiationLuxCurrent = $SolarRadiation * 0.13 * 1000;
 				$this->SetBuffer("SolarRadiationLuxCurrent", $SolarRadiationLuxCurrent);
-				$this->SendDebug($this->Translate('Data Preperation'),'Light (Solarradiation) converted from '.$SolarRadiation.' watt to '.$SolarRadiationLuxCurrent.' lux',0);
+				$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Light (Solarradiation) converted from ').$SolarRadiation.$this->Translate(' watt to ').$SolarRadiationLuxCurrent.$this->Translate(' lux'),0);
 			}
 			elseif ($RadiationConversion == "Lux") {
 				$SolarRadiationLuxCurrent = $SolarRadiation;
 				$this->SetBuffer("SolarRadiationLuxCurrent", $SolarRadiationLuxCurrent);
-				$this->SendDebug($this->Translate('Data Preperation'),'Light (Solarradiation) no conversion needed '.$SolarRadiationLuxCurrent.' lux',0);
+				$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Light (Solarradiation) no conversion needed ').$SolarRadiationLuxCurrent.' lux',0);
 			}
 
 
@@ -604,16 +604,16 @@ if (!defined('vtBoolean')) {
 					if ($RadiationConversion == "Watt")	{
 						$SolarRadiationLuxDelayLux1 = $SolarRadiationCalculatedDelayRaw * 0.13 * 1000;
 						$this->SetBuffer("SolarRadiationLuxDelayLux1", $SolarRadiationLuxDelayLux1);
-						$this->SendDebug($this->Translate('Data Preperation'),'Solarradiation Archive 1 - Value converted from '.$SolarRadiationCalculatedDelayRaw.' watt to '.$SolarRadiationLuxDelayLux1.' lux',0);
+						$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Solarradiation Archive 1 - Value converted from ').$SolarRadiationCalculatedDelayRaw.$this->Translate(' watt to ').$SolarRadiationLuxDelayLux1.$this->Translate(' lux'),0);
 					}
 					elseif ($RadiationConversion == "Lux") {
 						$SolarRadiationLuxDelayLux1 = $SolarRadiationCalculatedDelayRaw;
 						$this->SetBuffer("SolarRadiationLuxDelayLux1", $SolarRadiationLuxDelayLux1);
-						$this->SendDebug($this->Translate('Data Preperation'),'Solarradiation Archive 1 - No conversion needed'.$SolarRadiationLuxDelayLux1.' Lux',0);
+						$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Solarradiation Archive 1 - No conversion needed').$SolarRadiationLuxDelayLux1.$this->Translate(' Lux'),0);
 					}
 				}
 				else {
-				$this->SendDebug($this->Translate('Data Preperation'),'Light (Solarradiation) - It seems no archive data is available for solar radiation - Average not calculated',1);
+				$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Light (Solarradiation) - It seems no archive data is available for solar radiation - Average not calculated'),1);
 				}
 			}
 			else {
@@ -640,7 +640,7 @@ if (!defined('vtBoolean')) {
 				if (($OutsideTemperature <= 1) AND ($Humidity > $HumidityThreshold)) {
 					$FrostActive = 1;
 					$this->SetBuffer("FrostActive", $FrostActive);
-					$this->SendDebug("Data Preperation","Frost Protection - frost detected and warning set / Outside Temperature ".$OutsideTemperature." / Humidity ".$Humidity." / Threshold ".$HumidityThreshold, 0);
+					$this->SendDebug("Data Preperation",$this->Translate('Frost Protection - frost detected and warning set / Outside Temperature ').$OutsideTemperature.$this->Translate(' / Humidity ').$Humidity.$this->Translate(' / Threshold ').$HumidityThreshold, 0);
 					if ($ProvideFrostVariable == 1){
 						SetValue($this->GetIDForIdent("FrostVariable"), 1);
 					}
@@ -662,7 +662,7 @@ if (!defined('vtBoolean')) {
 				elseif (($OutsideTemperature > 0) OR (($OutsideTemperature <= 1) AND ($Humidity <= $HumidityThreshold))) {
 					$FrostActive = 0;
 					$this->SetBuffer("FrostActive", $FrostActive);
-					$this->SendDebug("Data Preperation","Frost Protection - no frost / Outside Temperature ".$OutsideTemperature." / Humidity ".$Humidity." / Threshold ".$HumidityThreshold, 0);
+					$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Frost Protection - no frost / Outside Temperature ').$OutsideTemperature." / Humidity ".$Humidity." / Threshold ".$HumidityThreshold, 0);
 					if ($ProvideFrostVariable == 1){
 						SetValue($this->GetIDForIdent("FrostVariable"), 0);
 					}
@@ -708,7 +708,7 @@ if (!defined('vtBoolean')) {
 				if (($RainIntensity > $RainIntensityThreshold)) {
 					$HeavyRainDetected = 1;
 					$this->SetBuffer("HeavyRainProtectionActive", $HeavyRainDetected);
-					$this->SendDebug("Data Preperation","Heavy Rain Protection - Detected, raining with ".$RainIntensity." l/m", 0);
+					$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Heavy Rain Protection - Detected, raining with ').$RainIntensity.' l/m', 0);
 					if ($ProvideHeavyRainVariable == 1){
 						SetValue($this->GetIDForIdent("HeavyRainVariable"), 1);
 					}
@@ -730,7 +730,7 @@ if (!defined('vtBoolean')) {
 				elseif ($RainIntensity <= $RainIntensityThreshold) {
 					$HeavyRainDetected = 0;
 					$this->SetBuffer("HeavyRainProtectionActive", $HeavyRainDetected);
-					$this->SendDebug("Data Preperation","Heavy Rain Protection - Nothing detected", 0);
+					$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Heavy Rain Protection - Nothing detected'), 0);
 					if ($ProvideHeavyRainVariable == 1){
 						SetValue($this->GetIDForIdent("HeavyRainVariable"), 0);
 					}
@@ -766,7 +766,7 @@ if (!defined('vtBoolean')) {
 		public function StormCooldown()
 		{
 			// function to wait until storm is over
-			$this->SendDebug("StormProtection","+++ Storm control was disabled", 0);
+			$this->SendDebug($this->Translate('StormProtection'),$this->Translate('+++ Storm protection was disabled'), 0);
 			$this->SetTimerInterval("CBWStormCooldown",0);
 			$StormProtectionActive = 0;
 			$this->SetBuffer("StormProtectionActive", $StormProtectionActive);
@@ -811,7 +811,7 @@ if (!defined('vtBoolean')) {
 		public function ControlMarquee()
 		{
 			
-			$this->SendDebug('Marquee Control','*************************** Marquee Control Begin ***************************',0);
+			$this->SendDebug($this->Translate('Marquee Control'),'*************************** Marquee Control Begin ***************************',0);
 			
 			$SeasonIsSummer = $this->GetBuffer("SeasonIsSummer");
 			$SolarRadiationLuxCurrent = $this->GetBuffer("SolarRadiationLuxCurrent");
@@ -832,7 +832,7 @@ if (!defined('vtBoolean')) {
 			$MarqueeManagementMoveInHystereseFactor = $this->ReadPropertyFloat("MarqueeManagementMoveInFactorHysterese");
 			$MarqueeManagementMoveOutHystereseFactor = $this->ReadPropertyFloat("MarqueeManagementMoveOutFactorHysterese");
 			
-			$this->SendDebug('Marquee Control','Location Settings: System Azi '.$System_Azimuth.' / Begin '.$MarqueeManagementAzimutBegin.' / End '.$MarqueeManagementAzimutEnd.' Elevation'.$System_Elevation.' Elevation '.$MarqueeManagementElevation,0);			
+			$this->SendDebug($this->Translate('Marquee Control'),'Location Settings: System Azi '.$System_Azimuth.' / Begin '.$MarqueeManagementAzimutBegin.' / End '.$MarqueeManagementAzimutEnd.' Elevation'.$System_Elevation.' Elevation '.$MarqueeManagementElevation,0);			
 			
 			$MarqueeManagementManual = GetValue($this->GetIDForIdent("MarqueeManual"));
 			//$this->SendDebug('Marquee Control ','Manual Override '.$MarqueeManagementManual,0);
@@ -865,27 +865,27 @@ if (!defined('vtBoolean')) {
 			if ($SeasonIsSummer == 0)	{
 				if ($SolarRadiationLuxCurrent >= $MarqueeManagementSolarRadiationWinterThreshold)	{
 					$Marquee_Move_Out = 1;
-					$Marquee_Move_Out_Reason = "Sun surpased threshold for winter";
-					$this->SendDebug('Marquee Control','Sun surpased threshold for winter',0);
+					$Marquee_Move_Out_Reason = $this->Translate('Sun surpased threshold for winter');
+					$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('Sun surpased threshold for winter'),0);
 				}
 				elseif ($SolarRadiationLuxCurrent < $MarqueeManagementSolarRadiationWinterThreshold) {
 					$Marquee_Move_Out = 0;
-					$Marquee_Move_Out_Reason = "Sun did not surpas threshold for winter";
-					$this->SendDebug('Marquee Control ','Sun did not surpas threshold for winter',0);
-					SetValue($this->GetIDForIdent("MarqueeDescision"), 'Sun threshold not reached - no shading needed');
+					$Marquee_Move_Out_Reason = $this->Translate('Sun did not surpas threshold for winter');
+					$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('Sun did not surpas threshold for winter',0);
+					SetValue($this->GetIDForIdent("MarqueeDescision"), $this->Translate('Sun did not surpas threshold for winter');
 				}
 			}
 			elseif ($SeasonIsSummer == 1)	{
 				if ($SolarRadiationDecisionValueIn >= $MarqueeManagementSolarRadiationSummerThreshold)	{
 					$Marquee_Move_Out = 1;
-					$Marquee_Move_Out_Reason = "Sun surpased threshold for summer";
-					$this->SendDebug('Marquee Control','Sun surpased threshold for winter',0);
+					$Marquee_Move_Out_Reason = $this->Translate('Sun surpased threshold for summer');
+					$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('Sun surpased threshold for summer'),0);
 				}
 				ElseIf ($SolarRadiationDecisionValueIn < $MarqueeManagementSolarRadiationSummerThreshold) {
 					$Marquee_Move_Out = 0;
-					$Marquee_Move_Out_Reason = "Sun did not surpas threshold for summer";
-					$this->SendDebug('Marquee Control ','Sun did not surpas threshold for summer',0);
-					SetValue($this->GetIDForIdent("MarqueeDescision"), 'Sun threshold not reached - no shading needed');
+					$Marquee_Move_Out_Reason = $this->Translate('Sun did not surpas threshold for summer');
+					$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('Sun did not surpas threshold for summer'),0);
+					SetValue($this->GetIDForIdent("MarqueeDescision"), $this->Translate('Sun did not surpas threshold for summer');
 				}
 			}
 			
@@ -914,47 +914,47 @@ if (!defined('vtBoolean')) {
 			if ($MarqueeManagementManual == 0) {
 				if ($Marquee_Move_Out == 1) {
 					if ($StormProtectionActive == 0) {
-						$this->SendDebug('Marquee Control','OK - No Storm',0);
+						$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('OK - No Storm'),0);
 						if ($MarqueeRainBlock == 0){
-							$this->SendDebug('Marquee Control','OK - No Rain',0);
+							$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('OK - No Rain'),0);
 							if ($WindspeedKMH < $MarqueeManagementWindSpeedMax) {
-								$this->SendDebug('Marquee Control','OK - Wind below Threshold',0);
+								$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('OK - Wind below Threshold'),0);
 								if ($MarqueeManagementAzimutBegin <= $System_Azimuth AND $System_Azimuth <= $MarqueeManagementAzimutEnd AND $MarqueeManagementElevation <= $System_Elevation) {
-									$this->SendDebug('Marquee Control','Move out - all parameters in range',0);
+									$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('Move out - all parameters in range'),0);
 									SetValue($this->GetIDForIdent("MarqueePosition"), 1);
-									SetValue($this->GetIDForIdent("MarqueeDescision"), 'Marquee out');
+									SetValue($this->GetIDForIdent("MarqueeDescision"), $this->Translate('Marquee out');
 								}
 								else{
 									$SunPositionBlock = "Sun not in right area";
-									$this->SendDebug('Marquee Control','Sun not in right area (Azimut / Elevation)',0);
+									$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('Sun not in right area (Azimut / Elevation)'),0);
 									SetValue($this->GetIDForIdent("MarqueePosition"), 0);
-									SetValue($this->GetIDForIdent("MarqueeDescision"), 'Sun not in right area (Azimut / Elevation)');
+									SetValue($this->GetIDForIdent("MarqueeDescision"), $this->Translate('Sun not in right area (Azimut / Elevation)'));
 								}
 							}
 							else if ($WindspeedKMH > $MarqueeManagementWindSpeedMax) {
 								$RainBlockReason = "Marquee blocked by too much wind";
-								$this->SendDebug('Marquee Control','Marquee blocked by too much wind',0);
-								SetValue($this->GetIDForIdent("MarqueeDescision"), 'Marquee blocked by too much wind');
+								$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('Marquee blocked by too much wind'),0);
+								SetValue($this->GetIDForIdent("MarqueeDescision"), $this->Translate('Marquee blocked by too much wind'));
 								SetValue($this->GetIDForIdent("MarqueePosition"), 0);
 							}
 						}
 						else if ($MarqueeRainBlock == 1){
-							$RainBlockReason = "Marquee blocked by rain";
-							$this->SendDebug('Marquee Control','Marquee blocked by rain',0);
+							$RainBlockReason = $this->Translate('Marquee blocked by rain');
+							$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('Marquee blocked by rain'),0);
 							SetValue($this->GetIDForIdent("MarqueePosition"), 0);
-							SetValue($this->GetIDForIdent("MarqueeDescision"), 'Marquee blocked by rain');
+							SetValue($this->GetIDForIdent("MarqueeDescision"), $this->Translate('Marquee blocked by rain'));
 						}
 					}	
 					else if ($StormProtectionActive == 1){
 						$StromControlReason = "Marquee blocked by storm";
-						$this->SendDebug('Marquee Control','Marquee blocked by storm gusts',0);
+						$this->SendDebug($this->Translate('Marquee Control'),'Marquee blocked by storm gusts',0);
 						SetValue($this->GetIDForIdent("MarqueePosition"), 0);
 						SetValue($this->GetIDForIdent("MarqueeDescision"), 'Marquee blocked by storm gusts');
 					}
 				}
 				elseif($Marquee_Move_Out == 0){
-					$this->SendDebug('Marquee Control','Sun threshold not reached',0);
-					SetValue($this->GetIDForIdent("MarqueeDescision"), 'Sun threshold not reached');
+					$this->SendDebug($this->Translate('Marquee Control'),$this->Translate('Sun threshold not reached'),0);
+					SetValue($this->GetIDForIdent("MarqueeDescision"), $this->Translate('Sun threshold not reached'));
 					SetValue($this->GetIDForIdent("MarqueePosition"), 0);
 				}
 			}
@@ -1066,7 +1066,7 @@ if (!defined('vtBoolean')) {
 			
 			if ($ShutterEastManual == 0) {
 				if ($StormProtectionActive == 0) {
-					$this->SendDebug('Shutter Control East','OK - No Storm',0);
+					$this->SendDebug('Shutter Control East',$this->Translate('OK - No Storm'),0);
 					if ($FrostActive == 0) { //Must noch erstellt werden !!!!
 						$this->SendDebug('Shutter Control East','OK - No Frost',0);
 							if ($ShutterEastAzimutBegin < $System_Azimuth AND $System_Azimuth < $ShutterEastAzimutEnd AND $ShutterEastElevation < $System_Elevation) {
@@ -1076,8 +1076,8 @@ if (!defined('vtBoolean')) {
 								$this->SendDebug('Shutter Control East',$ShutterEastPositionReason,0);
 							}
 							else{
-								SetValue($this->GetIDForIdent("ShutterEastDescision"), 'Sun not in right area (Azimut / Elevation)');
-								$this->SendDebug('Shutter Control East','Sun not in right area (Azimut / Elevation)',0);
+								SetValue($this->GetIDForIdent("ShutterEastDescision"), $this->Translate('Sun not in right area (Azimut / Elevation)'));
+								$this->SendDebug('Shutter Control East',$this->Translate('Sun not in right area (Azimut / Elevation)'),0);
 								SetValue($this->GetIDForIdent("ShutterEastPosition"), 0);
 								SetValue($this->GetIDForIdent("ShutterEastSun"), 0);
 							}
@@ -1201,7 +1201,7 @@ if (!defined('vtBoolean')) {
 			
 			if ($ShutterSouthManual == 0) {
 				if ($StormProtectionActive == 0) {
-					$this->SendDebug('Shutter Control South','OK - No Storm',0);
+					$this->SendDebug('Shutter Control South',$this->Translate('OK - No Storm'),0);
 					if ($FrostActive == 0) { //Must noch erstellt werden !!!!
 						$this->SendDebug('Shutter Control South','OK - No Frost',0);
 							if ($ShutterSouthAzimutBegin <= $System_Azimuth AND $System_Azimuth <= $ShutterSouthAzimutEnd AND $ShutterSouthElevation <= $System_Elevation) {
@@ -1211,8 +1211,8 @@ if (!defined('vtBoolean')) {
 								SetValue($this->GetIDForIdent("ShutterSouthSun"), 1);
 							}
 							else{
-								SetValue($this->GetIDForIdent("ShutterSouthDescision"), 'Sun not in right area (Azimut / Elevation)');
-								$this->SendDebug('Shutter Control South','Sun not in right area (Azimut / Elevation)',0);
+								SetValue($this->GetIDForIdent("ShutterSouthDescision"), $this->Translate('Sun not in right area (Azimut / Elevation)'));
+								$this->SendDebug('Shutter Control South',$this->Translate('Sun not in right area (Azimut / Elevation)'),0);
 								SetValue($this->GetIDForIdent("ShutterSouthPosition"), 0);
 								SetValue($this->GetIDForIdent("ShutterSouthSun"), 0);
 							}
@@ -1337,7 +1337,7 @@ if (!defined('vtBoolean')) {
 			
 			if ($ShutterWestManual == 0) {
 				if ($StormProtectionActive == 0) {
-					$this->SendDebug('Shutter Control West','OK - No Storm',0);
+					$this->SendDebug('Shutter Control West',$this->Translate('OK - No Storm'),0);
 					if ($FrostActive == 0) { //Must noch erstellt werden !!!!
 						$this->SendDebug('Shutter Control West','OK - No Frost',0);
 							if ($ShutterWestAzimutBegin <= $System_Azimuth AND $System_Azimuth <= $ShutterWestAzimutEnd AND $ShutterWestElevation <= $System_Elevation) {
@@ -1347,8 +1347,8 @@ if (!defined('vtBoolean')) {
 								SetValue($this->GetIDForIdent("ShutterWestSun"), 1);
 							}
 							else{
-								SetValue($this->GetIDForIdent("ShutterWestDescision"), 'Sun not in right area (Azimut / Elevation)');
-								$this->SendDebug('Shutter Control West','Sun not in right area (Azimut / Elevation)',0);
+								SetValue($this->GetIDForIdent("ShutterWestDescision"), $this->Translate('Sun not in right area (Azimut / Elevation)'));
+								$this->SendDebug('Shutter Control West',$this->Translate('Sun not in right area (Azimut / Elevation)'),0);
 								SetValue($this->GetIDForIdent("ShutterWestPosition"), 0);
 								SetValue($this->GetIDForIdent("ShutterWestSun"), 0);
 							}
@@ -1677,8 +1677,8 @@ if (!defined('vtBoolean')) {
 					$this->SendDebug($this->Translate('Blinds Control East'),$BlindsEastPositionReason,0);
 				}
 				else{
-					SetValue($this->GetIDForIdent("BlindsEastDescision"), 'Sun not in right area (Azimut / Elevation)');
-					$this->SendDebug($this->Translate('Blinds Control East'),'Sun not in right area (Azimut / Elevation)',0);
+					SetValue($this->GetIDForIdent("BlindsEastDescision"), $this->Translate('Sun not in right area (Azimut / Elevation)'));
+					$this->SendDebug($this->Translate('Blinds Control East'),$this->Translate('Sun not in right area (Azimut / Elevation)'),0);
 					SetValue($this->GetIDForIdent("BlindsEastPosition"), 0);
 					SetValue($this->GetIDForIdent("BlindsEastSun"), 0);
 				}
@@ -1777,8 +1777,8 @@ if (!defined('vtBoolean')) {
 					$this->SendDebug($this->Translate('Blinds Control South'),$BlindsSouthPositionReason,0);
 				}
 				else{
-					SetValue($this->GetIDForIdent("BlindsSouthDescision"), 'Sun not in right area (Azimut / Elevation)');
-					$this->SendDebug($this->Translate('Blinds Control South'),'Sun not in right area (Azimut / Elevation)',0);
+					SetValue($this->GetIDForIdent("BlindsSouthDescision"), $this->Translate('Sun not in right area (Azimut / Elevation)'));
+					$this->SendDebug($this->Translate('Blinds Control South'),$this->Translate('Sun not in right area (Azimut / Elevation)'),0);
 					SetValue($this->GetIDForIdent("BlindsSouthPosition"), 0);
 					SetValue($this->GetIDForIdent("BlindsSouthSun"), 0);
 				}
@@ -1877,8 +1877,8 @@ if (!defined('vtBoolean')) {
 					$this->SendDebug($this->Translate('Blinds Control West'),$BlindsWestPositionReason,0);
 				}
 				else{
-					SetValue($this->GetIDForIdent("BlindsWestDescision"), 'Sun not in right area (Azimut / Elevation)');
-					$this->SendDebug($this->Translate('Blinds Control West'),'Sun not in right area (Azimut / Elevation)',0);
+					SetValue($this->GetIDForIdent("BlindsWestDescision"), $this->Translate('Sun not in right area (Azimut / Elevation)'));
+					$this->SendDebug($this->Translate('Blinds Control West'),$this->Translate('Sun not in right area (Azimut / Elevation)'),0);
 					SetValue($this->GetIDForIdent("BlindsWestPosition"), 0);
 					SetValue($this->GetIDForIdent("BlindsWestSun"), 0);
 				}
