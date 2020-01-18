@@ -258,7 +258,13 @@
 			"Shutter Control West": "Raffstore Steuerung West",
 			"ooooooooooooooooooo Building Blinds/Shutters East Control Begin ooooooooooooooooooo": "ooooooooooooooooooo Gebäudebeschattung Ost ooooooooooooooooooo",
 			"ooooooooooooooooooo Building Blinds/Shutters South Control Begin ooooooooooooooooooo": "ooooooooooooooooooo Gebäudebeschattung Süd ooooooooooooooooooo",
-			"ooooooooooooooooooo Building Blinds/Shutters West Control Begin ooooooooooooooooooo": "ooooooooooooooooooo Gebäudebeschattung West ooooooooooooooooooo"
+			"ooooooooooooooooooo Building Blinds/Shutters West Control Begin ooooooooooooooooooo": "ooooooooooooooooooo Gebäudebeschattung West ooooooooooooooooooo",
+			"Position: Up - Current light ": "Position: Oben - Aktuelle Helligkeit ",
+			"Position: Shading - Current light ": "Beschatten - Aktuelle Helligkeit ",
+			"Up": "Hoch",
+			"Shading": "Beschatten",
+			" < threshold for open ": " < Schwellwert für offen ",
+			" > threshold: ": " > Schwellwert: " 
 		}
 	}
 }
