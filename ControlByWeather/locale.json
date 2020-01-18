@@ -235,6 +235,9 @@
 			"Marquee blocked by too much wind": "Markiese blockiert durch zu viel Wind",
 			"Marquee blocked by rain": "Markiese blockiert wegen Regen",
 			"Marquee blocked by storm gusts": "Markiese blockiert durch Sturmböen",
+			"************************* Shutter East Control Begin *************************": "************************* Raffstore Steuerung Ost *************************",
+			"************************* Shutter South Control Begin *************************": "************************* Raffstore Steuerung Süd *************************",
+			"************************* Shutter West Control Begin *************************": "************************* Raffstore Steuerung West *************************",
 			"Sun threshold not reached": "Schwellwert für Helligkeit nicht erreicht",
 			"Position: Open - Current light // Current light ": "Offen // Aktuelle Helligkeit ",
 			"Position: Shading Level 1 - Current light ": "Beschattung Stufe 1 // Aktuelle Helligkeit ",
@@ -250,7 +253,12 @@
 			"Shutter move to: Up - Frost detected": "Raffstore fährt hoch - Frost erkannt",
 			"Shutter move to: Up - Storm": "Raffstore fährt hoch - Sturm erkannt",
 			"Blocked by storm": "Blockiert durch Sturm",
-			"Shutter Control East": "Raffstore Steuerung Ost"
+			"Shutter Control East": "Raffstore Steuerung Ost",
+			"Shutter Control South": "Raffstore Steuerung Süd",
+			"Shutter Control West": "Raffstore Steuerung West",
+			"ooooooooooooooooooo Building Blinds/Shutters East Control Begin ooooooooooooooooooo": "ooooooooooooooooooo Gebäudebeschattung Ost ooooooooooooooooooo",
+			"ooooooooooooooooooo Building Blinds/Shutters South Control Begin ooooooooooooooooooo": "ooooooooooooooooooo Gebäudebeschattung Süd ooooooooooooooooooo",
+			"ooooooooooooooooooo Building Blinds/Shutters West Control Begin ooooooooooooooooooo": "ooooooooooooooooooo Gebäudebeschattung West ooooooooooooooooooo"
 		}
 	}
 }
