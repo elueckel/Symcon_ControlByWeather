@@ -264,7 +264,23 @@
 			"Up": "Hoch",
 			"Shading": "Beschatten",
 			" < threshold for open ": " < Schwellwert für offen ",
-			" > threshold: ": " > Schwellwert: " 
+			" > threshold: ": " > Schwellwert: ",
+			"Position 1" : "Position 1",
+			"Position 2" : "Position 2",
+			"Position 0" : "Position 0",
+			"OK - Someone is at home": "OK - Es ist jemand daheim",
+			"OK - It is day or the setting is ignored": "OK - Es ist Tag oder die Einstellung wird ignoriert",
+			"OK - No heavy rain": "OK - Kein Starkregen",
+			"OK - Not block by reference sensor": "OK - Nicht durch Referenzsensor blockiert",
+			"Upper Windows opened to level ": "Oberes Fenster geöffnet auf Stufe ",
+			"Lower Windows opened to level ": "Unteres Fenster geöffnet auf Stufe ",
+			"Windows do not need to be opened - target temperature": "Fenster müssen nicht geöffnet werden - Zieltemperatur ",
+			" below current temperature ": " unter aktueller Temperatur ",
+			"OK - but not warm enough": "OK - Nicht warm genug",
+			"Blocked by Reference Sensor": "Blockiert bei Referenzsensor",
+			"Blocked by heavy rain": "Blockiert bei Starkregen",
+			"Blocked by night execution being disabled": "Blockiert - Bei Nacht deaktiviert",
+			"Blocked by no one being home": "Blockiert - niemand ist daheim"
 		}
 	}
 }
