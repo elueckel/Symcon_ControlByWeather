@@ -1041,23 +1041,23 @@ if (!defined('vtBoolean')) {
 
 			if ($SolarRadiationDecisionValueLux < $ShutterEastSolarRadiationDownShaded1Threshold){
 				$ShutterEastPosition = 0;
-				$ShutterEastPositionReason = "Open";
-				$this->SendDebug('Shutter Control East','Position: Open - Current light // Current light '.$SolarRadiationDecisionValueLux.' < threshold for open '.$ShutterEastSolarRadiationDownShaded1Threshold,0);
+				$ShutterEastPositionReason = $this->Translate('Open');
+				$this->SendDebug($this->Translate('Shutter Control East'),$this->Translate('Position: Open - Current light // Current light ').$SolarRadiationDecisionValueLux.' < threshold '.$ShutterEastSolarRadiationDownShaded1Threshold,0);
 			}			
 			else if (($SolarRadiationDecisionValueLux >= $ShutterEastSolarRadiationDownShaded1Threshold) AND ($SolarRadiationDecisionValueLux < $ShutterEastSolarRadiationDownShaded2Threshold)) { // 0 lux - 35000 lux
 				$ShutterEastPosition = 1;
-				$ShutterEastPositionReason = "Shading Level 1";
-				$this->SendDebug('Shutter Control East','Position: Shading Level 1 - Current light Current light // '.$SolarRadiationDecisionValueLux.' > threshold for level 1: '.$ShutterEastSolarRadiationDownShaded1Threshold.' and < threshold for level 2: '.$ShutterEastSolarRadiationDownShaded2Threshold,0);
+				$ShutterEastPositionReason = $this->Translate('Shading Level 1');
+				$this->SendDebug($this->Translate('Shutter Control East'),'Position: Shading Level 1 - Current light Current light // '.$SolarRadiationDecisionValueLux.' > threshold '.$ShutterEastSolarRadiationDownShaded1Threshold.' and < threshold for level 2: '.$ShutterEastSolarRadiationDownShaded2Threshold,0);
 			}
 			else if (($SolarRadiationDecisionValueLux >= $ShutterEastSolarRadiationDownShaded2Threshold) AND ($SolarRadiationDecisionValueLux < $ShutterEastSolarRadiationDownClosedThreshold)) { // 35000 lux - 75000
 				$ShutterEastPosition = 2;
-				$ShutterEastPositionReason = "Shading Level 2";
-				$this->SendDebug('Shutter Control East','Position: Shading Level 2 - Current light // Current light '.$SolarRadiationDecisionValueLux.' > threshold for level 2: '.$ShutterEastSolarRadiationDownShaded2Threshold.' and < threshold for closed: '.$ShutterEastSolarRadiationDownClosedThreshold,0);
+				$ShutterEastPositionReason = $this->Translate('Shading Level 2');
+				$this->SendDebug($this->Translate('Shutter Control East'),'Position: Shading Level 2 - Current light // Current light '.$SolarRadiationDecisionValueLux.' > threshold '.$ShutterEastSolarRadiationDownShaded2Threshold.' and < threshold for closed: '.$ShutterEastSolarRadiationDownClosedThreshold,0);
 			}
 			else if ($SolarRadiationDecisionValueLux >= $ShutterEastSolarRadiationDownClosedThreshold) { // >75000 lux
 				$ShutterEastPosition = 3;
 				$ShutterEastPositionReason = "Shading Level 3 - Closed";
-				$this->SendDebug('Shutter Control East','Position: Shading Level 3 - Closed // Current light '.$SolarRadiationDecisionValueLux.' > threshold for closed '.$ShutterEastSolarRadiationDownClosedThreshold,0);
+				$this->SendDebug($this->Translate('Shutter Control East'),'Position: Shading Level 3 - Closed // Current light '.$SolarRadiationDecisionValueLux.' > threshold '.$ShutterEastSolarRadiationDownClosedThreshold,0);
 			}
 				
 						
@@ -1066,36 +1066,36 @@ if (!defined('vtBoolean')) {
 			
 			if ($ShutterEastManual == 0) {
 				if ($StormProtectionActive == 0) {
-					$this->SendDebug('Shutter Control East',$this->Translate('OK - No Storm'),0);
+					$this->SendDebug($this->Translate('Shutter Control East'),$this->Translate('OK - No Storm'),0);
 					if ($FrostActive == 0) { //Must noch erstellt werden !!!!
-						$this->SendDebug('Shutter Control East','OK - No Frost',0);
+						$this->SendDebug($this->Translate('Shutter Control East'),$this->Translate('OK - No Frost'),0);
 							if ($ShutterEastAzimutBegin < $System_Azimuth AND $System_Azimuth < $ShutterEastAzimutEnd AND $ShutterEastElevation < $System_Elevation) {
 								SetValue($this->GetIDForIdent("ShutterEastPosition"), $ShutterEastPosition);
 								SetValue($this->GetIDForIdent("ShutterEastDescision"), $ShutterEastPositionReason);
 								SetValue($this->GetIDForIdent("ShutterEastSun"), 1);
-								$this->SendDebug('Shutter Control East',$ShutterEastPositionReason,0);
+								$this->SendDebug($this->Translate('Shutter Control East'),$ShutterEastPositionReason,0);
 							}
-							else{
+							else{ 
 								SetValue($this->GetIDForIdent("ShutterEastDescision"), $this->Translate('Sun not in right area (Azimut / Elevation)'));
-								$this->SendDebug('Shutter Control East',$this->Translate('Sun not in right area (Azimut / Elevation)'),0);
+								$this->SendDebug($this->Translate('Shutter Control East'),$this->Translate('Sun not in right area (Azimut / Elevation)'),0);
 								SetValue($this->GetIDForIdent("ShutterEastPosition"), 0);
 								SetValue($this->GetIDForIdent("ShutterEastSun"), 0);
 							}
 						}	
 					else if ($FrostActive == 1){
-						$this->SendDebug('Shutter Control East','Shutter move to: Up - Frost detected',0);
-						SetValue($this->GetIDForIdent("ShutterEastDescision"), 'Blocked by frost');
+						$this->SendDebug('Shutter Control East',$this->Translate('Shutter move to: Up - Frost detected'),0);
+						SetValue($this->GetIDForIdent("ShutterEastDescision"), $this->Translate('Blocked by frost'));
 						SetValue($this->GetIDForIdent("ShutterEastPosition"), 9);
 					}
 				}
 				elseif($StormProtectionActive == 1){
-					$this->SendDebug('Shutter Control East','Shutter move to: Up - Storm',0);
-					SetValue($this->GetIDForIdent("ShutterEastDescision"), 'Blocked by storm');
+					$this->SendDebug($this->Translate('Shutter Control East'),$this->Translate('Shutter move to: Up - Storm'),0);
+					SetValue($this->GetIDForIdent("ShutterEastDescision"), $this->Translate('Blocked by storm'));
 					SetValue($this->GetIDForIdent("ShutterEastPosition"), 9);
 				}
 			}
 			elseif($ShutterEastManual == 1){
-					$this->SendDebug('Shutter Control East',$this->Translate('Manually disabled'),0);
+					$this->SendDebug($this->Translate('Shutter Control East'),$this->Translate('Manually disabled'),0);
 					SetValue($this->GetIDForIdent("ShutterEastDescision"), $this->Translate('Manually disabled'));
 			}
 			
