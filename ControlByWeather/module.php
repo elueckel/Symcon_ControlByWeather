@@ -1488,12 +1488,12 @@ if (!defined('vtBoolean')) {
 			}			
 			else if ($WindowWintergardenOutsideTemperature >= $WindowWintergarden100ThresholdUpper){
 				$WindowOpenAngleUpper = 2;
-				$WindowOpenAngleReasonUpper = $this->Translate(Position 2');
+				$WindowOpenAngleReasonUpper = $this->Translate('Position 2');
 				//$this->SendDebug($this->Translate('Windows Wintergarden'),'Upper windows opened to position 2',0);
 			}
 			else if ($WindowWintergardenOutsideTemperature <= $WindowWintergarden50ThresholdUpper){
 				$WindowOpenAngleUpper = 0;
-				$WindowOpenAngleReasonUpper = $this->Translate(*Position 0');
+				$WindowOpenAngleReasonUpper = $this->Translate('Position 0');
 				//$this->SendDebug($this->Translate('Windows Wintergarden'),'Upper windows stays closed - below threshold 1',0);
 			}	
 			
