@@ -239,7 +239,7 @@
 			"Position: Open - Current light // Current light ": "Offen // Aktuelle Helligkeit ",
 			"Shading Level 1": "Beschattung Stufe 1 // Aktuelle Helligkeit ",
 			"Shading Level 2": "Beschattung Stufe 2 // Aktuelle Helligkeit ",
-			"Position: Shading Level 3 - Closed // Current light ": "Position: Beschattung Stufe 3 - Geschlossen // Aktuelle Helligkeit ",
+			"Shading Level 3 - Closed // Current light ": "Beschattung Stufe 3 - Geschlossen // Aktuelle Helligkeit ",
 			" < threshold ": " < Schwellwert",
 			" > threshold ": " > Schwellwert",
 			"OK - No Frost": "OK - Kein Frost",
