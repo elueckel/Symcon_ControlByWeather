@@ -1005,7 +1005,7 @@ if (!defined('vtBoolean')) {
 			$this->SendDebug($this->Translate('Shutter Control East'),'Location Settings: System Azi '.$System_Azimuth.' / Begin '.$ShutterEastAzimutBegin.' / End '.$ShutterEastAzimutEnd.' Elevation'.$System_Elevation.' Elevation '.$ShutterEastElevation,0);			
 			
 			$ShutterEastManual = GetValue($this->GetIDForIdent("ShutterEastManual"));
-			$this->SendDebug('Shutter Control East','Manual Override '.$ShutterEastManual,0);
+			//$this->SendDebug('Shutter Control East','Manual Override '.$ShutterEastManual,0);
 			
 			
 			
@@ -1140,7 +1140,7 @@ if (!defined('vtBoolean')) {
 			$this->SendDebug($this->Translate('Shutter Control South'),'Location Settings: System Azi '.$System_Azimuth.' / Begin '.$ShutterSouthAzimutBegin.' / End '.$ShutterSouthAzimutEnd.' Elevation'.$System_Elevation.' Elevation '.$ShutterSouthElevation,0);			
 			
 			$ShutterSouthManual = GetValue($this->GetIDForIdent("ShutterSouthManual"));
-			$this->SendDebug('Shutter Control South','Manual Override '.$ShutterSouthManual,0);
+			//$this->SendDebug('Shutter Control South','Manual Override '.$ShutterSouthManual,0);
 			
 			
 			
@@ -1276,7 +1276,7 @@ if (!defined('vtBoolean')) {
 			$this->SendDebug($this->Translate('Shutter Control West'),'Location Settings: System Azi '.$System_Azimuth.' / Begin '.$ShutterWestAzimutBegin.' / End '.$ShutterWestAzimutEnd.' Elevation'.$System_Elevation.' Elevation '.$ShutterWestElevation,0);			
 			
 			$ShutterWestManual = GetValue($this->GetIDForIdent("ShutterWestManual"));
-			$this->SendDebug('Shutter Control West','Manual Override '.$ShutterWestManual,0);
+			//$this->SendDebug('Shutter Control West','Manual Override '.$ShutterWestManual,0);
 			
 			
 			
@@ -1379,7 +1379,7 @@ if (!defined('vtBoolean')) {
 		public function WindowWintergardenControl()
 		{
 			// function to wait until storm is over
-			$this->SendDebug('Windows Wintergarden','OOOOOOOOOOOOOOOOOOOOOOO Windows Wintergarden Control Begin OOOOOOOOOOOOOOOOOOOOOOO',0);
+			$this->SendDebug($this->Translate('Windows Wintergarden'),'OOOOOOOOOOOOOOOOOOOOOOO Windows Wintergarden Control Begin OOOOOOOOOOOOOOOOOOOOOOO',0);
 			
 			$StormProtectionActive = $this->GetBuffer("StormProtectionActive"); // Bei Sturm hoch oder nicht runter
 			$WindowBlockedByRain = $this->GetBuffer("HeavyRainProtectionActive");
@@ -1418,7 +1418,7 @@ if (!defined('vtBoolean')) {
 			$WindowWintergardenDisableHeavyRain = $this->ReadPropertyBoolean("WindowWintergardenDisableHeavyRain"); // Wenn es stark regnet
 			
 			$WindowWintergardenManual = GetValue($this->GetIDForIdent("WindowWintergardenManual"));
-			$this->SendDebug('Windows Wintergarden','Manual Override '.$WindowWintergardenManual,0);
+			//$this->SendDebug($this->Translate('Windows Wintergarden'),'Manual Override '.$WindowWintergardenManual,0);
 		
 			
 			//Decide which thresholds should be used - winter or summer
@@ -1483,34 +1483,34 @@ if (!defined('vtBoolean')) {
 			//Oben
 			if (($WindowWintergardenOutsideTemperature >= $WindowWintergarden50ThresholdUpper) AND ($WindowWintergardenOutsideTemperature < $WindowWintergarden100ThresholdUpper)){
 				$WindowOpenAngleUpper = 1;
-				$WindowOpenAngleReasonUpper = "Position 1";
-				//$this->SendDebug('Windows Wintergarden','Upper windows opened to position 1',0);
+				$WindowOpenAngleReasonUpper = $this->Translate('Position 1');
+				//$this->SendDebug($this->Translate('Windows Wintergarden'),'Upper windows opened to position 1',0);
 			}			
 			else if ($WindowWintergardenOutsideTemperature >= $WindowWintergarden100ThresholdUpper){
 				$WindowOpenAngleUpper = 2;
-				$WindowOpenAngleReasonUpper = "Position 2";
-				//$this->SendDebug('Windows Wintergarden','Upper windows opened to position 2',0);
+				$WindowOpenAngleReasonUpper = $this->Translate(Position 2');
+				//$this->SendDebug($this->Translate('Windows Wintergarden'),'Upper windows opened to position 2',0);
 			}
 			else if ($WindowWintergardenOutsideTemperature <= $WindowWintergarden50ThresholdUpper){
 				$WindowOpenAngleUpper = 0;
-				$WindowOpenAngleReasonUpper = "Position 0";
-				//$this->SendDebug('Windows Wintergarden','Upper windows stays closed - below threshold 1',0);
+				$WindowOpenAngleReasonUpper = $this->Translate(*Position 0');
+				//$this->SendDebug($this->Translate('Windows Wintergarden'),'Upper windows stays closed - below threshold 1',0);
 			}	
 			
 			if (($WindowWintergardenOutsideTemperature >= $WindowWintergarden50ThresholdLower) AND ($WindowWintergardenOutsideTemperature < $WindowWintergarden100ThresholdLower)){
 				$WindowOpenAngleLower = 1;
-				$WindowOpenAngleReasonLower = "Position 1";
-				//$this->SendDebug('Windows Wintergarden','Lower windows opened to position 1',0);
+				$WindowOpenAngleReasonLower = $this->Translate('Position 1');
+				//$this->SendDebug($this->Translate('Windows Wintergarden'),'Lower windows opened to position 1',0);
 			}			
 			else if ($WindowWintergardenOutsideTemperature >= $WindowWintergarden100ThresholdLower){
 				$WindowOpenAngleLower = 2;
-				$WindowOpenAngleReasonLower = "Position 2";
-				//$this->SendDebug('Windows Wintergarden','Lower windows opened to position 2',0);
+				$WindowOpenAngleReasonLower = $this->Translate('Position 2');
+				//$this->SendDebug($this->Translate('Windows Wintergarden'),'Lower windows opened to position 2',0);
 			}
 			else if ($WindowWintergardenOutsideTemperature <= $WindowWintergarden50ThresholdLower){
 				$WindowOpenAngleLower = 0;
-				$WindowOpenAngleReasonLower = "Position 0";
-				//$this->SendDebug('Windows Wintergarden','Lower windows stays closed - below threshold 1',0);
+				$WindowOpenAngleReasonLower = $this->Translate('Position 0');
+				//$this->SendDebug($this->Translate('Windows Wintergarden'),'Lower windows stays closed - below threshold 1',0);
 			}	
 			
 		
@@ -1519,67 +1519,67 @@ if (!defined('vtBoolean')) {
 			
 			if ($WindowWintergardenManual == 0) {
 				if ($WindowPresence == 1) {
-					$this->SendDebug('Windows Wintergarden','OK - Someone is at home',0);
+					$this->SendDebug($this->Translate('Windows Wintergarden'),$this->Translate('OK - Someone is at home'),0);
 					if ($WindowIsDay == 1) {
-						$this->SendDebug('Windows Wintergarden','OK - It is day or the setting is ignored',0);
+						$this->SendDebug($this->Translate('Windows Wintergarden'),$this->Translate('OK - It is day or the setting is ignored'),0);
 							if ($WindowBlockedByRain == 0) { 
-							$this->SendDebug('Windows Wintergarden','OK - No heavy rain',0);
+							$this->SendDebug($this->Translate('Windows Wintergarden'),$this->Translate('OK - No heavy rain'),0);
 								if ($WindowBlockedByReferenceSensor == 0) {
-								$this->SendDebug('Windows Wintergarden','OK - Not block by reference sensor',0);
+								$this->SendDebug($this->Translate('Windows Wintergarden'),$this->Translate('OK - Not block by reference sensor'),0);
 									if ($WindowWintergardenTargetTemperature <= $WindowWintergardenTemperatureWintergarden) {
 										if ($WindowWintergardenControlUpperWindows == 1){
 											SetValue($this->GetIDForIdent("WindowUpperOpenStatus"), $WindowOpenAngleUpper);
 											SetValue($this->GetIDForIdent("WindowDescisionUpper"), $WindowOpenAngleReasonUpper);
-											$this->SendDebug('Windows Wintergarden','Upper Windows opened to level '.$WindowOpenAngleReasonUpper,0);
+											$this->SendDebug($this->Translate('Windows Wintergarden'),$this->Translate('Upper Windows opened to level ').$WindowOpenAngleReasonUpper,0);
 										}
 										if ($WindowWintergardenControlLowerWindows == 1){
 											SetValue($this->GetIDForIdent("WindowLowerOpenStatus"), $WindowOpenAngleLower);
 											SetValue($this->GetIDForIdent("WindowDescisionLower"), $WindowOpenAngleReasonLower);
-											$this->SendDebug('Windows Wintergarden','Lower Windows opened to level '.$WindowOpenAngleReasonLower,0);
+											$this->SendDebug($this->Translate('Windows Wintergarden'),$this->Translate('Lower Windows opened to level ').$WindowOpenAngleReasonLower,0);
 										}
 									}
 									else{
-										$this->SendDebug('Windows Wintergarden','Windows do not need to be opened - target temperature '.$WindowWintergardenTargetTemperature.' below current temperature '.$WindowWintergardenTemperatureWintergarden,0);
+										$this->SendDebug($this->Translate('Windows Wintergarden'),$this->Translate('Windows do not need to be opened - target temperature ').$WindowWintergardenTargetTemperature.$this->Translate(' below current temperature ').$WindowWintergardenTemperatureWintergarden,0);
 										SetValue($this->GetIDForIdent("WindowUpperOpenStatus"), 0);
 										SetValue($this->GetIDForIdent("WindowLowerOpenStatus"), 0);
-										SetValue($this->GetIDForIdent("WindowDescisionUpper"), 'OK - but not warm enough');
-										SetValue($this->GetIDForIdent("WindowDescisionLower"), 'OK - but not warm enough');
+										SetValue($this->GetIDForIdent("WindowDescisionUpper"), $this->Translate('OK - but not warm enough'));
+										SetValue($this->GetIDForIdent("WindowDescisionLower"), $this->Translate('OK - but not warm enough'));
 									}
 								}
 								else if ($WindowBlockedByReferenceSensor == 1){
-								$this->SendDebug('Windows Wintergarden','Blocked by Reference Sensor',0);
-								SetValue($this->GetIDForIdent("WindowDescisionUpper"), 'Blocked by Reference Sensor');
-								SetValue($this->GetIDForIdent("WindowDescisionLower"), 'Blocked by Reference Sensor');
+								$this->SendDebug($this->Translate('Windows Wintergarden'),$this->Translate('Blocked by Reference Sensor'),0);
+								SetValue($this->GetIDForIdent("WindowDescisionUpper"), $this->Translate('Blocked by Reference Sensor'));
+								SetValue($this->GetIDForIdent("WindowDescisionLower"), $this->Translate('Blocked by Reference Sensor'));
 								SetValue($this->GetIDForIdent("WindowUpperOpenStatus"), 0);
 								SetValue($this->GetIDForIdent("WindowLowerOpenStatus"), 0);
 								}
 							}
 							else if ($WindowBlockedByRain == 1){
-							$this->SendDebug('Windows Wintergarden','Blocked by heavy rain',0);
-							SetValue($this->GetIDForIdent("WindowDescisionUpper"), 'Blocked by heavy rain');
-							SetValue($this->GetIDForIdent("WindowDescisionLower"), 'Blocked by heavy rain');
+							$this->SendDebug($this->Translate('Windows Wintergarden'),$this->Translate('Blocked by heavy rain'),0);
+							SetValue($this->GetIDForIdent("WindowDescisionUpper"), $this->Translate('Blocked by heavy rain'));
+							SetValue($this->GetIDForIdent("WindowDescisionLower"), $this->Translate('Blocked by heavy rain'));
 							SetValue($this->GetIDForIdent("WindowUpperOpenStatus"), 0);
 							SetValue($this->GetIDForIdent("WindowLowerOpenStatus"), 0);
 						}
 					}
 					else if ($WindowIsDay == 0){
-						$this->SendDebug('Windows Wintergarden','Blocked by night execution being disabled',0);
-						SetValue($this->GetIDForIdent("WindowDescisionUpper"), 'Blocked by night execution being disabled');
-						SetValue($this->GetIDForIdent("WindowDescisionLower"), 'Blocked by night execution being disabled');
+						$this->SendDebug($this->Translate('Windows Wintergarden'),$this->Translate('Blocked by night execution being disabled'),0);
+						SetValue($this->GetIDForIdent("WindowDescisionUpper"), $this->Translate('Blocked by night execution being disabled'));
+						SetValue($this->GetIDForIdent("WindowDescisionLower"), $this->Translate('Blocked by night execution being disabled'));
 						SetValue($this->GetIDForIdent("WindowUpperOpenStatus"), 0);
 						SetValue($this->GetIDForIdent("WindowLowerOpenStatus"), 0);
 					}
 				}
 				elseif($WindowPresence == 0){
-					$this->SendDebug('Windows Wintergarden','Blocked by no one being home',0);
-					SetValue($this->GetIDForIdent("WindowDescisionUpper"), 'Blocked by no one being home');
-					SetValue($this->GetIDForIdent("WindowDescisionLower"), 'Blocked by no one being home');
+					$this->SendDebug($this->Translate('Windows Wintergarden'),$this->Translate('Blocked by no one being home'),0);
+					SetValue($this->GetIDForIdent("WindowDescisionUpper"), $this->Translate('Blocked by no one being home'));
+					SetValue($this->GetIDForIdent("WindowDescisionLower"), $this->Translate('Blocked by no one being home'));
 					SetValue($this->GetIDForIdent("WindowUpperOpenStatus"), 0);
 					SetValue($this->GetIDForIdent("WindowLowerOpenStatus"), 0);
 				}
 			}
 			elseif($WindowWintergardenManual == 1){
-					$this->SendDebug('Windows Wintergarden',$this->Translate('Manually disabled'),0);
+					$this->SendDebug($this->Translate('Windows Wintergarden'),$this->Translate('Manually disabled'),0);
 					SetValue($this->GetIDForIdent("WindowDescisionUpper"), $this->Translate('Manually disabled'));
 					SetValue($this->GetIDForIdent("WindowDescisionLower"), $this->Translate('Manually disabled'));
 			}
