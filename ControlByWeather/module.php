@@ -1056,7 +1056,7 @@ if (!defined('vtBoolean')) {
 			}
 			else if ($SolarRadiationDecisionValueLux >= $ShutterEastSolarRadiationDownClosedThreshold) { // >75000 lux
 				$ShutterEastPosition = 3;
-				$ShutterEastPositionReason = $this->Translate('Shading Level 3 - Closed');
+				$ShutterEastPositionReason = $this->Translate('Shading Level 3');
 				$this->SendDebug($this->Translate('Shutter Control East'),$this->Translate('Position: Shading Level 3 - Closed // Current light ').$SolarRadiationDecisionValueLux.$this->Translate(' > threshold ').$ShutterEastSolarRadiationDownClosedThreshold,0);
 			}
 				
