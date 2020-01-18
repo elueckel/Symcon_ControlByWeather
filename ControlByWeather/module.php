@@ -1042,22 +1042,22 @@ if (!defined('vtBoolean')) {
 			if ($SolarRadiationDecisionValueLux < $ShutterEastSolarRadiationDownShaded1Threshold){
 				$ShutterEastPosition = 0;
 				$ShutterEastPositionReason = $this->Translate('Open');
-				$this->SendDebug($this->Translate('Shutter Control East'),$this->Translate('Position: Open - Current light // Current light ').$SolarRadiationDecisionValueLux.' < threshold '.$ShutterEastSolarRadiationDownShaded1Threshold,0);
+				$this->SendDebug($this->Translate('Shutter Control East'),$this->Translate('Position: Open - Current light // Current light ').$SolarRadiationDecisionValueLux.$this->Translate(' < threshold ').$ShutterEastSolarRadiationDownShaded1Threshold,0);
 			}			
 			else if (($SolarRadiationDecisionValueLux >= $ShutterEastSolarRadiationDownShaded1Threshold) AND ($SolarRadiationDecisionValueLux < $ShutterEastSolarRadiationDownShaded2Threshold)) { // 0 lux - 35000 lux
 				$ShutterEastPosition = 1;
 				$ShutterEastPositionReason = $this->Translate('Shading Level 1');
-				$this->SendDebug($this->Translate('Shutter Control East'),'Position: Shading Level 1 - Current light '.$SolarRadiationDecisionValueLux.' > threshold '.$ShutterEastSolarRadiationDownShaded1Threshold.' and < threshold for level 2: '.$ShutterEastSolarRadiationDownShaded2Threshold,0);
+				$this->SendDebug($this->Translate('Shutter Control East'),'Position: Shading Level 1 - Current light '.$SolarRadiationDecisionValueLux.' > threshold '.$ShutterEastSolarRadiationDownShaded1Threshold.$this->Translate(' and < threshold for level 2: ').$ShutterEastSolarRadiationDownShaded2Threshold,0);
 			}
 			else if (($SolarRadiationDecisionValueLux >= $ShutterEastSolarRadiationDownShaded2Threshold) AND ($SolarRadiationDecisionValueLux < $ShutterEastSolarRadiationDownClosedThreshold)) { // 35000 lux - 75000
 				$ShutterEastPosition = 2;
 				$ShutterEastPositionReason = $this->Translate('Shading Level 2');
-				$this->SendDebug($this->Translate('Shutter Control East'),'Position: Shading Level 2 - Current light '.$SolarRadiationDecisionValueLux.' > threshold '.$ShutterEastSolarRadiationDownShaded2Threshold.' and < threshold for closed: '.$ShutterEastSolarRadiationDownClosedThreshold,0);
+				$this->SendDebug($this->Translate('Shutter Control East'),'Position: Shading Level 2 - Current light '.$SolarRadiationDecisionValueLux.' > threshold '.$ShutterEastSolarRadiationDownShaded2Threshold.$this->Translate(' and < threshold for closed: ').$ShutterEastSolarRadiationDownClosedThreshold,0);
 			}
 			else if ($SolarRadiationDecisionValueLux >= $ShutterEastSolarRadiationDownClosedThreshold) { // >75000 lux
 				$ShutterEastPosition = 3;
-				$ShutterEastPositionReason = "Shading Level 3 - Closed";
-				$this->SendDebug($this->Translate('Shutter Control East'),'Position: Shading Level 3 - Closed // Current light '.$SolarRadiationDecisionValueLux.' > threshold '.$ShutterEastSolarRadiationDownClosedThreshold,0);
+				$ShutterEastPositionReason = $this->Translate('Shading Level 3 - Closed');
+				$this->SendDebug($this->Translate('Shutter Control East'),$this->Translate('Position: Shading Level 3 - Closed // Current light ').$SolarRadiationDecisionValueLux.$this->Translate(' > threshold ').$ShutterEastSolarRadiationDownClosedThreshold,0);
 			}
 				
 						
