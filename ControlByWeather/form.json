@@ -153,7 +153,20 @@
 								]
 							}
 						]
-					}	
+					},
+					{
+					"type": "ExpansionPanel",
+					"caption": "Notifications and Logging",
+						"items": [
+							{ "type": "Label", "label": "Notification via App requires symcon app and configured webfront" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "CheckBox", "name": "NotificationWarning",  "caption": "Notifications" },
+									{ "type": "CheckBox", "name": "WriteToLog",  "caption": "Logging" }
+								]
+							}
+						]
+					}
 			]
 		},
 		{
@@ -162,7 +175,7 @@
 			"items": [
 					{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the marquee status is updated"},
 					{ "type": "CheckBox", "name": "MarqueeManagementActive", "caption": "Active"},
-					{ "type": "NumberSpinner", "name": "TimerControlMarquee", "caption": "How often should the status of the marquee be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+					{ "type": "NumberSpinner", "name": "TimerControlMarquee", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
 					{ "type": "Label", "label": "Area of where the marquee is being controlled in relation to the position of the sun" },
 					{ "type": "RowLayout",
 						"items": [
@@ -202,8 +215,6 @@
 							}
 						]
 					},
-					{ "type": "Label", "label": "If disabled summer threshold is used" },
-					{ "type": "CheckBox", "name": "MarqueeManagementUseAutomaticWinter", "caption": "Automatic Summer/Winter"},
 					{ "type": "NumberSpinner", "name": "MarqueeManagementWindSpeedMax", "caption": "Maximum Windspeed", "suffix": "max km/h until retract", "minimum": "0", "width": "30%"},
 					{ "type": "CheckBox", "name": "MarqueeManagementConsiderRain", "caption": "Consider Rain"}
 			]
@@ -218,7 +229,7 @@
 					"items": [
 							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the shutter status is updated"},
 							{ "type": "CheckBox", "name": "ShutterEastActive", "caption": "Activate"},
-							{ "type": "NumberSpinner", "name": "ShutterEastTimerControl", "caption": "How often should the status of the shutter be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "NumberSpinner", "name": "ShutterEastTimerControl", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
 							{ "type": "Label", "label": "Area of where the shutter is being controlled in relation to the position of the sun" },
 							{ "type": "RowLayout",
 								"items": [
@@ -255,9 +266,7 @@
 									}
 									
 								]
-							},
-							{ "type": "Label", "label": "If disabled summer thresholds are used" },
-							{ "type": "CheckBox", "name": "ShutterEastUseAutomaticWinter", "caption": "Automatic Summer/Winter"}
+							}
 						]
 					},
 					{
@@ -266,7 +275,7 @@
 					"items": [
 							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the shutter status is updated"},
 							{ "type": "CheckBox", "name": "ShutterSouthActive", "caption": "Activate"},
-							{ "type": "NumberSpinner", "name": "ShutterSouthTimerControl", "caption": "How often should the status of the shutter be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "NumberSpinner", "name": "ShutterSouthTimerControl", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
 							{ "type": "Label", "label": "Area of where the shutter is being controlled in relation to the position of the sun" },
 							{ "type": "RowLayout",
 								"items": [
@@ -303,9 +312,7 @@
 									}
 									
 								]
-							},
-							{ "type": "Label", "label": "If disabled summer thresholds are used" },
-							{ "type": "CheckBox", "name": "ShutterSouthUseAutomaticWinter", "caption": "Automatic Summer/Winter"}
+							}
 						]
 					},
 					{
@@ -314,7 +321,7 @@
 					"items": [
 							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the shutter status is updated"},
 							{ "type": "CheckBox", "name": "ShutterWestActive", "caption": "Activate"},
-							{ "type": "NumberSpinner", "name": "ShutterWestTimerControl", "caption": "How often should the status of the shutter be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "NumberSpinner", "name": "ShutterWestTimerControl", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
 							{ "type": "Label", "label": "Area of where the shutter is being controlled in relation to the position of the sun" },
 							{ "type": "RowLayout",
 								"items": [
@@ -351,9 +358,7 @@
 									}
 									
 								]
-							},
-							{ "type": "Label", "label": "If disabled summer thresholds are used" },
-							{ "type": "CheckBox", "name": "ShutterWestUseAutomaticWinter", "caption": "Automatic Summer/Winter"}
+							}
 						]
 					}	
 			]
@@ -364,7 +369,7 @@
 			"items": [
 					{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the window status is updated"},
 					{ "type": "CheckBox", "name": "WindowActive", "caption": "Activate"},
-					{ "type": "NumberSpinner", "name": "WindowTimerControl", "caption": "How often should the status of the windows be checked - 0 if off", "suffix": "seconds", "minimum": "0" },
+					{ "type": "NumberSpinner", "name": "WindowTimerControl", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
 					{ "type": "Label", "label": "Which windows should be controlled" },
 					{ "type": "RowLayout",
 						"items": [
@@ -397,6 +402,138 @@
 					{ "type": "CheckBox", "name": "WindowWintergardenDisableHeavyRain", "caption": "Close windows at heavy rain"},
 					{ "type": "Label", "label": "Requires heavy rain check to be enabled at rain configuration section" }
 				]
+		},
+		{
+			"type": "ExpansionPanel",
+			"caption": "Building Shading",
+			"items": [
+					{
+					"type": "ExpansionPanel",
+					"caption": "Building East",
+					"items": [
+							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the blinds status is updated"},
+							{ "type": "CheckBox", "name": "BlindsEastActive", "caption": "Activate"},
+							{ "type": "NumberSpinner", "name": "BlindsEastTimerControl", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "Label", "label": "Area of where the blinds is being controlled in relation to the position of the sun" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsEastAzimutBegin", "caption": "Azimut Begin", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "BlindsEastAzimutEnd", "caption": "Azimut End", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "BlindsEastElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
+								]
+							},
+							{ "type": "Label", "label": "Light intensity to provide shading" },
+							{ "type": "Label", "label": "Summer Values (default)" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsEastSolarRadiationSummerDownShadedThreshold", "caption": "Shading", "suffix": "lux", "minimum": "0"}									
+								]
+							},
+							{ "type": "Label", "label": "Winter Values" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsEastSolarRadiationWinterDownShadedThreshold", "caption": "Shading", "suffix": "lux", "minimum": "0"}
+								]
+							},
+							{ "type": "Label", "label": "When moving current or delayed values (requires archiving) can be used"},
+							{ "type": "RowLayout",
+								"items": [
+									{ "name": "BlindsEastDecisionMode", "type": "Select", "caption": "Trigger mode",
+									"options": [
+										{ "label": "Direct", "value": "Direct" },
+										{ "label": "Delay", "value": "Delay" }
+										]
+									}
+									
+								]
+							}
+						]
+					},
+					{
+					"type": "ExpansionPanel",
+					"caption": "Building South",
+					"items": [
+							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the blinds status is updated"},
+							{ "type": "CheckBox", "name": "BlindsSouthActive", "caption": "Activate"},
+							{ "type": "NumberSpinner", "name": "BlindsSouthTimerControl", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "Label", "label": "Area of where the blinds is being controlled in relation to the position of the sun" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsSouthAzimutBegin", "caption": "Azimut Begin", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "BlindsSouthAzimutEnd", "caption": "Azimut End", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "BlindsSouthElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
+								]
+							},
+							{ "type": "Label", "label": "Light intensity to provide shading" },
+							{ "type": "Label", "label": "Summer Values (default)" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsSouthSolarRadiationSummerDownShadedThreshold", "caption": "Shading", "suffix": "lux", "minimum": "0"}									
+								]
+							},
+							{ "type": "Label", "label": "Winter Values" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsSouthSolarRadiationWinterDownShadedThreshold", "caption": "Shading", "suffix": "lux", "minimum": "0"}
+								]
+							},
+							{ "type": "Label", "label": "When moving current or delayed values (requires archiving) can be used"},
+							{ "type": "RowLayout",
+								"items": [
+									{ "name": "BlindsSouthDecisionMode", "type": "Select", "caption": "Trigger mode",
+									"options": [
+										{ "label": "Direct", "value": "Direct" },
+										{ "label": "Delay", "value": "Delay" }
+										]
+									}
+									
+								]
+							}
+						]
+					},
+					{
+					"type": "ExpansionPanel",
+					"caption": "Building West",
+					"items": [
+							{ "type": "Label", "label": "Activate sets the component active, while the time will set how often the blinds status is updated"},
+							{ "type": "CheckBox", "name": "BlindsWestActive", "caption": "Activate"},
+							{ "type": "NumberSpinner", "name": "BlindsWestTimerControl", "caption": "Frequency of update - 0 is off", "suffix": "seconds", "minimum": "0" },
+							{ "type": "Label", "label": "Area of where the blinds is being controlled in relation to the position of the sun" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsWestAzimutBegin", "caption": "Azimut Begin", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "BlindsWestAzimutEnd", "caption": "Azimut End", "suffix": "degree", "minimum": "0", "maximum": "360" },
+									{ "type": "NumberSpinner", "name": "BlindsWestElevation", "caption": "Elevation", "suffix": "degree", "minimum": "0", "maximum": "360" }
+								]
+							},
+							{ "type": "Label", "label": "Light intensity to provide shading" },
+							{ "type": "Label", "label": "Summer Values (default)" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsWestSolarRadiationSummerDownShadedThreshold", "caption": "Shading", "suffix": "lux", "minimum": "0"}									
+								]
+							},
+							{ "type": "Label", "label": "Winter Values" },
+							{ "type": "RowLayout",
+								"items": [
+									{ "type": "NumberSpinner", "name": "BlindsWestSolarRadiationWinterDownShadedThreshold", "caption": "Shading", "suffix": "lux", "minimum": "0"}
+								]
+							},
+							{ "type": "Label", "label": "When moving current or delayed values (requires archiving) can be used"},
+							{ "type": "RowLayout",
+								"items": [
+									{ "name": "BlindsWestDecisionMode", "type": "Select", "caption": "Trigger mode",
+									"options": [
+										{ "label": "Direct", "value": "Direct" },
+										{ "label": "Delay", "value": "Delay" }
+										]
+									}
+									
+								]
+							}
+						]
+					}					
+			]
 		}
     ],
 	"actions":
@@ -406,6 +543,9 @@
 		{ "type": "Button", "label": "Test Shutter East", "onClick": "WC_ShutterEast($id);" },
 		{ "type": "Button", "label": "Test Shutter South", "onClick": "WC_ShutterSouth($id);" },
 		{ "type": "Button", "label": "Test Shutter West", "onClick": "WC_ShutterWest($id);" },
-		{ "type": "Button", "label": "Test Windows Wintergarden", "onClick": "WC_WindowWintergardenControl($id);" }
+		{ "type": "Button", "label": "Test Windows Wintergarden", "onClick": "WC_WindowWintergardenControl($id);" },
+		{ "type": "Button", "label": "Test shading of building East", "onClick": "WC_BlindsEast($id);" },
+		{ "type": "Button", "label": "Test shading of building South", "onClick": "WC_BlindsSouth($id);" },
+		{ "type": "Button", "label": "Test shading of building West", "onClick": "WC_BlindsWest($id);" }	
 	]
 }
