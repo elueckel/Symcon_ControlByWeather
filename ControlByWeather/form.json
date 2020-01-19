@@ -426,7 +426,7 @@
 							{ "type": "Label", "label": "Summer Values (default)" },
 							{ "type": "RowLayout",
 								"items": [
-									{ "type": "NumberSpinner", "name": "BlindsEastSolarRadiationSummerDownShadedThreshold", "caption": "Light Shading", "suffix": "lux", "minimum": "0"}									
+									{ "type": "NumberSpinner", "name": "BlindsEastSolarRadiationSummerDownShadedThreshold", "caption": "Shading", "suffix": "lux", "minimum": "0"}									
 								]
 							},
 							{ "type": "Label", "label": "Winter Values" },
@@ -468,7 +468,7 @@
 							{ "type": "Label", "label": "Summer Values (default)" },
 							{ "type": "RowLayout",
 								"items": [
-									{ "type": "NumberSpinner", "name": "BlindsSouthSolarRadiationSummerDownShadedThreshold", "caption": "Light Shading", "suffix": "lux", "minimum": "0"}									
+									{ "type": "NumberSpinner", "name": "BlindsSouthSolarRadiationSummerDownShadedThreshold", "caption": "Shading", "suffix": "lux", "minimum": "0"}									
 								]
 							},
 							{ "type": "Label", "label": "Winter Values" },
@@ -510,7 +510,7 @@
 							{ "type": "Label", "label": "Summer Values (default)" },
 							{ "type": "RowLayout",
 								"items": [
-									{ "type": "NumberSpinner", "name": "BlindsWestSolarRadiationSummerDownShadedThreshold", "caption": "Light Shading", "suffix": "lux", "minimum": "0"}									
+									{ "type": "NumberSpinner", "name": "BlindsWestSolarRadiationSummerDownShadedThreshold", "caption": "Shading", "suffix": "lux", "minimum": "0"}									
 								]
 							},
 							{ "type": "Label", "label": "Winter Values" },
