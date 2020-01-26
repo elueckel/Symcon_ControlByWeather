@@ -659,7 +659,7 @@ if (!defined('vtBoolean')) {
 												
 					}
 				}				
-				elseif (($OutsideTemperature > 0) OR (($OutsideTemperature <= 1) AND ($Humidity <= ($HumidityThreshold * 0.98)))) {
+				elseif (($OutsideTemperature > 0) OR (($OutsideTemperature <= 1) AND (($Humidity* 0.98) <= $HumidityThreshold ))) {
 					$FrostActive = 0;
 					$this->SetBuffer("FrostActive", $FrostActive);
 					$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Frost Protection - no frost / Outside Temperature ').$OutsideTemperature." / Humidity ".$Humidity." / Threshold ".$HumidityThreshold, 0);
