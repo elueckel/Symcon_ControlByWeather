@@ -104,7 +104,7 @@ Version 1.2 (12.01.2020)
 
 Version 1.21 (26.01.2020)
 * Frost wird erst deaktiviert wenn die Luftfeuchte 2% unter dem Schwellwert liegt (hard coded). Hintergrund ist ein vermeiden von direktem Ansteuern bei geringer Änderung der Luftfeuchte
-
+* Für die Rollläden wird die aktuelle Helligkeit auch um 2% herunter gerechnet um Probleme im Winter zu vermeiden (Lux Werte bewegen sich nur sehr wenig und somit werden die Rollläden zu oft angesprochen)
 
 Generell
 * Benachrichtigungen
