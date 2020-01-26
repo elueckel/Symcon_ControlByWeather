@@ -659,7 +659,7 @@ if (!defined('vtBoolean')) {
 												
 					}
 				}				
-				elseif (($OutsideTemperature > 0) OR (($OutsideTemperature <= 1) AND ($Humidity <= $HumidityThreshold))) {
+				elseif (($OutsideTemperature > 0) OR (($OutsideTemperature <= 1) AND (($Humidity * 0.98) <= $HumidityThreshold ))) {
 					$FrostActive = 0;
 					$this->SetBuffer("FrostActive", $FrostActive);
 					$this->SendDebug($this->Translate('Data Preperation'),$this->Translate('Frost Protection - no frost / Outside Temperature ').$OutsideTemperature." / Humidity ".$Humidity." / Threshold ".$HumidityThreshold, 0);
@@ -1651,7 +1651,7 @@ if (!defined('vtBoolean')) {
 			//**************************************************
 			
 
-			if ($SolarRadiationDecisionValueLux < $BlindsEastSolarRadiationDownShadedThreshold){
+			if (($SolarRadiationDecisionValueLux * 0.98) < $BlindsEastSolarRadiationDownShadedThreshold){
 				$BlindsEastPosition = 0;
 				$BlindsEastPositionReason = $this->Translate('Up');
 				$this->SendDebug($this->Translate('Blinds Control East'),$this->Translate('Position: Up - Current light ').$SolarRadiationDecisionValueLux.$this->Translate(' < threshold for open ').$BlindsEastSolarRadiationDownShadedThreshold,0);
@@ -1751,7 +1751,7 @@ if (!defined('vtBoolean')) {
 			//**************************************************
 			
 
-			if ($SolarRadiationDecisionValueLux < $BlindsSouthSolarRadiationDownShadedThreshold){
+			if (($SolarRadiationDecisionValueLux * 0.98) < $BlindsSouthSolarRadiationDownShadedThreshold){
 				$BlindsSouthPosition = 0;
 				$BlindsSouthPositionReason = $this->Translate('Up');
 				$this->SendDebug($this->Translate('Blinds Control South'),$this->Translate('Position: Up - Current light ').$SolarRadiationDecisionValueLux.$this->Translate(' < threshold for open ').$BlindsSouthSolarRadiationDownShadedThreshold,0);
@@ -1851,7 +1851,7 @@ if (!defined('vtBoolean')) {
 			//**************************************************
 			
 
-			if ($SolarRadiationDecisionValueLux < $BlindsWestSolarRadiationDownShadedThreshold){
+			if (($SolarRadiationDecisionValueLux * 0.98) < $BlindsWestSolarRadiationDownShadedThreshold){
 				$BlindsWestPosition = 0;
 				$BlindsWestPositionReason = $this->Translate('Up');
 				$this->SendDebug($this->Translate('Blinds Control West'),$this->Translate('Position: Up - Current light ').$SolarRadiationDecisionValueLux.$this->Translate(' < threshold for open ').$BlindsWestSolarRadiationDownShadedThreshold,0);
