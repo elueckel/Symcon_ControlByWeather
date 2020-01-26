@@ -1651,7 +1651,7 @@ if (!defined('vtBoolean')) {
 			//**************************************************
 			
 
-			if (($SolarRadiationDecisionValueLux * 0.98) < $BlindsEastSolarRadiationDownShadedThreshold){
+			if ($SolarRadiationDecisionValueLux < $BlindsEastSolarRadiationDownShadedThreshold){
 				$BlindsEastPosition = 0;
 				$BlindsEastPositionReason = $this->Translate('Up');
 				$this->SendDebug($this->Translate('Blinds Control East'),$this->Translate('Position: Up - Current light ').$SolarRadiationDecisionValueLux.$this->Translate(' < threshold for open ').$BlindsEastSolarRadiationDownShadedThreshold,0);
@@ -1751,7 +1751,7 @@ if (!defined('vtBoolean')) {
 			//**************************************************
 			
 
-			if (($SolarRadiationDecisionValueLux * 0.98) < $BlindsSouthSolarRadiationDownShadedThreshold){
+			if ($SolarRadiationDecisionValueLux < $BlindsSouthSolarRadiationDownShadedThreshold){
 				$BlindsSouthPosition = 0;
 				$BlindsSouthPositionReason = $this->Translate('Up');
 				$this->SendDebug($this->Translate('Blinds Control South'),$this->Translate('Position: Up - Current light ').$SolarRadiationDecisionValueLux.$this->Translate(' < threshold for open ').$BlindsSouthSolarRadiationDownShadedThreshold,0);
@@ -1851,7 +1851,7 @@ if (!defined('vtBoolean')) {
 			//**************************************************
 			
 
-			if (($SolarRadiationDecisionValueLux * 0.98) < $BlindsWestSolarRadiationDownShadedThreshold){
+			if ($SolarRadiationDecisionValueLux < $BlindsWestSolarRadiationDownShadedThreshold){
 				$BlindsWestPosition = 0;
 				$BlindsWestPositionReason = $this->Translate('Up');
 				$this->SendDebug($this->Translate('Blinds Control West'),$this->Translate('Position: Up - Current light ').$SolarRadiationDecisionValueLux.$this->Translate(' < threshold for open ').$BlindsWestSolarRadiationDownShadedThreshold,0);
