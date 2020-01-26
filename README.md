@@ -102,6 +102,9 @@ Version 1.2 (12.01.2020)
 * Steuerung von Rollläden an den Gebäudeseiten basierend auf der Helligkeit
 * Diverse Bugfixes vor allem bei dem Vergleichen von Werten
 
+Version 1.21 (26.01.2020)
+* Frost wird erst deaktiviert wenn die Luftfeuchte 2% unter dem Schwellwert liegt (hard coded). Hintergrund ist ein vermeiden von direktem Ansteuern bei geringer Änderung der Luftfeuchte
+
 
 Generell
 * Benachrichtigungen
